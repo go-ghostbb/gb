@@ -2,9 +2,9 @@ package gbtest
 
 import (
 	"fmt"
-	gbdebug "github.com/Ghostbb-io/gb/debug/gb_debug"
-	"github.com/Ghostbb-io/gb/internal/empty"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+	gbdebug "ghostbb.io/debug/gb_debug"
+	"ghostbb.io/internal/empty"
+	gbconv "ghostbb.io/util/gb_conv"
 	"os"
 	"path/filepath"
 	"reflect"

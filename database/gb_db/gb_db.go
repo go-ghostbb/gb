@@ -2,14 +2,14 @@ package gbdb
 
 import (
 	"context"
-	gbmap "github.com/Ghostbb-io/gb/container/gb_map"
-	gbcode "github.com/Ghostbb-io/gb/errors/gb_code"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	"github.com/Ghostbb-io/gb/internal/intlog"
-	gbcache "github.com/Ghostbb-io/gb/os/gb_cache"
-	gbctx "github.com/Ghostbb-io/gb/os/gb_ctx"
-	gblog "github.com/Ghostbb-io/gb/os/gb_log"
-	gbrand "github.com/Ghostbb-io/gb/util/gb_rand"
+	gbmap "ghostbb.io/container/gb_map"
+	gbcode "ghostbb.io/errors/gb_code"
+	gberror "ghostbb.io/errors/gb_error"
+	"ghostbb.io/internal/intlog"
+	gbcache "ghostbb.io/os/gb_cache"
+	gbctx "ghostbb.io/os/gb_ctx"
+	gblog "ghostbb.io/os/gb_log"
+	gbrand "ghostbb.io/util/gb_rand"
 	"gorm.io/gorm"
 )
 

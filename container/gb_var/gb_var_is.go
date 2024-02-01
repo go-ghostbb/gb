@@ -1,7 +1,7 @@
 package gbvar
 
 import (
-	"github.com/Ghostbb-io/gb/internal/utils"
+	"ghostbb.io/internal/utils"
 )
 
 // IsNil checks whether `v` is nil.

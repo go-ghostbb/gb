@@ -2,12 +2,12 @@ package gbcache
 
 import (
 	"context"
-	gblist "github.com/Ghostbb-io/gb/container/gb_list"
-	gbset "github.com/Ghostbb-io/gb/container/gb_set"
-	gbtype "github.com/Ghostbb-io/gb/container/gb_type"
-	gbvar "github.com/Ghostbb-io/gb/container/gb_var"
-	gbtime "github.com/Ghostbb-io/gb/os/gb_time"
-	gbtimer "github.com/Ghostbb-io/gb/os/gb_timer"
+	gblist "ghostbb.io/container/gb_list"
+	gbset "ghostbb.io/container/gb_set"
+	gbtype "ghostbb.io/container/gb_type"
+	gbvar "ghostbb.io/container/gb_var"
+	gbtime "ghostbb.io/os/gb_time"
+	gbtimer "ghostbb.io/os/gb_timer"
 	"math"
 	"time"
 )

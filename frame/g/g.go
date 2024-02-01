@@ -3,8 +3,8 @@ package g
 
 import (
 	"context"
-	gbvar "github.com/Ghostbb-io/gb/container/gb_var"
-	gbmeta "github.com/Ghostbb-io/gb/util/gb_meta"
+	gbvar "ghostbb.io/container/gb_var"
+	gbmeta "ghostbb.io/util/gb_meta"
 )
 
 type (

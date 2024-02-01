@@ -1,7 +1,7 @@
 package gbvar
 
 import (
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+	gbconv "ghostbb.io/util/gb_conv"
 )
 
 // Vars is a slice of *Var.

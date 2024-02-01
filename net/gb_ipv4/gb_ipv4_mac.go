@@ -1,7 +1,7 @@
 package gbipv4
 
 import (
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
+	gberror "ghostbb.io/errors/gb_error"
 	"net"
 )
 

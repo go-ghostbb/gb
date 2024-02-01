@@ -2,9 +2,9 @@ package gbset
 
 import (
 	"bytes"
-	"github.com/Ghostbb-io/gb/internal/json"
-	"github.com/Ghostbb-io/gb/internal/rwmutex"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+	"ghostbb.io/internal/json"
+	"ghostbb.io/internal/rwmutex"
+	gbconv "ghostbb.io/util/gb_conv"
 )
 
 type IntSet struct {

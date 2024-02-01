@@ -2,10 +2,10 @@ package gbredis
 
 import (
 	"context"
-	gbvar "github.com/Ghostbb-io/gb/container/gb_var"
-	gbcode "github.com/Ghostbb-io/gb/errors/gb_code"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	gbstr "github.com/Ghostbb-io/gb/text/gb_str"
+	gbvar "ghostbb.io/container/gb_var"
+	gbcode "ghostbb.io/errors/gb_code"
+	gberror "ghostbb.io/errors/gb_error"
+	gbstr "ghostbb.io/text/gb_str"
 )
 
 // Redis client.

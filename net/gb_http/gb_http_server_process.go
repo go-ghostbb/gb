@@ -2,8 +2,8 @@ package gbhttp
 
 import (
 	"context"
-	gblog "github.com/Ghostbb-io/gb/os/gb_log"
-	gbproc "github.com/Ghostbb-io/gb/os/gb_proc"
+	gblog "ghostbb.io/os/gb_log"
+	gbproc "ghostbb.io/os/gb_proc"
 	"os"
 )
 

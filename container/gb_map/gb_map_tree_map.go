@@ -1,7 +1,7 @@
 package gbmap
 
 import (
-	gbtree "github.com/Ghostbb-io/gb/container/gb_tree"
+	gbtree "ghostbb.io/container/gb_tree"
 )
 
 // TreeMap based on red-black tree, alias of RedBlackTree.

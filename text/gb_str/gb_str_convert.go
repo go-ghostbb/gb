@@ -3,7 +3,7 @@ package gbstr
 import (
 	"bytes"
 	"fmt"
-	gbrand "github.com/Ghostbb-io/gb/util/gb_rand"
+	gbrand "ghostbb.io/util/gb_rand"
 	"math"
 	"regexp"
 	"strconv"

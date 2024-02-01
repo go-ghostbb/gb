@@ -2,11 +2,11 @@ package g
 
 import (
 	"context"
-	gbvar "github.com/Ghostbb-io/gb/container/gb_var"
-	"github.com/Ghostbb-io/gb/internal/empty"
-	gbhttp "github.com/Ghostbb-io/gb/net/gb_http"
-	gbproc "github.com/Ghostbb-io/gb/os/gb_proc"
-	gbutil "github.com/Ghostbb-io/gb/util/gb_util"
+	gbvar "ghostbb.io/container/gb_var"
+	"ghostbb.io/internal/empty"
+	gbhttp "ghostbb.io/net/gb_http"
+	gbproc "ghostbb.io/os/gb_proc"
+	gbutil "ghostbb.io/util/gb_util"
 	"io"
 )
 

@@ -1,7 +1,7 @@
 package redis
 
 import (
-	gbstructs "github.com/Ghostbb-io/gb/os/gb_structs"
+	gbstructs "ghostbb.io/os/gb_structs"
 	"reflect"
 )
 

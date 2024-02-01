@@ -3,10 +3,10 @@ package gbdb
 import (
 	"context"
 	"fmt"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	gbcache "github.com/Ghostbb-io/gb/os/gb_cache"
-	gbstr "github.com/Ghostbb-io/gb/text/gb_str"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+	gberror "ghostbb.io/errors/gb_error"
+	gbcache "ghostbb.io/os/gb_cache"
+	gbstr "ghostbb.io/text/gb_str"
+	gbconv "ghostbb.io/util/gb_conv"
 	"sync"
 	"time"
 )

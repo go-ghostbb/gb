@@ -2,8 +2,8 @@ package gbsel
 
 import (
 	"context"
-	gbtype "github.com/Ghostbb-io/gb/container/gb_type"
-	"github.com/Ghostbb-io/gb/internal/intlog"
+	gbtype "ghostbb.io/container/gb_type"
+	"ghostbb.io/internal/intlog"
 	"sync"
 )
 

@@ -2,7 +2,7 @@ package builtin
 
 import (
 	"errors"
-	gbregex "github.com/Ghostbb-io/gb/text/gb_regex"
+	gbregex "ghostbb.io/text/gb_regex"
 )
 
 // RuleTelephone implements `telephone` rule:

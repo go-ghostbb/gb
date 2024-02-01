@@ -3,10 +3,10 @@ package gbset
 
 import (
 	"bytes"
-	"github.com/Ghostbb-io/gb/internal/json"
-	"github.com/Ghostbb-io/gb/internal/rwmutex"
-	gbstr "github.com/Ghostbb-io/gb/text/gb_str"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+	"ghostbb.io/internal/json"
+	"ghostbb.io/internal/rwmutex"
+	gbstr "ghostbb.io/text/gb_str"
+	gbconv "ghostbb.io/util/gb_conv"
 )
 
 type Set struct {

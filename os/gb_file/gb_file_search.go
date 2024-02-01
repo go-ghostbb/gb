@@ -3,8 +3,8 @@ package gbfile
 import (
 	"bytes"
 	"fmt"
-	gbarray "github.com/Ghostbb-io/gb/container/gb_array"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
+	gbarray "ghostbb.io/container/gb_array"
+	gberror "ghostbb.io/errors/gb_error"
 )
 
 // Search searches file by name `name` in following paths with priority:

@@ -3,12 +3,12 @@ package gins
 import (
 	"context"
 	"fmt"
-	"github.com/Ghostbb-io/gb/internal/consts"
-	"github.com/Ghostbb-io/gb/internal/instance"
-	"github.com/Ghostbb-io/gb/internal/intlog"
-	gbhttp "github.com/Ghostbb-io/gb/net/gb_http"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
-	gbutil "github.com/Ghostbb-io/gb/util/gb_util"
+	"ghostbb.io/internal/consts"
+	"ghostbb.io/internal/instance"
+	"ghostbb.io/internal/intlog"
+	gbhttp "ghostbb.io/net/gb_http"
+	gbconv "ghostbb.io/util/gb_conv"
+	gbutil "ghostbb.io/util/gb_util"
 )
 
 func Server(name ...interface{}) *gbhttp.Server {

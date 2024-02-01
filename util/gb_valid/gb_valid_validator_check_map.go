@@ -3,9 +3,9 @@ package gbvalid
 import (
 	"context"
 	"errors"
-	gbcode "github.com/Ghostbb-io/gb/errors/gb_code"
-	"github.com/Ghostbb-io/gb/internal/reflection"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+	gbcode "ghostbb.io/errors/gb_code"
+	"ghostbb.io/internal/reflection"
+	gbconv "ghostbb.io/util/gb_conv"
 	"reflect"
 	"strings"
 )

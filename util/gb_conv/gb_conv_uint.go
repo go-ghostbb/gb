@@ -1,7 +1,7 @@
 package gbconv
 
 import (
-	gbbinary "github.com/Ghostbb-io/gb/encoding/gb_binary"
+	gbbinary "ghostbb.io/encoding/gb_binary"
 	"math"
 	"strconv"
 )

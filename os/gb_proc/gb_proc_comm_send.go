@@ -1,9 +1,9 @@
 package gbproc
 
 import (
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	"github.com/Ghostbb-io/gb/internal/json"
-	gbtcp "github.com/Ghostbb-io/gb/net/gb_tcp"
+	gberror "ghostbb.io/errors/gb_error"
+	"ghostbb.io/internal/json"
+	gbtcp "ghostbb.io/net/gb_tcp"
 	"io"
 )
 

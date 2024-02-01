@@ -2,8 +2,8 @@ package builtin
 
 import (
 	"errors"
-	"github.com/Ghostbb-io/gb/internal/empty"
-	gbutil "github.com/Ghostbb-io/gb/util/gb_util"
+	"ghostbb.io/internal/empty"
+	gbutil "ghostbb.io/util/gb_util"
 	"strings"
 )
 

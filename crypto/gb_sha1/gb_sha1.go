@@ -4,8 +4,8 @@ package gbsha1
 import (
 	"crypto/sha1"
 	"encoding/hex"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+	gberror "ghostbb.io/errors/gb_error"
+	gbconv "ghostbb.io/util/gb_conv"
 	"io"
 	"os"
 )

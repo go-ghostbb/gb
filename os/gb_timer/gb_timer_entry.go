@@ -2,9 +2,9 @@ package gbtimer
 
 import (
 	"context"
-	gbtype "github.com/Ghostbb-io/gb/container/gb_type"
-	gbcode "github.com/Ghostbb-io/gb/errors/gb_code"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
+	gbtype "ghostbb.io/container/gb_type"
+	gbcode "ghostbb.io/errors/gb_code"
+	gberror "ghostbb.io/errors/gb_error"
 )
 
 // Entry is the timing job.

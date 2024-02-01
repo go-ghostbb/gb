@@ -1,9 +1,9 @@
 package gbstructs
 
 import (
-	gbcode "github.com/Ghostbb-io/gb/errors/gb_code"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	gbtag "github.com/Ghostbb-io/gb/util/gb_tag"
+	gbcode "ghostbb.io/errors/gb_code"
+	gberror "ghostbb.io/errors/gb_error"
+	gbtag "ghostbb.io/util/gb_tag"
 	"reflect"
 	"strconv"
 )

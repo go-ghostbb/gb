@@ -3,8 +3,8 @@ package gbhttp
 import (
 	"context"
 	"fmt"
-	"github.com/Ghostbb-io/gb/internal/instance"
-	gblog "github.com/Ghostbb-io/gb/os/gb_log"
+	"ghostbb.io/internal/instance"
+	gblog "ghostbb.io/os/gb_log"
 	"github.com/gin-gonic/gin"
 	"strings"
 	"time"

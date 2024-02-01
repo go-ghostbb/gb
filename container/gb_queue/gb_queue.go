@@ -12,8 +12,8 @@
 package gbqueue
 
 import (
-	gblist "github.com/Ghostbb-io/gb/container/gb_list"
-	gbtype "github.com/Ghostbb-io/gb/container/gb_type"
+	gblist "ghostbb.io/container/gb_list"
+	gbtype "ghostbb.io/container/gb_type"
 	"math"
 )
 

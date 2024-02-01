@@ -3,11 +3,11 @@ package gbtree
 import (
 	"bytes"
 	"fmt"
-	gbvar "github.com/Ghostbb-io/gb/container/gb_var"
-	"github.com/Ghostbb-io/gb/internal/json"
-	"github.com/Ghostbb-io/gb/internal/rwmutex"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
-	gbutil "github.com/Ghostbb-io/gb/util/gb_util"
+	gbvar "ghostbb.io/container/gb_var"
+	"ghostbb.io/internal/json"
+	"ghostbb.io/internal/rwmutex"
+	gbconv "ghostbb.io/util/gb_conv"
+	gbutil "ghostbb.io/util/gb_util"
 )
 
 type color bool

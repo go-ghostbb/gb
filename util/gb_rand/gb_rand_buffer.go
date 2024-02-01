@@ -2,8 +2,8 @@ package gbrand
 
 import (
 	"crypto/rand"
-	gbcode "github.com/Ghostbb-io/gb/errors/gb_code"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
+	gbcode "ghostbb.io/errors/gb_code"
+	gberror "ghostbb.io/errors/gb_error"
 )
 
 const (

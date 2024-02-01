@@ -1,6 +1,6 @@
 package gblog
 
-import gbmap "github.com/Ghostbb-io/gb/container/gb_map"
+import gbmap "ghostbb.io/container/gb_map"
 
 const (
 	// DefaultName is the default group name for instance usage.

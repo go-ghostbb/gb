@@ -1,6 +1,6 @@
 package gbconv
 
-import "github.com/Ghostbb-io/gb/internal/json"
+import "ghostbb.io/internal/json"
 
 // SliceMap is alias of Maps.
 func SliceMap(any interface{}, option ...MapOption) []map[string]interface{} {

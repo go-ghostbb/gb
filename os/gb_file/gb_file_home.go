@@ -2,7 +2,7 @@ package gbfile
 
 import (
 	"bytes"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
+	gberror "ghostbb.io/errors/gb_error"
 	"os"
 	"os/exec"
 	"os/user"

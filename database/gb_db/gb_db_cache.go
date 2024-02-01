@@ -2,10 +2,10 @@ package gbdb
 
 import (
 	"context"
-	"github.com/Ghostbb-io/gb/internal/intlog"
-	gbcache "github.com/Ghostbb-io/gb/os/gb_cache"
-	gbctx "github.com/Ghostbb-io/gb/os/gb_ctx"
-	gbrand "github.com/Ghostbb-io/gb/util/gb_rand"
+	"ghostbb.io/internal/intlog"
+	gbcache "ghostbb.io/os/gb_cache"
+	gbctx "ghostbb.io/os/gb_ctx"
+	gbrand "ghostbb.io/util/gb_rand"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 )

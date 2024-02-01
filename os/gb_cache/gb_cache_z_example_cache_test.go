@@ -5,9 +5,9 @@ package gbcache_test
 import (
 	"context"
 	"fmt"
-	gbredis "github.com/Ghostbb-io/gb/database/gb_redis"
-	gbcache "github.com/Ghostbb-io/gb/os/gb_cache"
-	gbctx "github.com/Ghostbb-io/gb/os/gb_ctx"
+	gbredis "ghostbb.io/database/gb_redis"
+	gbcache "ghostbb.io/os/gb_cache"
+	gbctx "ghostbb.io/os/gb_ctx"
 	"time"
 )
 

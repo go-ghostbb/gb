@@ -2,8 +2,8 @@ package redis
 
 import (
 	"context"
-	gbvar "github.com/Ghostbb-io/gb/container/gb_var"
-	gbredis "github.com/Ghostbb-io/gb/database/gb_redis"
+	gbvar "ghostbb.io/container/gb_var"
+	gbredis "ghostbb.io/database/gb_redis"
 )
 
 // GroupSortedSet provides sorted set functions for redis.

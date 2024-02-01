@@ -2,12 +2,12 @@ package gbvalid
 
 import (
 	"context"
-	gbcode "github.com/Ghostbb-io/gb/errors/gb_code"
-	"github.com/Ghostbb-io/gb/internal/empty"
-	gbstructs "github.com/Ghostbb-io/gb/os/gb_structs"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
-	gbmeta "github.com/Ghostbb-io/gb/util/gb_meta"
-	gbutil "github.com/Ghostbb-io/gb/util/gb_util"
+	gbcode "ghostbb.io/errors/gb_code"
+	"ghostbb.io/internal/empty"
+	gbstructs "ghostbb.io/os/gb_structs"
+	gbconv "ghostbb.io/util/gb_conv"
+	gbmeta "ghostbb.io/util/gb_meta"
+	gbutil "ghostbb.io/util/gb_util"
 	"reflect"
 	"strings"
 )

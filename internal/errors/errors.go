@@ -1,7 +1,7 @@
 // Package errors provides functionalities to manipulate errors for internal usage purpose.
 package errors
 
-import "github.com/Ghostbb-io/gb/internal/command"
+import "ghostbb.io/internal/command"
 
 type StackMode string
 

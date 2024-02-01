@@ -2,8 +2,8 @@
 package gbmeta
 
 import (
-	gbvar "github.com/Ghostbb-io/gb/container/gb_var"
-	gbstructs "github.com/Ghostbb-io/gb/os/gb_structs"
+	gbvar "ghostbb.io/container/gb_var"
+	gbstructs "ghostbb.io/os/gb_structs"
 )
 
 // Meta is used as an embedded attribute for struct to enabled metadata feature.

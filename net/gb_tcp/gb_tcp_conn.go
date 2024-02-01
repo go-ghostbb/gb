@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"bytes"
 	"crypto/tls"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
+	gberror "ghostbb.io/errors/gb_error"
 	"io"
 	"net"
 	"time"

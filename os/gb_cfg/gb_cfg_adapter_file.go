@@ -2,18 +2,18 @@ package gbcfg
 
 import (
 	"context"
-	gbarray "github.com/Ghostbb-io/gb/container/gb_array"
-	gbmap "github.com/Ghostbb-io/gb/container/gb_map"
-	gbvar "github.com/Ghostbb-io/gb/container/gb_var"
-	gbjson "github.com/Ghostbb-io/gb/encoding/gb_json"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	"github.com/Ghostbb-io/gb/internal/command"
-	"github.com/Ghostbb-io/gb/internal/intlog"
-	gbfile "github.com/Ghostbb-io/gb/os/gb_file"
-	gbfsnotify "github.com/Ghostbb-io/gb/os/gb_fsnotify"
-	gbres "github.com/Ghostbb-io/gb/os/gb_res"
-	gbmode "github.com/Ghostbb-io/gb/util/gb_mode"
-	gbutil "github.com/Ghostbb-io/gb/util/gb_util"
+	gbarray "ghostbb.io/container/gb_array"
+	gbmap "ghostbb.io/container/gb_map"
+	gbvar "ghostbb.io/container/gb_var"
+	gbjson "ghostbb.io/encoding/gb_json"
+	gberror "ghostbb.io/errors/gb_error"
+	"ghostbb.io/internal/command"
+	"ghostbb.io/internal/intlog"
+	gbfile "ghostbb.io/os/gb_file"
+	gbfsnotify "ghostbb.io/os/gb_fsnotify"
+	gbres "ghostbb.io/os/gb_res"
+	gbmode "ghostbb.io/util/gb_mode"
+	gbutil "ghostbb.io/util/gb_util"
 )
 
 // AdapterFile implements interface Adapter using file.

@@ -10,8 +10,8 @@ github.com/Azure/azure-sdk-for-go/sdk/security/keyvault/azkeys v1.0.0/go.mod h1:
 github.com/Azure/azure-sdk-for-go/sdk/security/keyvault/internal v0.8.0/go.mod h1:cw4zVQgBby0Z5f2v0itn6se2dDP17nTjbZFXW5uPyHA=
 github.com/AzureAD/microsoft-authentication-library-for-go v1.0.0/go.mod h1:kgDmCTgBzIEPFElEF+FK0SdjAor06dRq2Go927dnQ6o=
 github.com/AzureAD/microsoft-authentication-library-for-go v1.1.0/go.mod h1:wP83P5OoQ5p6ip3ScPr0BAq0BvuPAvacpEuSzyouqAI=
-github.com/Ghostbb-io/gb v1.0.6 h1:huZ2aJE8Nr26OloEotxKtqY4JNti4ReLv7GMyAlJiQ0=
-github.com/Ghostbb-io/gb v1.0.6/go.mod h1:PpKil6aSpTlGLTNGS5mWOrnMjIGHxtAibSpGTPhzA0E=
+ghostbb.io v1.0.6 h1:huZ2aJE8Nr26OloEotxKtqY4JNti4ReLv7GMyAlJiQ0=
+ghostbb.io v1.0.6/go.mod h1:PpKil6aSpTlGLTNGS5mWOrnMjIGHxtAibSpGTPhzA0E=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/dnaeon/go-vcr v1.1.0/go.mod h1:M7tiix8f0r6mKKJ3Yq/kqU1OYf3MnfmBWVbPx/yU9ko=

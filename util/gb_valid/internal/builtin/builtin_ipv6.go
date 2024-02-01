@@ -2,7 +2,7 @@ package builtin
 
 import (
 	"errors"
-	gbipv6 "github.com/Ghostbb-io/gb/net/gb_ipv6"
+	gbipv6 "ghostbb.io/net/gb_ipv6"
 )
 
 // RuleIpv6 implements `ipv6` rule:

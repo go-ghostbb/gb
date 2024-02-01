@@ -2,7 +2,7 @@ package gbtime
 
 import (
 	"bytes"
-	gbregex "github.com/Ghostbb-io/gb/text/gb_regex"
+	gbregex "ghostbb.io/text/gb_regex"
 	"regexp"
 	"strconv"
 	"strings"

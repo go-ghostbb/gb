@@ -3,12 +3,12 @@ package gbpool
 
 import (
 	"context"
-	gblist "github.com/Ghostbb-io/gb/container/gb_list"
-	gbtype "github.com/Ghostbb-io/gb/container/gb_type"
-	gbcode "github.com/Ghostbb-io/gb/errors/gb_code"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	gbtime "github.com/Ghostbb-io/gb/os/gb_time"
-	gbtimer "github.com/Ghostbb-io/gb/os/gb_timer"
+	gblist "ghostbb.io/container/gb_list"
+	gbtype "ghostbb.io/container/gb_type"
+	gbcode "ghostbb.io/errors/gb_code"
+	gberror "ghostbb.io/errors/gb_error"
+	gbtime "ghostbb.io/os/gb_time"
+	gbtimer "ghostbb.io/os/gb_timer"
 	"time"
 )
 

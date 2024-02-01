@@ -16,9 +16,9 @@ package gbcharset
 import (
 	"bytes"
 	"context"
-	gbcode "github.com/Ghostbb-io/gb/errors/gb_code"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	"github.com/Ghostbb-io/gb/internal/intlog"
+	gbcode "ghostbb.io/errors/gb_code"
+	gberror "ghostbb.io/errors/gb_error"
+	"ghostbb.io/internal/intlog"
 	"io"
 
 	"golang.org/x/text/encoding"

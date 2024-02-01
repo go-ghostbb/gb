@@ -4,9 +4,9 @@
 package gbmode
 
 import (
-	gbdebug "github.com/Ghostbb-io/gb/debug/gb_debug"
-	"github.com/Ghostbb-io/gb/internal/command"
-	gbfile "github.com/Ghostbb-io/gb/os/gb_file"
+	gbdebug "ghostbb.io/debug/gb_debug"
+	"ghostbb.io/internal/command"
+	gbfile "ghostbb.io/os/gb_file"
 )
 
 const (

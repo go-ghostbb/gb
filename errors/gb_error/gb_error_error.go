@@ -3,7 +3,7 @@ package gberror
 import (
 	"errors"
 	"fmt"
-	gbcode "github.com/Ghostbb-io/gb/errors/gb_code"
+	gbcode "ghostbb.io/errors/gb_code"
 	"runtime"
 	"strings"
 )

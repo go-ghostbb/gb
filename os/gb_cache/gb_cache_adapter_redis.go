@@ -2,9 +2,9 @@ package gbcache
 
 import (
 	"context"
-	gbvar "github.com/Ghostbb-io/gb/container/gb_var"
-	gbredis "github.com/Ghostbb-io/gb/database/gb_redis"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+	gbvar "ghostbb.io/container/gb_var"
+	gbredis "ghostbb.io/database/gb_redis"
+	gbconv "ghostbb.io/util/gb_conv"
 	"time"
 )
 

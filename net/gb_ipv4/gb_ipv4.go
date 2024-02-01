@@ -4,7 +4,7 @@ package gbipv4
 import (
 	"encoding/binary"
 	"fmt"
-	gbregex "github.com/Ghostbb-io/gb/text/gb_regex"
+	gbregex "ghostbb.io/text/gb_regex"
 	"net"
 	"strconv"
 )

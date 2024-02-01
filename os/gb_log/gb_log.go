@@ -3,9 +3,9 @@ package gblog
 
 import (
 	"context"
-	"github.com/Ghostbb-io/gb/internal/command"
-	gbrpool "github.com/Ghostbb-io/gb/os/gb_rpool"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+	"ghostbb.io/internal/command"
+	gbrpool "ghostbb.io/os/gb_rpool"
+	gbconv "ghostbb.io/util/gb_conv"
 )
 
 // ILogger is the API interface for logger.

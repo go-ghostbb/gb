@@ -3,7 +3,7 @@ package gbcmd
 import (
 	"bufio"
 	"fmt"
-	gbstr "github.com/Ghostbb-io/gb/text/gb_str"
+	gbstr "ghostbb.io/text/gb_str"
 	"os"
 )
 

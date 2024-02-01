@@ -1,7 +1,7 @@
 package g
 
 import (
-	"github.com/Ghostbb-io/gb/internal/utils"
+	"ghostbb.io/internal/utils"
 )
 
 // SetDebug enables/disables the GoFrame internal logging manually.

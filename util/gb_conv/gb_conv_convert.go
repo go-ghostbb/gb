@@ -1,7 +1,7 @@
 package gbconv
 
 import (
-	gbtime "github.com/Ghostbb-io/gb/os/gb_time"
+	gbtime "ghostbb.io/os/gb_time"
 	"reflect"
 	"time"
 )

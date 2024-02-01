@@ -4,8 +4,8 @@ package gbmd5
 import (
 	"crypto/md5"
 	"fmt"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+	gberror "ghostbb.io/errors/gb_error"
+	gbconv "ghostbb.io/util/gb_conv"
 	"io"
 	"os"
 )

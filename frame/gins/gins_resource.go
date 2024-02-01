@@ -1,7 +1,7 @@
 package gins
 
 import (
-	gbres "github.com/Ghostbb-io/gb/os/gb_res"
+	gbres "ghostbb.io/os/gb_res"
 )
 
 // Resource returns an instance of Resource.

@@ -2,9 +2,9 @@
 package gbfpool
 
 import (
-	gbmap "github.com/Ghostbb-io/gb/container/gb_map"
-	gbpool "github.com/Ghostbb-io/gb/container/gb_pool"
-	gbtype "github.com/Ghostbb-io/gb/container/gb_type"
+	gbmap "ghostbb.io/container/gb_map"
+	gbpool "ghostbb.io/container/gb_pool"
+	gbtype "ghostbb.io/container/gb_type"
 	"os"
 	"time"
 )

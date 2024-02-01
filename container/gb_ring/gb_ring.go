@@ -3,8 +3,8 @@ package gbring
 
 import (
 	"container/ring"
-	gbtype "github.com/Ghostbb-io/gb/container/gb_type"
-	"github.com/Ghostbb-io/gb/internal/rwmutex"
+	gbtype "ghostbb.io/container/gb_type"
+	"ghostbb.io/internal/rwmutex"
 )
 
 type Ring struct {

@@ -1,8 +1,8 @@
 package gbconv
 
 import (
-	"github.com/Ghostbb-io/gb/internal/utils"
-	gbtime "github.com/Ghostbb-io/gb/os/gb_time"
+	"ghostbb.io/internal/utils"
+	gbtime "ghostbb.io/os/gb_time"
 	"time"
 )
 

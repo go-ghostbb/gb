@@ -4,10 +4,10 @@ package gblist
 import (
 	"bytes"
 	"container/list"
-	"github.com/Ghostbb-io/gb/internal/deepcopy"
-	"github.com/Ghostbb-io/gb/internal/json"
-	"github.com/Ghostbb-io/gb/internal/rwmutex"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+	"ghostbb.io/internal/deepcopy"
+	"ghostbb.io/internal/json"
+	"ghostbb.io/internal/rwmutex"
+	gbconv "ghostbb.io/util/gb_conv"
 )
 
 type (

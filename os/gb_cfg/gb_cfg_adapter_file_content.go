@@ -2,7 +2,7 @@ package gbcfg
 
 import (
 	"context"
-	"github.com/Ghostbb-io/gb/internal/intlog"
+	"ghostbb.io/internal/intlog"
 )
 
 // SetContent sets customized configuration content for specified `file`.

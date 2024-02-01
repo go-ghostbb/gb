@@ -3,10 +3,10 @@ package gbenv
 
 import (
 	"fmt"
-	gbvar "github.com/Ghostbb-io/gb/container/gb_var"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	"github.com/Ghostbb-io/gb/internal/command"
-	"github.com/Ghostbb-io/gb/internal/utils"
+	gbvar "ghostbb.io/container/gb_var"
+	gberror "ghostbb.io/errors/gb_error"
+	"ghostbb.io/internal/command"
+	"ghostbb.io/internal/utils"
 	"os"
 	"strings"
 )

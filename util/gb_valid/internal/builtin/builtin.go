@@ -5,7 +5,7 @@
 package builtin
 
 import (
-	gbvar "github.com/Ghostbb-io/gb/container/gb_var"
+	gbvar "ghostbb.io/container/gb_var"
 	"reflect"
 )
 

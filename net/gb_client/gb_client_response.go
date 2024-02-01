@@ -2,7 +2,7 @@ package gbclient
 
 import (
 	"bytes"
-	"github.com/Ghostbb-io/gb/internal/intlog"
+	"ghostbb.io/internal/intlog"
 	"io"
 	"net/http"
 )

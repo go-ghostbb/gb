@@ -4,7 +4,7 @@ package json
 import (
 	"bytes"
 	"encoding/json"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
+	gberror "ghostbb.io/errors/gb_error"
 	"io"
 )
 

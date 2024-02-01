@@ -1,9 +1,9 @@
 package gbspath
 
 import (
-	gbfile "github.com/Ghostbb-io/gb/os/gb_file"
-	gbfsnotify "github.com/Ghostbb-io/gb/os/gb_fsnotify"
-	gbstr "github.com/Ghostbb-io/gb/text/gb_str"
+	gbfile "ghostbb.io/os/gb_file"
+	gbfsnotify "ghostbb.io/os/gb_fsnotify"
+	gbstr "ghostbb.io/text/gb_str"
 	"runtime"
 	"strings"
 )

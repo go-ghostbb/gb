@@ -3,10 +3,10 @@ package gins
 import (
 	"context"
 	"fmt"
-	"github.com/Ghostbb-io/gb/internal/consts"
-	"github.com/Ghostbb-io/gb/internal/instance"
-	gblog "github.com/Ghostbb-io/gb/os/gb_log"
-	gbutil "github.com/Ghostbb-io/gb/util/gb_util"
+	"ghostbb.io/internal/consts"
+	"ghostbb.io/internal/instance"
+	gblog "ghostbb.io/os/gb_log"
+	gbutil "ghostbb.io/util/gb_util"
 )
 
 // Log returns an instance of gblog.Logger.

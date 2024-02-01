@@ -3,12 +3,12 @@ package gbproc
 import (
 	"context"
 	"fmt"
-	gbmap "github.com/Ghostbb-io/gb/container/gb_map"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	"github.com/Ghostbb-io/gb/internal/intlog"
-	gbtcp "github.com/Ghostbb-io/gb/net/gb_tcp"
-	gbfile "github.com/Ghostbb-io/gb/os/gb_file"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+	gbmap "ghostbb.io/container/gb_map"
+	gberror "ghostbb.io/errors/gb_error"
+	"ghostbb.io/internal/intlog"
+	gbtcp "ghostbb.io/net/gb_tcp"
+	gbfile "ghostbb.io/os/gb_file"
+	gbconv "ghostbb.io/util/gb_conv"
 	"sync"
 )
 

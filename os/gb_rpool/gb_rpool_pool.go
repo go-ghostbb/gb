@@ -2,8 +2,8 @@ package gbrpool
 
 import (
 	"context"
-	gbcode "github.com/Ghostbb-io/gb/errors/gb_code"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
+	gbcode "ghostbb.io/errors/gb_code"
+	gberror "ghostbb.io/errors/gb_error"
 )
 
 // Add pushes a new job to the pool.

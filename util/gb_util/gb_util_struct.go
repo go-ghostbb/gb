@@ -1,10 +1,10 @@
 package gbutil
 
 import (
-	gbcode "github.com/Ghostbb-io/gb/errors/gb_code"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	gbstructs "github.com/Ghostbb-io/gb/os/gb_structs"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+	gbcode "ghostbb.io/errors/gb_code"
+	gberror "ghostbb.io/errors/gb_error"
+	gbstructs "ghostbb.io/os/gb_structs"
+	gbconv "ghostbb.io/util/gb_conv"
 	"reflect"
 )
 

@@ -1,7 +1,7 @@
 package gbstr
 
 import (
-	"github.com/Ghostbb-io/gb/internal/utils"
+	"ghostbb.io/internal/utils"
 	"strings"
 )
 

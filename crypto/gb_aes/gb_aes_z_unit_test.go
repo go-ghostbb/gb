@@ -1,9 +1,9 @@
 package gbaes_test
 
 import (
-	gbaes "github.com/Ghostbb-io/gb/crypto/gb_aes"
-	gbbase64 "github.com/Ghostbb-io/gb/encoding/gb_base64"
-	gbtest "github.com/Ghostbb-io/gb/test/gb_test"
+	gbaes "ghostbb.io/crypto/gb_aes"
+	gbbase64 "ghostbb.io/encoding/gb_base64"
+	gbtest "ghostbb.io/test/gb_test"
 	"testing"
 )
 

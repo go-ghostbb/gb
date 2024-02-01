@@ -2,10 +2,10 @@ package gbfsnotify
 
 import (
 	"context"
-	gblist "github.com/Ghostbb-io/gb/container/gb_list"
-	gbcode "github.com/Ghostbb-io/gb/errors/gb_code"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	"github.com/Ghostbb-io/gb/internal/intlog"
+	gblist "ghostbb.io/container/gb_list"
+	gbcode "ghostbb.io/errors/gb_code"
+	gberror "ghostbb.io/errors/gb_error"
+	"ghostbb.io/internal/intlog"
 )
 
 // Add monitors `path` with callback function `callbackFunc` to the watcher.

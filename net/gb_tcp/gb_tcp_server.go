@@ -3,11 +3,11 @@ package gbtcp
 import (
 	"crypto/tls"
 	"fmt"
-	gbmap "github.com/Ghostbb-io/gb/container/gb_map"
-	gbcode "github.com/Ghostbb-io/gb/errors/gb_code"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	gbstr "github.com/Ghostbb-io/gb/text/gb_str"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+	gbmap "ghostbb.io/container/gb_map"
+	gbcode "ghostbb.io/errors/gb_code"
+	gberror "ghostbb.io/errors/gb_error"
+	gbstr "ghostbb.io/text/gb_str"
+	gbconv "ghostbb.io/util/gb_conv"
 	"net"
 	"sync"
 )

@@ -2,7 +2,7 @@ package gbclient
 
 import (
 	"context"
-	"github.com/Ghostbb-io/gb/internal/intlog"
+	"ghostbb.io/internal/intlog"
 	"net/http"
 )
 

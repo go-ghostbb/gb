@@ -2,7 +2,7 @@ package gbredis
 
 import (
 	"context"
-	gbvar "github.com/Ghostbb-io/gb/container/gb_var"
+	gbvar "ghostbb.io/container/gb_var"
 )
 
 // Adapter is an interface for universal redis operations.

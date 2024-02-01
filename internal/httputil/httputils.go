@@ -2,10 +2,10 @@
 package httputil
 
 import (
-	gburl "github.com/Ghostbb-io/gb/encoding/gb_url"
-	"github.com/Ghostbb-io/gb/internal/empty"
-	gbstr "github.com/Ghostbb-io/gb/text/gb_str"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+	gburl "ghostbb.io/encoding/gb_url"
+	"ghostbb.io/internal/empty"
+	gbstr "ghostbb.io/text/gb_str"
+	gbconv "ghostbb.io/util/gb_conv"
 	"net/http"
 	"strings"
 )

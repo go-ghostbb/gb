@@ -4,11 +4,11 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	gbvar "github.com/Ghostbb-io/gb/container/gb_var"
-	"github.com/Ghostbb-io/gb/internal/intlog"
-	"github.com/Ghostbb-io/gb/internal/json"
-	"github.com/Ghostbb-io/gb/internal/rwmutex"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+	gbvar "ghostbb.io/container/gb_var"
+	"ghostbb.io/internal/intlog"
+	"ghostbb.io/internal/json"
+	"ghostbb.io/internal/rwmutex"
+	gbconv "ghostbb.io/util/gb_conv"
 	"strings"
 )
 

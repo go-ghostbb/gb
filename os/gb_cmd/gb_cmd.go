@@ -2,10 +2,10 @@
 package gbcmd
 
 import (
-	gbvar "github.com/Ghostbb-io/gb/container/gb_var"
-	"github.com/Ghostbb-io/gb/internal/command"
-	"github.com/Ghostbb-io/gb/internal/utils"
-	gbctx "github.com/Ghostbb-io/gb/os/gb_ctx"
+	gbvar "ghostbb.io/container/gb_var"
+	"ghostbb.io/internal/command"
+	"ghostbb.io/internal/utils"
+	gbctx "ghostbb.io/os/gb_ctx"
 	"os"
 )
 

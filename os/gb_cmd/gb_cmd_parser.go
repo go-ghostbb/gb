@@ -2,13 +2,13 @@ package gbcmd
 
 import (
 	"context"
-	gbvar "github.com/Ghostbb-io/gb/container/gb_var"
-	gbcode "github.com/Ghostbb-io/gb/errors/gb_code"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	"github.com/Ghostbb-io/gb/internal/command"
-	"github.com/Ghostbb-io/gb/internal/json"
-	gbregex "github.com/Ghostbb-io/gb/text/gb_regex"
-	gbstr "github.com/Ghostbb-io/gb/text/gb_str"
+	gbvar "ghostbb.io/container/gb_var"
+	gbcode "ghostbb.io/errors/gb_code"
+	gberror "ghostbb.io/errors/gb_error"
+	"ghostbb.io/internal/command"
+	"ghostbb.io/internal/json"
+	gbregex "ghostbb.io/text/gb_regex"
+	gbstr "ghostbb.io/text/gb_str"
 	"os"
 	"strings"
 )

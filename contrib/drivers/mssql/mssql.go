@@ -2,9 +2,9 @@ package mssql
 
 import (
 	"fmt"
-	gbdb "github.com/Ghostbb-io/gb/database/gb_db"
-	gbregex "github.com/Ghostbb-io/gb/text/gb_regex"
-	gbstr "github.com/Ghostbb-io/gb/text/gb_str"
+	gbdb "ghostbb.io/database/gb_db"
+	gbregex "ghostbb.io/text/gb_regex"
+	gbstr "ghostbb.io/text/gb_str"
 	"gorm.io/driver/sqlserver"
 	"gorm.io/gorm"
 )

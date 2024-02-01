@@ -1,7 +1,7 @@
 package gbclient
 
 import (
-	gbsvc "github.com/Ghostbb-io/gb/net/gb_svc"
+	gbsvc "ghostbb.io/net/gb_svc"
 	"time"
 )
 

@@ -5,18 +5,18 @@ import (
 	"bytes"
 	"encoding/hex"
 	"fmt"
-	gbbase64 "github.com/Ghostbb-io/gb/encoding/gb_base64"
-	gbcompress "github.com/Ghostbb-io/gb/encoding/gb_compress"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	gbfile "github.com/Ghostbb-io/gb/os/gb_file"
-	gbstr "github.com/Ghostbb-io/gb/text/gb_str"
+	gbbase64 "ghostbb.io/encoding/gb_base64"
+	gbcompress "ghostbb.io/encoding/gb_compress"
+	gberror "ghostbb.io/errors/gb_error"
+	gbfile "ghostbb.io/os/gb_file"
+	gbstr "ghostbb.io/text/gb_str"
 )
 
 const (
 	packedGoSourceTemplate = `
 package %s
 
-import gbres "github.com/Ghostbb-io/gb/os/gb-res"
+import gbres "ghostbb.io/os/gb-res"
 
 func init() {
 	if err := gbres.Add("%s"); err != nil {

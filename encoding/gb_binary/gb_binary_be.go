@@ -5,8 +5,8 @@ import (
 	"context"
 	"encoding/binary"
 	"fmt"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	"github.com/Ghostbb-io/gb/internal/intlog"
+	gberror "ghostbb.io/errors/gb_error"
+	"ghostbb.io/internal/intlog"
 	"math"
 )
 

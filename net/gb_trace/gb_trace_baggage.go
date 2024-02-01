@@ -2,9 +2,9 @@ package gbtrace
 
 import (
 	"context"
-	gbmap "github.com/Ghostbb-io/gb/container/gb_map"
-	gbvar "github.com/Ghostbb-io/gb/container/gb_var"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+	gbmap "ghostbb.io/container/gb_map"
+	gbvar "ghostbb.io/container/gb_var"
+	gbconv "ghostbb.io/util/gb_conv"
 
 	"go.opentelemetry.io/otel/baggage"
 )

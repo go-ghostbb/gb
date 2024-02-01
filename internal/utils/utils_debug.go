@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"github.com/Ghostbb-io/gb/internal/command"
+	"ghostbb.io/internal/command"
 )
 
 const (

@@ -3,11 +3,11 @@ package gbredis
 import (
 	"context"
 	"crypto/tls"
-	gbmap "github.com/Ghostbb-io/gb/container/gb_map"
-	gbcode "github.com/Ghostbb-io/gb/errors/gb_code"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	"github.com/Ghostbb-io/gb/internal/intlog"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+	gbmap "ghostbb.io/container/gb_map"
+	gbcode "ghostbb.io/errors/gb_code"
+	gberror "ghostbb.io/errors/gb_error"
+	"ghostbb.io/internal/intlog"
+	gbconv "ghostbb.io/util/gb_conv"
 	"time"
 )
 

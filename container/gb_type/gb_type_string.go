@@ -2,7 +2,7 @@ package gbtype
 
 import (
 	"bytes"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+	gbconv "ghostbb.io/util/gb_conv"
 	"sync/atomic"
 )
 

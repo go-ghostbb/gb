@@ -2,9 +2,9 @@
 package gbxml
 
 import (
-	gbcharset "github.com/Ghostbb-io/gb/encoding/gb_charset"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	gbregex "github.com/Ghostbb-io/gb/text/gb_regex"
+	gbcharset "ghostbb.io/encoding/gb_charset"
+	gberror "ghostbb.io/errors/gb_error"
+	gbregex "ghostbb.io/text/gb_regex"
 	"strings"
 
 	"github.com/clbanning/mxj/v2"

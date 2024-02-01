@@ -1,16 +1,16 @@
 package g
 
 import (
-	gbdb "github.com/Ghostbb-io/gb/database/gb_db"
-	gbredis "github.com/Ghostbb-io/gb/database/gb_redis"
-	"github.com/Ghostbb-io/gb/frame/gins"
-	gbi18n "github.com/Ghostbb-io/gb/i18n/gb_i18n"
-	gbhttp "github.com/Ghostbb-io/gb/net/gb_http"
-	gbtcp "github.com/Ghostbb-io/gb/net/gb_tcp"
-	gbcfg "github.com/Ghostbb-io/gb/os/gb_cfg"
-	gblog "github.com/Ghostbb-io/gb/os/gb_log"
-	gbres "github.com/Ghostbb-io/gb/os/gb_res"
-	gbvalid "github.com/Ghostbb-io/gb/util/gb_valid"
+	gbdb "ghostbb.io/database/gb_db"
+	gbredis "ghostbb.io/database/gb_redis"
+	"ghostbb.io/frame/gins"
+	gbi18n "ghostbb.io/i18n/gb_i18n"
+	gbhttp "ghostbb.io/net/gb_http"
+	gbtcp "ghostbb.io/net/gb_tcp"
+	gbcfg "ghostbb.io/os/gb_cfg"
+	gblog "ghostbb.io/os/gb_log"
+	gbres "ghostbb.io/os/gb_res"
+	gbvalid "ghostbb.io/util/gb_valid"
 )
 
 // Server returns an instance of http server with specified name.

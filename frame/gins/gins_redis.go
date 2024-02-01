@@ -3,14 +3,14 @@ package gins
 import (
 	"context"
 	"fmt"
-	gbredis "github.com/Ghostbb-io/gb/database/gb_redis"
-	gbcode "github.com/Ghostbb-io/gb/errors/gb_code"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	"github.com/Ghostbb-io/gb/internal/consts"
-	"github.com/Ghostbb-io/gb/internal/instance"
-	"github.com/Ghostbb-io/gb/internal/intlog"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
-	gbutil "github.com/Ghostbb-io/gb/util/gb_util"
+	gbredis "ghostbb.io/database/gb_redis"
+	gbcode "ghostbb.io/errors/gb_code"
+	gberror "ghostbb.io/errors/gb_error"
+	"ghostbb.io/internal/consts"
+	"ghostbb.io/internal/instance"
+	"ghostbb.io/internal/intlog"
+	gbconv "ghostbb.io/util/gb_conv"
+	gbutil "ghostbb.io/util/gb_util"
 )
 
 // Redis returns an instance of redis client with specified configuration group name.

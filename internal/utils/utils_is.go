@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"github.com/Ghostbb-io/gb/internal/empty"
+	"ghostbb.io/internal/empty"
 	"reflect"
 )
 

@@ -1,7 +1,7 @@
 package gbvar
 
 import (
-	gbutil "github.com/Ghostbb-io/gb/util/gb_util"
+	gbutil "ghostbb.io/util/gb_util"
 )
 
 // ListItemValues retrieves and returns the elements of all item struct/map with key `key`.

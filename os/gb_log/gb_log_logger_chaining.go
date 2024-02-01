@@ -1,7 +1,7 @@
 package gblog
 
 import (
-	gbfile "github.com/Ghostbb-io/gb/os/gb_file"
+	gbfile "ghostbb.io/os/gb_file"
 	"io"
 )
 

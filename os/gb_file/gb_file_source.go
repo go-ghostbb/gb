@@ -1,8 +1,8 @@
 package gbfile
 
 import (
-	gbregex "github.com/Ghostbb-io/gb/text/gb_regex"
-	gbstr "github.com/Ghostbb-io/gb/text/gb_str"
+	gbregex "ghostbb.io/text/gb_regex"
+	gbstr "ghostbb.io/text/gb_str"
 	"os"
 	"runtime"
 	"strings"

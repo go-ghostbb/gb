@@ -2,7 +2,7 @@
 package gbipv6
 
 import (
-	gbregex "github.com/Ghostbb-io/gb/text/gb_regex"
+	gbregex "ghostbb.io/text/gb_regex"
 )
 
 // Validate checks whether given `ip` a valid IPv6 address.

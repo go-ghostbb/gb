@@ -2,10 +2,10 @@ package gbclient
 
 import (
 	"context"
-	gbmap "github.com/Ghostbb-io/gb/container/gb_map"
-	"github.com/Ghostbb-io/gb/internal/intlog"
-	gbsel "github.com/Ghostbb-io/gb/net/gb_sel"
-	gbsvc "github.com/Ghostbb-io/gb/net/gb_svc"
+	gbmap "ghostbb.io/container/gb_map"
+	"ghostbb.io/internal/intlog"
+	gbsel "ghostbb.io/net/gb_sel"
+	gbsvc "ghostbb.io/net/gb_svc"
 	"net/http"
 )
 

@@ -1,6 +1,6 @@
 package gbdb
 
-import gbcache "github.com/Ghostbb-io/gb/os/gb_cache"
+import gbcache "ghostbb.io/os/gb_cache"
 
 type CacheConfig struct {
 	// CacheLevel there are 2 types of cache and 4 kinds of cache option

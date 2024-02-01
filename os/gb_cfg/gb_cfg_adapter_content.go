@@ -2,9 +2,9 @@ package gbcfg
 
 import (
 	"context"
-	gbvar "github.com/Ghostbb-io/gb/container/gb_var"
-	gbjson "github.com/Ghostbb-io/gb/encoding/gb_json"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
+	gbvar "ghostbb.io/container/gb_var"
+	gbjson "ghostbb.io/encoding/gb_json"
+	gberror "ghostbb.io/errors/gb_error"
 )
 
 // AdapterContent implements interface Adapter using content.

@@ -3,10 +3,10 @@ package gbtree
 import (
 	"bytes"
 	"fmt"
-	gbvar "github.com/Ghostbb-io/gb/container/gb_var"
-	"github.com/Ghostbb-io/gb/internal/json"
-	"github.com/Ghostbb-io/gb/internal/rwmutex"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+	gbvar "ghostbb.io/container/gb_var"
+	"ghostbb.io/internal/json"
+	"ghostbb.io/internal/rwmutex"
+	gbconv "ghostbb.io/util/gb_conv"
 )
 
 // AVLTree holds elements of the AVL tree.

@@ -1,9 +1,9 @@
 package gbdb
 
 import (
-	gbregex "github.com/Ghostbb-io/gb/text/gb_regex"
-	gbstr "github.com/Ghostbb-io/gb/text/gb_str"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+	gbregex "ghostbb.io/text/gb_regex"
+	gbstr "ghostbb.io/text/gb_str"
+	gbconv "ghostbb.io/util/gb_conv"
 	"sync"
 	"time"
 )

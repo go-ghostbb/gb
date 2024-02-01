@@ -2,9 +2,9 @@ package gbcmd
 
 import (
 	"context"
-	gbset "github.com/Ghostbb-io/gb/container/gb_set"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	gbstr "github.com/Ghostbb-io/gb/text/gb_str"
+	gbset "ghostbb.io/container/gb_set"
+	gberror "ghostbb.io/errors/gb_error"
+	gbstr "ghostbb.io/text/gb_str"
 )
 
 // Command holds the info about an argument that can handle custom logic.

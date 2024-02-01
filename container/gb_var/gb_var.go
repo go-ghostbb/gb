@@ -2,12 +2,12 @@
 package gbvar
 
 import (
-	gbtype "github.com/Ghostbb-io/gb/container/gb_type"
-	"github.com/Ghostbb-io/gb/internal/deepcopy"
-	"github.com/Ghostbb-io/gb/internal/json"
-	gbtime "github.com/Ghostbb-io/gb/os/gb_time"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
-	gbutil "github.com/Ghostbb-io/gb/util/gb_util"
+	gbtype "ghostbb.io/container/gb_type"
+	"ghostbb.io/internal/deepcopy"
+	"ghostbb.io/internal/json"
+	gbtime "ghostbb.io/os/gb_time"
+	gbconv "ghostbb.io/util/gb_conv"
+	gbutil "ghostbb.io/util/gb_util"
 	"time"
 )
 

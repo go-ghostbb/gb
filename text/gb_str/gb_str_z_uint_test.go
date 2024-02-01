@@ -3,8 +3,8 @@
 package gbstr_test
 
 import (
-	gbtest "github.com/Ghostbb-io/gb/test/gb_test"
-	gbstr "github.com/Ghostbb-io/gb/text/gb_str"
+	gbtest "ghostbb.io/test/gb_test"
+	gbstr "ghostbb.io/text/gb_str"
 
 	"testing"
 )

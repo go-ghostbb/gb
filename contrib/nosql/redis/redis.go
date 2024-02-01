@@ -3,8 +3,8 @@ package redis
 
 import (
 	"crypto/tls"
-	gbredis "github.com/Ghostbb-io/gb/database/gb_redis"
-	gbstr "github.com/Ghostbb-io/gb/text/gb_str"
+	gbredis "ghostbb.io/database/gb_redis"
+	gbstr "ghostbb.io/text/gb_str"
 	"time"
 
 	"github.com/redis/go-redis/v9"

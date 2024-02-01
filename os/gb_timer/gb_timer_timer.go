@@ -2,7 +2,7 @@ package gbtimer
 
 import (
 	"context"
-	gbtype "github.com/Ghostbb-io/gb/container/gb_type"
+	gbtype "ghostbb.io/container/gb_type"
 	"time"
 )
 

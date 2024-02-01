@@ -2,7 +2,7 @@ package builtin
 
 import (
 	"errors"
-	"github.com/Ghostbb-io/gb/internal/json"
+	"ghostbb.io/internal/json"
 )
 
 // RuleArray implements `array` rule:

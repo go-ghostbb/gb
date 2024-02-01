@@ -3,7 +3,7 @@ package gbdb
 import (
 	"context"
 	"fmt"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
+	gberror "ghostbb.io/errors/gb_error"
 	"math/rand"
 	"reflect"
 	"strings"

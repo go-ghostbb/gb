@@ -3,9 +3,9 @@ package gbyaml
 
 import (
 	"bytes"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
-	"github.com/Ghostbb-io/gb/internal/json"
-	gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+	gberror "ghostbb.io/errors/gb_error"
+	"ghostbb.io/internal/json"
+	gbconv "ghostbb.io/util/gb_conv"
 	"strings"
 
 	"gopkg.in/yaml.v3"

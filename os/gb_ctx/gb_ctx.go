@@ -3,7 +3,7 @@ package gbctx
 
 import (
 	"context"
-	gbtrace "github.com/Ghostbb-io/gb/net/gb_trace"
+	gbtrace "ghostbb.io/net/gb_trace"
 	"os"
 	"strings"
 

@@ -2,9 +2,9 @@ package gbsel
 
 import (
 	"context"
-	"github.com/Ghostbb-io/gb/internal/intlog"
-	gbsvc "github.com/Ghostbb-io/gb/net/gb_svc"
-	gbrand "github.com/Ghostbb-io/gb/util/gb_rand"
+	"ghostbb.io/internal/intlog"
+	gbsvc "ghostbb.io/net/gb_svc"
+	gbrand "ghostbb.io/util/gb_rand"
 	"sync"
 )
 

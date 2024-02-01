@@ -1,9 +1,9 @@
-module github.com/Ghostbb-io/gb/contrib/nosql/redis
+module ghostbb.io/contrib/nosql/redis
 
 go 1.21.0
 
 require (
-	github.com/Ghostbb-io/gb v1.1.3
+	ghostbb.io v1.1.3
 	github.com/redis/go-redis/v9 v9.2.1
 	go.opentelemetry.io/otel v1.22.0
 	go.opentelemetry.io/otel/trace v1.22.0
@@ -25,4 +25,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace github.com/Ghostbb-io/gb => ../../../
+replace ghostbb.io => ../../../

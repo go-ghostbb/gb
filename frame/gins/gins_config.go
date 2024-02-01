@@ -1,7 +1,7 @@
 package gins
 
 import (
-	gbcfg "github.com/Ghostbb-io/gb/os/gb_cfg"
+	gbcfg "ghostbb.io/os/gb_cfg"
 )
 
 // Config returns an instance of View with default settings.

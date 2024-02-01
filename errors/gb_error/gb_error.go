@@ -5,7 +5,7 @@
 // except standard packages and internal packages, to avoid cycle imports.
 package gberror
 
-import gbcode "github.com/Ghostbb-io/gb/errors/gb_code"
+import gbcode "ghostbb.io/errors/gb_code"
 
 // IIs is the interface for Is feature.
 type IIs interface {

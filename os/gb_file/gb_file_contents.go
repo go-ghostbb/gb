@@ -2,7 +2,7 @@ package gbfile
 
 import (
 	"bufio"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
+	gberror "ghostbb.io/errors/gb_error"
 	"io"
 	"os"
 )

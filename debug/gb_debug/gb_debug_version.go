@@ -3,8 +3,8 @@ package gbdebug
 import (
 	"crypto/md5"
 	"fmt"
-	gbhash "github.com/Ghostbb-io/gb/encoding/gb_hash"
-	gberror "github.com/Ghostbb-io/gb/errors/gb_error"
+	gbhash "ghostbb.io/encoding/gb_hash"
+	gberror "ghostbb.io/errors/gb_error"
 	"io"
 	"os"
 	"strconv"

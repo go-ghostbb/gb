@@ -1,6 +1,6 @@
 package gbvar
 
-import gbconv "github.com/Ghostbb-io/gb/util/gb_conv"
+import gbconv "ghostbb.io/util/gb_conv"
 
 // Ints converts and returns `v` as []int.
 func (v *Var) Ints() []int {

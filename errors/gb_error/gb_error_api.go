@@ -2,7 +2,7 @@ package gberror
 
 import (
 	"fmt"
-	gbcode "github.com/Ghostbb-io/gb/errors/gb_code"
+	gbcode "ghostbb.io/errors/gb_code"
 )
 
 // New creates and returns an error which is formatted from given text.

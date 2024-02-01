@@ -1,7 +1,7 @@
 package gbutil
 
 import (
-	"github.com/Ghostbb-io/gb/internal/deepcopy"
+	"ghostbb.io/internal/deepcopy"
 )
 
 // Copy returns a deep copy of v.
