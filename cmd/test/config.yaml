@@ -1,0 +1,55 @@
+server:
+  logger:
+    path: "./log/server"
+    stdout: false
+  address: "8080"
+  readTimeout: "60s"
+  writeTimeout: "0"
+  idleTimeout: "60s"
+  maxHeaderBytes: "10240"
+  test:
+    address: "9000"
+
+logger:
+  path: "./log/system"
+  level : "all"
+  stdout: true
+
+redis:
+  default:
+    address: 127.0.0.1:6379
+    db:      1
+  dbCache:
+    address: 127.0.0.1:6379
+    db:      0
+
+database:
+  logger:
+    path: "./log/database"
+    level: "all"
+    stdout: false
+  cache:
+    level: "all" # off, primary, search, all
+    maxItemCnt: 100
+    ttl: 1m
+    invalidateWhenUpdate: true
+  default:
+    host: "localhost"
+    port: "1433"
+    user: "mucgll0328"
+    pass: "Ab@589095"
+    name: "hr"
+    type: "mssql"
+    maxIdle: 10
+    maxOpen: 100
+    slowThreshold: "2s"
+  test:
+    host: "localhost"
+    port: "1433"
+    user: "mucgll0328"
+    pass: "123456"
+    name: "g-api"
+    type: "mssql"
+    maxIdle: 10
+    maxOpen: 100
+    slowThreshold: "2s"
