@@ -2,5 +2,5 @@ package gb
 
 const (
 	// VERSION is the current gb version.
-	VERSION = "v1.0.2"
+	VERSION = "v1.0.3"
 )
