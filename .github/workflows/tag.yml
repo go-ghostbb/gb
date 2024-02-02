@@ -1,4 +1,4 @@
-name: GB AutoCreating SubMod Tags And Release
+name: GB AutoCreating SubMod Tags
 
 on:
   push:
@@ -8,18 +8,17 @@ on:
 
 env:
   TZ: Asia/Shanghai
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build:
-    name: Auto Creating Tags And Release
+    name: Auto Creating Tags
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Github Code
         uses: actions/checkout@v4
 
       - name: Auto Creating Tags For Contrib Packages
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.email "tagrobot@ghostbb.io"
           git config --global user.name  "TagRobot"
@@ -37,13 +36,3 @@ jobs:
               git tag $tag
               git push origin $tag
           done
-
-      - name: Create Github Release
-        id: create_release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: ${{ github.ref }}
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          name: GB Release ${{ github.ref }}
-          draft: false
-          prerelease: false

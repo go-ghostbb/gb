@@ -1,0 +1,29 @@
+name: GB Release
+
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+env:
+  TZ: Asia/Shanghai
+
+jobs:
+  build:
+    name: Build And Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Github Code
+        uses: actions/checkout@v4
+
+      - name: Create Github Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          name: GB Release ${{ github.ref }}
+          draft: false
+          prerelease: false
