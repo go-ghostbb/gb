@@ -22,3 +22,6 @@ version:
 	newVersion=$(to); \
 	./.set_version.sh ./ $$newVersion; \
 	echo "make version to=$(to) done"
+
+commit:
+	git-cz
