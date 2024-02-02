@@ -2,10 +2,10 @@ package gbhttp
 
 import (
 	"context"
-	gbmap "ghostbb.io/container/gb_map"
-	gbtype "ghostbb.io/container/gb_type"
-	gblog "ghostbb.io/os/gb_log"
-	gbproc "ghostbb.io/os/gb_proc"
+	gbmap "ghostbb.io/gb/container/gb_map"
+	gbtype "ghostbb.io/gb/container/gb_type"
+	gblog "ghostbb.io/gb/os/gb_log"
+	gbproc "ghostbb.io/gb/os/gb_proc"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"time"

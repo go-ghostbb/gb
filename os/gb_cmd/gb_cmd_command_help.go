@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	gbstr "ghostbb.io/text/gb_str"
+	gbstr "ghostbb.io/gb/text/gb_str"
 	"io"
 	"os"
 )

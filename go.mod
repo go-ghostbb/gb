@@ -1,4 +1,4 @@
-module ghostbb.io
+module ghostbb.io/gb
 
 go 1.21.0
 

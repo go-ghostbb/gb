@@ -1,9 +1,9 @@
 package gbhttp
 
 import (
-	gbmap "ghostbb.io/container/gb_map"
-	gbctx "ghostbb.io/os/gb_ctx"
-	gblog "ghostbb.io/os/gb_log"
+	gbmap "ghostbb.io/gb/container/gb_map"
+	gbctx "ghostbb.io/gb/os/gb_ctx"
+	gblog "ghostbb.io/gb/os/gb_log"
 	"github.com/gin-gonic/gin"
 )
 

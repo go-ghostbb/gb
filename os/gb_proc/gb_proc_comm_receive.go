@@ -3,14 +3,14 @@ package gbproc
 import (
 	"context"
 	"fmt"
-	gbqueue "ghostbb.io/container/gb_queue"
-	gbtype "ghostbb.io/container/gb_type"
-	gberror "ghostbb.io/errors/gb_error"
-	"ghostbb.io/internal/json"
-	gbtcp "ghostbb.io/net/gb_tcp"
-	gbfile "ghostbb.io/os/gb_file"
-	gblog "ghostbb.io/os/gb_log"
-	gbconv "ghostbb.io/util/gb_conv"
+	gbqueue "ghostbb.io/gb/container/gb_queue"
+	gbtype "ghostbb.io/gb/container/gb_type"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	"ghostbb.io/gb/internal/json"
+	gbtcp "ghostbb.io/gb/net/gb_tcp"
+	gbfile "ghostbb.io/gb/os/gb_file"
+	gblog "ghostbb.io/gb/os/gb_log"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 	"net"
 )
 

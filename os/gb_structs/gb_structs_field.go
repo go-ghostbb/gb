@@ -1,9 +1,9 @@
 package gbstructs
 
 import (
-	"ghostbb.io/internal/empty"
-	"ghostbb.io/internal/utils"
-	gbtag "ghostbb.io/util/gb_tag"
+	"ghostbb.io/gb/internal/empty"
+	"ghostbb.io/gb/internal/utils"
+	gbtag "ghostbb.io/gb/util/gb_tag"
 	"reflect"
 )
 

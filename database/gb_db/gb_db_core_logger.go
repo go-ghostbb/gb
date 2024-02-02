@@ -4,8 +4,8 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	gblog "ghostbb.io/os/gb_log"
-	gbstr "ghostbb.io/text/gb_str"
+	gblog "ghostbb.io/gb/os/gb_log"
+	gbstr "ghostbb.io/gb/text/gb_str"
 	"gorm.io/gorm"
 	gormlogger "gorm.io/gorm/logger"
 	"path/filepath"
@@ -125,14 +125,14 @@ func (l *Logger) Trace(ctx context.Context, begin time.Time, fc func() (string, 
 		logger.Info(ctx, msg)
 	}
 
-	fmt.Println(fmt.Sprintf(`%s [ORM] %s ｜%s %15v %s｜%s %-8s %s｜%-10s｜ %s`,
+	fmt.Printf("%s [ORM] %s ｜%s %15v %s｜%s %-8s %s｜%-10s｜ %s \n",
 		time.Now().Format("2006/01/02 15:04:05"),
 		track,
 		elapsedColor, elapsed, resetColor,
 		magenta, fmt.Sprintf("rows:%d", rows), reset,
 		l.group,
 		sql,
-	))
+	)
 }
 
 func (l *Logger) ElapsedColor(elapsed time.Duration) string {

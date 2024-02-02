@@ -1,7 +1,7 @@
 package gbcache
 
 import (
-	gbset "ghostbb.io/container/gb_set"
+	gbset "ghostbb.io/gb/container/gb_set"
 	"sync"
 )
 

@@ -3,17 +3,15 @@ package gbdb
 import (
 	"context"
 	"fmt"
-	gberror "ghostbb.io/errors/gb_error"
-	gbcache "ghostbb.io/os/gb_cache"
-	gbstr "ghostbb.io/text/gb_str"
-	gbconv "ghostbb.io/util/gb_conv"
-	"sync"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	gbcache "ghostbb.io/gb/os/gb_cache"
+	gbstr "ghostbb.io/gb/text/gb_str"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 	"time"
 )
 
 var (
 	ErrCacheNotFound = gberror.New("cache not found")
-	initCacheOnce    sync.Once
 )
 
 type IDataCache interface {
@@ -42,9 +40,8 @@ func newDataCache(config *CacheConfig) IDataCache {
 }
 
 type DataCache struct {
-	cache     *gbcache.Cache
-	ttl       int64
-	keyPrefix string
+	cache *gbcache.Cache
+	ttl   int64
 }
 
 func (d *DataCache) Init() error {

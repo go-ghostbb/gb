@@ -3,8 +3,8 @@ package gbtcp
 import (
 	"crypto/rand"
 	"crypto/tls"
-	gberror "ghostbb.io/errors/gb_error"
-	gbfile "ghostbb.io/os/gb_file"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	gbfile "ghostbb.io/gb/os/gb_file"
 	"net"
 	"time"
 )

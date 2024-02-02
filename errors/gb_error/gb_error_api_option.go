@@ -1,6 +1,6 @@
 package gberror
 
-import gbcode "ghostbb.io/errors/gb_code"
+import gbcode "ghostbb.io/gb/errors/gb_code"
 
 // Option is option for creating error.
 type Option struct {

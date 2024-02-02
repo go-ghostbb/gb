@@ -1,12 +1,12 @@
 package gbjson
 
 import (
-	gbini "ghostbb.io/encoding/gb_ini"
-	gbproperties "ghostbb.io/encoding/gb_properties"
-	gbtoml "ghostbb.io/encoding/gb_toml"
-	gbxml "ghostbb.io/encoding/gb_xml"
-	gbyaml "ghostbb.io/encoding/gb_yaml"
-	"ghostbb.io/internal/json"
+	gbini "ghostbb.io/gb/encoding/gb_ini"
+	gbproperties "ghostbb.io/gb/encoding/gb_properties"
+	gbtoml "ghostbb.io/gb/encoding/gb_toml"
+	gbxml "ghostbb.io/gb/encoding/gb_xml"
+	gbyaml "ghostbb.io/gb/encoding/gb_yaml"
+	"ghostbb.io/gb/internal/json"
 )
 
 // ========================================================================

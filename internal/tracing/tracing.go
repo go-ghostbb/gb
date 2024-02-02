@@ -2,9 +2,9 @@
 package tracing
 
 import (
-	gbtype "ghostbb.io/container/gb_type"
-	gbbinary "ghostbb.io/encoding/gb_binary"
-	gbrand "ghostbb.io/util/gb_rand"
+	gbtype "ghostbb.io/gb/container/gb_type"
+	gbbinary "ghostbb.io/gb/encoding/gb_binary"
+	gbrand "ghostbb.io/gb/util/gb_rand"
 	"math"
 	"time"
 

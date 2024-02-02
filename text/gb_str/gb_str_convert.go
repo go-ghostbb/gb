@@ -3,7 +3,7 @@ package gbstr
 import (
 	"bytes"
 	"fmt"
-	gbrand "ghostbb.io/util/gb_rand"
+	gbrand "ghostbb.io/gb/util/gb_rand"
 	"math"
 	"regexp"
 	"strconv"
@@ -200,9 +200,8 @@ func WordWrap(str string, width int, br string) string {
 		wordBuf, spaceBuf bytes.Buffer
 		init              = make([]byte, 0, len(str))
 		buf               = bytes.NewBuffer(init)
-		strRunes          = []rune(str)
 	)
-	for _, char := range strRunes {
+	for _, char := range str {
 		switch {
 		case char == '\n':
 			if wordBuf.Len() == 0 {

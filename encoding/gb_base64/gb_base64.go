@@ -3,7 +3,7 @@ package gbbase64
 
 import (
 	"encoding/base64"
-	gberror "ghostbb.io/errors/gb_error"
+	gberror "ghostbb.io/gb/errors/gb_error"
 	"os"
 )
 

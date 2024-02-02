@@ -1,8 +1,8 @@
 package gbproc
 
 import (
-	gbmap "ghostbb.io/container/gb_map"
-	gberror "ghostbb.io/errors/gb_error"
+	gbmap "ghostbb.io/gb/container/gb_map"
+	gberror "ghostbb.io/gb/errors/gb_error"
 	"os"
 )
 

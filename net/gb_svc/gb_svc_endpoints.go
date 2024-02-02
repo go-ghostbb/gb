@@ -1,7 +1,7 @@
 package gbsvc
 
 import (
-	gbstr "ghostbb.io/text/gb_str"
+	gbstr "ghostbb.io/gb/text/gb_str"
 )
 
 // NewEndpoints creates and returns Endpoints from multiple addresses like:

@@ -1,9 +1,9 @@
 package gbtype
 
 import (
-	"ghostbb.io/internal/deepcopy"
-	"ghostbb.io/internal/json"
-	gbconv "ghostbb.io/util/gb_conv"
+	"ghostbb.io/gb/internal/deepcopy"
+	"ghostbb.io/gb/internal/json"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 	"sync/atomic"
 )
 

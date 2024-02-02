@@ -2,7 +2,7 @@
 package gbcrc32
 
 import (
-	gbconv "ghostbb.io/util/gb_conv"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 	"hash/crc32"
 )
 

@@ -3,9 +3,9 @@ package gbproperties
 
 import (
 	"bytes"
-	gberror "ghostbb.io/errors/gb_error"
-	"ghostbb.io/internal/json"
-	gbconv "ghostbb.io/util/gb_conv"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	"ghostbb.io/gb/internal/json"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 	"sort"
 	"strings"
 
@@ -114,14 +114,14 @@ func flattenAndMergeMap(shadow map[string]interface{}, m map[string]interface{},
 	}
 	for k, val := range m {
 		fullKey := prefix + k
-		switch val.(type) {
+		switch v := val.(type) {
 		case map[string]interface{}:
-			m2 = val.(map[string]interface{})
+			m2 = v
 		case map[interface{}]interface{}:
-			m2 = gbconv.Map(val)
+			m2 = gbconv.Map(v)
 		default:
 			// immediate value
-			shadow[strings.ToLower(fullKey)] = val
+			shadow[strings.ToLower(fullKey)] = v
 			continue
 		}
 		// recursively merge to shadow map

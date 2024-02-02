@@ -3,13 +3,13 @@ package gbmap
 import (
 	"bytes"
 	"fmt"
-	gblist "ghostbb.io/container/gb_list"
-	gbvar "ghostbb.io/container/gb_var"
-	"ghostbb.io/internal/deepcopy"
-	"ghostbb.io/internal/empty"
-	"ghostbb.io/internal/json"
-	"ghostbb.io/internal/rwmutex"
-	gbconv "ghostbb.io/util/gb_conv"
+	gblist "ghostbb.io/gb/container/gb_list"
+	gbvar "ghostbb.io/gb/container/gb_var"
+	"ghostbb.io/gb/internal/deepcopy"
+	"ghostbb.io/gb/internal/empty"
+	"ghostbb.io/gb/internal/json"
+	"ghostbb.io/gb/internal/rwmutex"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 )
 
 // ListMap is a map that preserves insertion-order.

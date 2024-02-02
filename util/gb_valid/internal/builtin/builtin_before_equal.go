@@ -2,9 +2,9 @@ package builtin
 
 import (
 	"errors"
-	gbstr "ghostbb.io/text/gb_str"
-	gbconv "ghostbb.io/util/gb_conv"
-	gbutil "ghostbb.io/util/gb_util"
+	gbstr "ghostbb.io/gb/text/gb_str"
+	gbconv "ghostbb.io/gb/util/gb_conv"
+	gbutil "ghostbb.io/gb/util/gb_util"
 )
 
 // RuleBeforeEqual implements `before-equal` rule:

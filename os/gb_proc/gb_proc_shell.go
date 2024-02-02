@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	gbfile "ghostbb.io/os/gb_file"
-	gbstr "ghostbb.io/text/gb_str"
+	gbfile "ghostbb.io/gb/os/gb_file"
+	gbstr "ghostbb.io/gb/text/gb_str"
 	"io"
 	"runtime"
 

@@ -2,10 +2,10 @@ package gbcache
 
 import (
 	"context"
-	gblist "ghostbb.io/container/gb_list"
-	gbmap "ghostbb.io/container/gb_map"
-	gbtype "ghostbb.io/container/gb_type"
-	gbtimer "ghostbb.io/os/gb_timer"
+	gblist "ghostbb.io/gb/container/gb_list"
+	gbmap "ghostbb.io/gb/container/gb_map"
+	gbtype "ghostbb.io/gb/container/gb_type"
+	gbtimer "ghostbb.io/gb/os/gb_timer"
 )
 
 // LRU cache object.

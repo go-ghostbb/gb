@@ -1,7 +1,7 @@
 package gins
 
 import (
-	gbi18n "ghostbb.io/i18n/gb_i18n"
+	gbi18n "ghostbb.io/gb/i18n/gb_i18n"
 )
 
 // I18n returns an instance of gi18n.Manager.

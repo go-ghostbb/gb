@@ -2,8 +2,8 @@ package gbutil
 
 import (
 	"context"
-	gbcode "ghostbb.io/errors/gb_code"
-	gberror "ghostbb.io/errors/gb_error"
+	gbcode "ghostbb.io/gb/errors/gb_code"
+	gberror "ghostbb.io/gb/errors/gb_error"
 )
 
 // Throw throws out an exception, which can be caught be TryCatch or recover.

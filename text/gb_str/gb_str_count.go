@@ -23,7 +23,7 @@ func CountI(s, substr string) int {
 func CountWords(str string) map[string]int {
 	m := make(map[string]int)
 	buffer := bytes.NewBuffer(nil)
-	for _, r := range []rune(str) {
+	for _, r := range str {
 		if unicode.IsSpace(r) {
 			if buffer.Len() > 0 {
 				m[buffer.String()]++
@@ -47,7 +47,7 @@ func CountChars(str string, noSpace ...bool) map[string]int {
 	if len(noSpace) > 0 && noSpace[0] {
 		countSpace = false
 	}
-	for _, r := range []rune(str) {
+	for _, r := range str {
 		if !countSpace && unicode.IsSpace(r) {
 			continue
 		}

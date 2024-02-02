@@ -2,8 +2,8 @@ package gbproc
 
 import (
 	"context"
-	"ghostbb.io/internal/intlog"
-	gbutil "ghostbb.io/util/gb_util"
+	"ghostbb.io/gb/internal/intlog"
+	gbutil "ghostbb.io/gb/util/gb_util"
 	"os"
 	"os/signal"
 	"sync"

@@ -2,7 +2,7 @@ package gbrpool
 
 import (
 	"context"
-	gbtimer "ghostbb.io/os/gb_timer"
+	gbtimer "ghostbb.io/gb/os/gb_timer"
 )
 
 // supervisor checks the job list and fork new worker goroutine to handle the job

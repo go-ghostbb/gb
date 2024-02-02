@@ -2,8 +2,8 @@ package builtin
 
 import (
 	"errors"
-	gbstr "ghostbb.io/text/gb_str"
-	gbconv "ghostbb.io/util/gb_conv"
+	gbstr "ghostbb.io/gb/text/gb_str"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 	"strconv"
 )
 

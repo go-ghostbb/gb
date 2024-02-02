@@ -2,10 +2,10 @@ package gbres
 
 import (
 	"archive/zip"
-	gberror "ghostbb.io/errors/gb_error"
-	"ghostbb.io/internal/fileinfo"
-	gbfile "ghostbb.io/os/gb_file"
-	gbregex "ghostbb.io/text/gb_regex"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	"ghostbb.io/gb/internal/fileinfo"
+	gbfile "ghostbb.io/gb/os/gb_file"
+	gbregex "ghostbb.io/gb/text/gb_regex"
 	"io"
 	"os"
 	"strings"

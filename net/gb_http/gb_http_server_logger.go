@@ -3,8 +3,8 @@ package gbhttp
 import (
 	"context"
 	"fmt"
-	"ghostbb.io/internal/instance"
-	gblog "ghostbb.io/os/gb_log"
+	"ghostbb.io/gb/internal/instance"
+	gblog "ghostbb.io/gb/os/gb_log"
 	"github.com/gin-gonic/gin"
 	"strings"
 	"time"
@@ -51,7 +51,7 @@ func (s *Server) loggerMiddleware() gin.HandlerFunc {
 		msg := fmt.Sprintf("【%s】｜%d｜%13v｜%s ==> \"%s\"",
 			s.instance,
 			c.Writer.Status(),
-			time.Now().Sub(start),
+			time.Since(start),
 			method,
 			path,
 		)

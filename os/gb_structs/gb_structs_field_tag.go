@@ -1,7 +1,7 @@
 package gbstructs
 
 import (
-	gbtag "ghostbb.io/util/gb_tag"
+	gbtag "ghostbb.io/gb/util/gb_tag"
 	"strings"
 )
 

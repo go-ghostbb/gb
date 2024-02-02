@@ -46,7 +46,6 @@ func AfterDelete(cache *Cache) func(db *gorm.DB) {
 						}
 						cache.logger.Info(ctx, "[AfterDelete] invalidating all primary cache for model: %s finished.", tableName)
 					}
-
 				}
 			}()
 

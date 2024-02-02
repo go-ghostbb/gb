@@ -2,10 +2,10 @@
 package gbproc
 
 import (
-	gbenv "ghostbb.io/os/gb_env"
-	gbfile "ghostbb.io/os/gb_file"
-	gbstr "ghostbb.io/text/gb_str"
-	gbconv "ghostbb.io/util/gb_conv"
+	gbenv "ghostbb.io/gb/os/gb_env"
+	gbfile "ghostbb.io/gb/os/gb_file"
+	gbstr "ghostbb.io/gb/text/gb_str"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 	"os"
 	"runtime"
 	"time"
@@ -13,7 +13,7 @@ import (
 
 const (
 	envKeyPPid            = "GBPROC_PPID"
-	tracingInstrumentName = "ghostbb.io/os/gbproc.Process"
+	tracingInstrumentName = "ghostbb.io/gb/os/gbproc.Process"
 )
 
 var (

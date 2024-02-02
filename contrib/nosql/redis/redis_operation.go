@@ -2,9 +2,9 @@ package redis
 
 import (
 	"context"
-	gbvar "ghostbb.io/container/gb_var"
-	gbredis "ghostbb.io/database/gb_redis"
-	gberror "ghostbb.io/errors/gb_error"
+	gbvar "ghostbb.io/gb/container/gb_var"
+	gbredis "ghostbb.io/gb/database/gb_redis"
+	gberror "ghostbb.io/gb/errors/gb_error"
 )
 
 // Do send a command to the server and returns the received reply.

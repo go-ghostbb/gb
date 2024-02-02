@@ -3,10 +3,10 @@ package gbrpool
 
 import (
 	"context"
-	gblist "ghostbb.io/container/gb_list"
-	gbtype "ghostbb.io/container/gb_type"
-	gbtimer "ghostbb.io/os/gb_timer"
-	gbrand "ghostbb.io/util/gb_rand"
+	gblist "ghostbb.io/gb/container/gb_list"
+	gbtype "ghostbb.io/gb/container/gb_type"
+	gbtimer "ghostbb.io/gb/os/gb_timer"
+	gbrand "ghostbb.io/gb/util/gb_rand"
 	"time"
 )
 

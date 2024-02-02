@@ -2,8 +2,8 @@ package gbclient
 
 import (
 	"fmt"
-	"ghostbb.io/internal/intlog"
-	"ghostbb.io/internal/utils"
+	"ghostbb.io/gb/internal/intlog"
+	"ghostbb.io/gb/internal/utils"
 	"io"
 	"net/http"
 	"net/http/httputil"

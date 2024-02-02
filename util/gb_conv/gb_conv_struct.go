@@ -1,12 +1,12 @@
 package gbconv
 
 import (
-	gbcode "ghostbb.io/errors/gb_code"
-	gberror "ghostbb.io/errors/gb_error"
-	"ghostbb.io/internal/empty"
-	"ghostbb.io/internal/json"
-	"ghostbb.io/internal/utils"
-	gbstructs "ghostbb.io/os/gb_structs"
+	gbcode "ghostbb.io/gb/errors/gb_code"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	"ghostbb.io/gb/internal/empty"
+	"ghostbb.io/gb/internal/json"
+	"ghostbb.io/gb/internal/utils"
+	gbstructs "ghostbb.io/gb/os/gb_structs"
 	"reflect"
 	"strings"
 )

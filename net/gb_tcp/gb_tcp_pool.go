@@ -1,8 +1,8 @@
 package gbtcp
 
 import (
-	gbmap "ghostbb.io/container/gb_map"
-	gbpool "ghostbb.io/container/gb_pool"
+	gbmap "ghostbb.io/gb/container/gb_map"
+	gbpool "ghostbb.io/gb/container/gb_pool"
 	"time"
 )
 

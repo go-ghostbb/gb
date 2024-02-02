@@ -3,10 +3,10 @@ package gbarray
 import (
 	"bytes"
 	"fmt"
-	"ghostbb.io/internal/json"
-	"ghostbb.io/internal/rwmutex"
-	gbconv "ghostbb.io/util/gb_conv"
-	gbrand "ghostbb.io/util/gb_rand"
+	"ghostbb.io/gb/internal/json"
+	"ghostbb.io/gb/internal/rwmutex"
+	gbconv "ghostbb.io/gb/util/gb_conv"
+	gbrand "ghostbb.io/gb/util/gb_rand"
 	"math"
 	"sort"
 )

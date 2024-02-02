@@ -1,7 +1,7 @@
 package gbclient
 
 import (
-	gbctx "ghostbb.io/os/gb_ctx"
+	gbctx "ghostbb.io/gb/os/gb_ctx"
 	"net/http"
 )
 

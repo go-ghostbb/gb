@@ -1,8 +1,8 @@
 package gbconv
 
 import (
-	"ghostbb.io/internal/json"
-	"ghostbb.io/internal/reflection"
+	"ghostbb.io/gb/internal/json"
+	"ghostbb.io/gb/internal/reflection"
 	"reflect"
 )
 

@@ -1,10 +1,10 @@
 package gbfpool
 
 import (
-	gbpool "ghostbb.io/container/gb_pool"
-	gbtype "ghostbb.io/container/gb_type"
-	gberror "ghostbb.io/errors/gb_error"
-	gbfsnotify "ghostbb.io/os/gb_fsnotify"
+	gbpool "ghostbb.io/gb/container/gb_pool"
+	gbtype "ghostbb.io/gb/container/gb_type"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	gbfsnotify "ghostbb.io/gb/os/gb_fsnotify"
 	"os"
 	"time"
 )

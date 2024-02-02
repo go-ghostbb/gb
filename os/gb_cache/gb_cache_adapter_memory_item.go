@@ -1,7 +1,7 @@
 package gbcache
 
 import (
-	gbtime "ghostbb.io/os/gb_time"
+	gbtime "ghostbb.io/gb/os/gb_time"
 )
 
 // IsExpired checks whether `item` is expired.

@@ -1,6 +1,6 @@
 package gbvar
 
-import gbconv "ghostbb.io/util/gb_conv"
+import gbconv "ghostbb.io/gb/util/gb_conv"
 
 // MapOption specifies the option for map converting.
 type MapOption = gbconv.MapOption

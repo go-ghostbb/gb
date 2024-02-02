@@ -2,7 +2,7 @@ package gbtimer
 
 import (
 	"container/heap"
-	gbtype "ghostbb.io/container/gb_type"
+	gbtype "ghostbb.io/gb/container/gb_type"
 	"math"
 	"sync"
 )

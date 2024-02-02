@@ -1,7 +1,7 @@
 package gbmlock
 
 import (
-	gbmap "ghostbb.io/container/gb_map"
+	gbmap "ghostbb.io/gb/container/gb_map"
 	"sync"
 )
 

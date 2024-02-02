@@ -2,7 +2,7 @@
 package empty
 
 import (
-	"ghostbb.io/internal/reflection"
+	"ghostbb.io/gb/internal/reflection"
 	"reflect"
 	"time"
 )

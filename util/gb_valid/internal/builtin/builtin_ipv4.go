@@ -2,7 +2,7 @@ package builtin
 
 import (
 	"errors"
-	gbipv4 "ghostbb.io/net/gb_ipv4"
+	gbipv4 "ghostbb.io/gb/net/gb_ipv4"
 )
 
 // RuleIpv4 implements `ipv4` rule:

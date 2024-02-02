@@ -2,10 +2,10 @@
 package gbfile
 
 import (
-	gbtype "ghostbb.io/container/gb_type"
-	gberror "ghostbb.io/errors/gb_error"
-	gbstr "ghostbb.io/text/gb_str"
-	gbconv "ghostbb.io/util/gb_conv"
+	gbtype "ghostbb.io/gb/container/gb_type"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	gbstr "ghostbb.io/gb/text/gb_str"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 	"os"
 	"os/exec"
 	"path/filepath"

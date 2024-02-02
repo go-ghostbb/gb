@@ -3,16 +3,16 @@ package redis
 import (
 	"context"
 	"fmt"
-	"ghostbb.io"
-	gbvar "ghostbb.io/container/gb_var"
-	gbredis "ghostbb.io/database/gb_redis"
-	gbjson "ghostbb.io/encoding/gb_json"
-	gberror "ghostbb.io/errors/gb_error"
-	gbtrace "ghostbb.io/net/gb_trace"
-	gbtime "ghostbb.io/os/gb_time"
-	gbstr "ghostbb.io/text/gb_str"
-	gbconv "ghostbb.io/util/gb_conv"
-	gbutil "ghostbb.io/util/gb_util"
+	"ghostbb.io/gb"
+	gbvar "ghostbb.io/gb/container/gb_var"
+	gbredis "ghostbb.io/gb/database/gb_redis"
+	gbjson "ghostbb.io/gb/encoding/gb_json"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	gbtrace "ghostbb.io/gb/net/gb_trace"
+	gbtime "ghostbb.io/gb/os/gb_time"
+	gbstr "ghostbb.io/gb/text/gb_str"
+	gbconv "ghostbb.io/gb/util/gb_conv"
+	gbutil "ghostbb.io/gb/util/gb_util"
 	"reflect"
 
 	"github.com/redis/go-redis/v9"
@@ -37,7 +37,7 @@ type traceItem struct {
 }
 
 const (
-	traceInstrumentName               = "ghostbb.io/database/gbredis"
+	traceInstrumentName               = "ghostbb.io/gb/database/gbredis"
 	traceAttrRedisAddress             = "redis.address"
 	traceAttrRedisDb                  = "redis.db"
 	traceEventRedisExecution          = "redis.execution"

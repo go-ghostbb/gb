@@ -2,7 +2,7 @@ package builtin
 
 import (
 	"errors"
-	gbtime "ghostbb.io/os/gb_time"
+	gbtime "ghostbb.io/gb/os/gb_time"
 	"time"
 )
 

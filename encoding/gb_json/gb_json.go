@@ -2,13 +2,13 @@
 package gbjson
 
 import (
-	gbcode "ghostbb.io/errors/gb_code"
-	gberror "ghostbb.io/errors/gb_error"
-	"ghostbb.io/internal/reflection"
-	"ghostbb.io/internal/rwmutex"
-	"ghostbb.io/internal/utils"
-	gbstr "ghostbb.io/text/gb_str"
-	gbconv "ghostbb.io/util/gb_conv"
+	gbcode "ghostbb.io/gb/errors/gb_code"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	"ghostbb.io/gb/internal/reflection"
+	"ghostbb.io/gb/internal/rwmutex"
+	"ghostbb.io/gb/internal/utils"
+	gbstr "ghostbb.io/gb/text/gb_str"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 	"reflect"
 	"strconv"
 	"strings"

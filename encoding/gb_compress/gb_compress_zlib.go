@@ -4,7 +4,7 @@ package gbcompress
 import (
 	"bytes"
 	"compress/zlib"
-	gberror "ghostbb.io/errors/gb_error"
+	gberror "ghostbb.io/gb/errors/gb_error"
 	"io"
 )
 

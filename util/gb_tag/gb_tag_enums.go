@@ -1,7 +1,7 @@
 package gbtag
 
 import (
-	"ghostbb.io/internal/json"
+	"ghostbb.io/gb/internal/json"
 )
 
 var (

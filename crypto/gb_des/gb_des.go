@@ -5,8 +5,8 @@ import (
 	"bytes"
 	"crypto/cipher"
 	"crypto/des"
-	gbcode "ghostbb.io/errors/gb_code"
-	gberror "ghostbb.io/errors/gb_error"
+	gbcode "ghostbb.io/gb/errors/gb_code"
+	gberror "ghostbb.io/gb/errors/gb_error"
 )
 
 const (

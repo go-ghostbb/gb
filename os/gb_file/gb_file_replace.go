@@ -1,7 +1,7 @@
 package gbfile
 
 import (
-	gbstr "ghostbb.io/text/gb_str"
+	gbstr "ghostbb.io/gb/text/gb_str"
 )
 
 // ReplaceFile replaces content for file `path`.

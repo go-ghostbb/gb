@@ -1,7 +1,7 @@
 package gbsvc
 
 import (
-	gbvar "ghostbb.io/container/gb_var"
+	gbvar "ghostbb.io/gb/container/gb_var"
 )
 
 // Set sets key-value pair into metadata.
@@ -19,7 +19,7 @@ func (m Metadata) Sets(kvs map[string]interface{}) {
 // Get retrieves and returns value of specified key as gvar.
 func (m Metadata) Get(key string) *gbvar.Var {
 	if v, ok := m[key]; ok {
-		return gvar.New(v)
+		return gbvar.New(v)
 	}
 	return nil
 }

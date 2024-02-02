@@ -6,7 +6,7 @@ import "fmt"
 // Note that the item value may be type of slice.
 func ListToMapByKey(list []map[string]interface{}, key string) map[string]interface{} {
 	var (
-		s              = ""
+		s              string
 		m              = make(map[string]interface{})
 		tempMap        = make(map[string][]interface{})
 		hasMultiValues bool

@@ -4,8 +4,8 @@
 package instance
 
 import (
-	gbmap "ghostbb.io/container/gb_map"
-	gbhash "ghostbb.io/encoding/gb_hash"
+	gbmap "ghostbb.io/gb/container/gb_map"
+	gbhash "ghostbb.io/gb/encoding/gb_hash"
 )
 
 const (

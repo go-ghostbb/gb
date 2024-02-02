@@ -2,7 +2,7 @@ package builtin
 
 import (
 	"errors"
-	gbstr "ghostbb.io/text/gb_str"
+	gbstr "ghostbb.io/gb/text/gb_str"
 	"strconv"
 )
 

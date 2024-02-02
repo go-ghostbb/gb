@@ -2,8 +2,8 @@
 package gbutil
 
 import (
-	"ghostbb.io/internal/empty"
-	gbconv "ghostbb.io/util/gb_conv"
+	"ghostbb.io/gb/internal/empty"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 	"reflect"
 )
 

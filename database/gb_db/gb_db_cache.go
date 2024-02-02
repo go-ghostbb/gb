@@ -2,10 +2,10 @@ package gbdb
 
 import (
 	"context"
-	"ghostbb.io/internal/intlog"
-	gbcache "ghostbb.io/os/gb_cache"
-	gbctx "ghostbb.io/os/gb_ctx"
-	gbrand "ghostbb.io/util/gb_rand"
+	"ghostbb.io/gb/internal/intlog"
+	gbcache "ghostbb.io/gb/os/gb_cache"
+	gbctx "ghostbb.io/gb/os/gb_ctx"
+	gbrand "ghostbb.io/gb/util/gb_rand"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 )
@@ -38,10 +38,8 @@ type Cache struct {
 	Config     *CacheConfig
 	InstanceId string
 
-	db       *gorm.DB
-	cache    IDataCache
-	logger   logger.Interface
-	hitCount int64
+	cache  IDataCache
+	logger logger.Interface
 
 	*stats
 }
@@ -135,8 +133,8 @@ func (c *Cache) BatchPrimaryKeyExists(ctx context.Context, tableName string, pri
 	return c.cache.BatchKeyExist(ctx, cacheKeys)
 }
 
-func (c *Cache) SearchKeyExists(ctx context.Context, tableName string, SQL string, vars ...interface{}) (bool, error) {
-	cacheKey := genSearchCacheKey(c.InstanceId, tableName, SQL, vars...)
+func (c *Cache) SearchKeyExists(ctx context.Context, tableName string, sql string, vars ...interface{}) (bool, error) {
+	cacheKey := genSearchCacheKey(c.InstanceId, tableName, sql, vars...)
 	return c.cache.KeyExists(ctx, cacheKey)
 }
 

@@ -2,7 +2,7 @@ package gbcache
 
 import (
 	"context"
-	gbvar "ghostbb.io/container/gb_var"
+	gbvar "ghostbb.io/gb/container/gb_var"
 	"time"
 )
 

@@ -4,17 +4,17 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	gbdebug "ghostbb.io/debug/gb_debug"
-	"ghostbb.io/internal/consts"
-	"ghostbb.io/internal/errors"
-	"ghostbb.io/internal/intlog"
-	gbctx "ghostbb.io/os/gb_ctx"
-	gbfile "ghostbb.io/os/gb_file"
-	gbfpool "ghostbb.io/os/gb_fpool"
-	gbmlock "ghostbb.io/os/gb_mlock"
-	gbtime "ghostbb.io/os/gb_time"
-	gbregex "ghostbb.io/text/gb_regex"
-	gbconv "ghostbb.io/util/gb_conv"
+	gbdebug "ghostbb.io/gb/debug/gb_debug"
+	"ghostbb.io/gb/internal/consts"
+	"ghostbb.io/gb/internal/errors"
+	"ghostbb.io/gb/internal/intlog"
+	gbctx "ghostbb.io/gb/os/gb_ctx"
+	gbfile "ghostbb.io/gb/os/gb_file"
+	gbfpool "ghostbb.io/gb/os/gb_fpool"
+	gbmlock "ghostbb.io/gb/os/gb_mlock"
+	gbtime "ghostbb.io/gb/os/gb_time"
+	gbregex "ghostbb.io/gb/text/gb_regex"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 	"io"
 	"os"
 	"runtime"
@@ -332,8 +332,8 @@ func (l *Logger) createFpInPool(ctx context.Context, path string) *gbfpool.File 
 	return file
 }
 
-// getFpFromPool retrieves and returns a file pointer from file pool.
-func (l *Logger) getFpFromPool(ctx context.Context, path string) *gbfpool.File {
+// GetFpFromPool retrieves and returns a file pointer from file pool.
+func (l *Logger) GetFpFromPool(ctx context.Context, path string) *gbfpool.File {
 	file := gbfpool.Get(
 		path,
 		defaultFileFlags,

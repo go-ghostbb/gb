@@ -2,8 +2,8 @@ package gbclient
 
 import (
 	"context"
-	gbvar "ghostbb.io/container/gb_var"
-	"ghostbb.io/internal/intlog"
+	gbvar "ghostbb.io/gb/container/gb_var"
+	"ghostbb.io/gb/internal/intlog"
 	"net/http"
 )
 

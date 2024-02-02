@@ -3,7 +3,7 @@ package gbres
 import (
 	"archive/zip"
 	"bytes"
-	"ghostbb.io/internal/json"
+	"ghostbb.io/gb/internal/json"
 	"io"
 	"os"
 )

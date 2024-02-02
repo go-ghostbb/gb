@@ -2,7 +2,7 @@ package gbstr
 
 import (
 	"bytes"
-	"ghostbb.io/internal/utils"
+	"ghostbb.io/gb/internal/utils"
 )
 
 // AddSlashes quotes with slashes `\` for chars: '"\.

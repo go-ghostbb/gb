@@ -2,18 +2,17 @@ package gbdb
 
 import (
 	"context"
-	gbcode "ghostbb.io/errors/gb_code"
-	gberror "ghostbb.io/errors/gb_error"
-	gbcache "ghostbb.io/os/gb_cache"
-	gblog "ghostbb.io/os/gb_log"
-	gbtime "ghostbb.io/os/gb_time"
-	gbconv "ghostbb.io/util/gb_conv"
-	gbutil "ghostbb.io/util/gb_util"
+	gbcode "ghostbb.io/gb/errors/gb_code"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	gbcache "ghostbb.io/gb/os/gb_cache"
+	gblog "ghostbb.io/gb/os/gb_log"
+	gbtime "ghostbb.io/gb/os/gb_time"
+	gbconv "ghostbb.io/gb/util/gb_conv"
+	gbutil "ghostbb.io/gb/util/gb_util"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/schema"
 	"strings"
-	"sync"
 	"time"
 )
 
@@ -110,8 +109,7 @@ func (c *Core) SetCacheAdapter(adapter gbcache.Adapter) {
 	}
 	c.cache.SetAdapter(adapter)
 	// clear cache
-	initCacheOnce = sync.Once{}
-	initCacheOnce.Do(func() {
-		c.cache.Clear(context.TODO())
-	})
+	if err := c.cache.Clear(context.TODO()); err != nil {
+		panic(err)
+	}
 }

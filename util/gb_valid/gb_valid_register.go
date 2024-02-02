@@ -3,8 +3,8 @@ package gbvalid
 import (
 	"context"
 	"fmt"
-	gbvar "ghostbb.io/container/gb_var"
-	"ghostbb.io/internal/intlog"
+	gbvar "ghostbb.io/gb/container/gb_var"
+	"ghostbb.io/gb/internal/intlog"
 	"reflect"
 	"runtime"
 )

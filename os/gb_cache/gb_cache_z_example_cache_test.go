@@ -5,9 +5,9 @@ package gbcache_test
 import (
 	"context"
 	"fmt"
-	gbredis "ghostbb.io/database/gb_redis"
-	gbcache "ghostbb.io/os/gb_cache"
-	gbctx "ghostbb.io/os/gb_ctx"
+	gbredis "ghostbb.io/gb/database/gb_redis"
+	gbcache "ghostbb.io/gb/os/gb_cache"
+	gbctx "ghostbb.io/gb/os/gb_ctx"
 	"time"
 )
 
@@ -22,7 +22,10 @@ func ExampleCache_MustContains() {
 	c := gbcache.New()
 
 	// Set Cache
-	c.Set(ctx, "k", "v", 0)
+	err := c.Set(ctx, "k", "v", 0)
+	if err != nil {
+		panic(err)
+	}
 
 	// MustContains returns true if `key` exists in the cache, or else returns false.
 	// return true

@@ -2,14 +2,14 @@ package main
 
 import (
 	"bytes"
-	_ "ghostbb.io/contrib/drivers/mssql"
-	_ "ghostbb.io/contrib/nosql/redis"
-	gbdb "ghostbb.io/database/gb_db"
-	gberror "ghostbb.io/errors/gb_error"
-	"ghostbb.io/frame/g"
-	gbcache "ghostbb.io/os/gb_cache"
-	gbctx "ghostbb.io/os/gb_ctx"
-	gbutil "ghostbb.io/util/gb_util"
+	_ "ghostbb.io/gb/contrib/drivers/mssql"
+	_ "ghostbb.io/gb/contrib/nosql/redis"
+	gbdb "ghostbb.io/gb/database/gb_db"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	"ghostbb.io/gb/frame/g"
+	gbcache "ghostbb.io/gb/os/gb_cache"
+	gbctx "ghostbb.io/gb/os/gb_ctx"
+	gbutil "ghostbb.io/gb/util/gb_util"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )

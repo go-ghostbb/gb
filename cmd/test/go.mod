@@ -3,10 +3,15 @@ module test
 go 1.21.0
 
 require (
+	ghostbb.io/gb v1.0.3
+	ghostbb.io/gb/contrib/drivers/mssql v1.0.3
+	ghostbb.io/gb/contrib/nosql/redis v1.0.3
+	github.com/gin-gonic/gin v1.9.1
+	gorm.io/gorm v1.25.6
+)
+
+require (
 	github.com/BurntSushi/toml v1.3.2 // indirect
-	ghostbb.io v1.1.3 // indirect
-	ghostbb.io/contrib/drivers/mssql v0.0.0-20240129114754-33d7a2dab1b0 // indirect
-	ghostbb.io/contrib/nosql/redis v0.0.0-20240129114754-33d7a2dab1b0 // indirect
 	github.com/bytedance/sonic v1.10.2 // indirect
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20230717121745-296ad89f973d // indirect
@@ -17,7 +22,6 @@ require (
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
-	github.com/gin-gonic/gin v1.9.1 // indirect
 	github.com/go-logr/logr v1.4.1 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
@@ -26,8 +30,6 @@ require (
 	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/golang-sql/civil v0.0.0-20220223132316-b832511892a9 // indirect
 	github.com/golang-sql/sqlexp v0.1.0 // indirect
-	github.com/hashicorp/errwrap v1.0.0 // indirect
-	github.com/hashicorp/go-multierror v1.1.1 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
@@ -57,11 +59,10 @@ require (
 	google.golang.org/protobuf v1.32.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	gorm.io/driver/sqlserver v1.5.2 // indirect
-	gorm.io/gorm v1.25.6 // indirect
 )
 
 replace (
-	ghostbb.io => ../../
-	ghostbb.io/contrib/drivers/mssql => ../../contrib/drivers/mssql
-	ghostbb.io/contrib/nosql/redis => ../../contrib/nosql/redis
+	ghostbb.io/gb => ../../
+	ghostbb.io/gb/contrib/drivers/mssql => ../../contrib/drivers/mssql
+	ghostbb.io/gb/contrib/nosql/redis => ../../contrib/nosql/redis
 )

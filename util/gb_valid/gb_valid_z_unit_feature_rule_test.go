@@ -1,9 +1,9 @@
 package gbvalid_test
 
 import (
-	"ghostbb.io/frame/g"
-	gbctx "ghostbb.io/os/gb_ctx"
-	gbtest "ghostbb.io/test/gb_test"
+	"ghostbb.io/gb/frame/g"
+	gbctx "ghostbb.io/gb/os/gb_ctx"
+	gbtest "ghostbb.io/gb/test/gb_test"
 	"testing"
 )
 

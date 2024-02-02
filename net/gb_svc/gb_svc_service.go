@@ -2,12 +2,12 @@ package gbsvc
 
 import (
 	"context"
-	gbjson "ghostbb.io/encoding/gb_json"
-	gbcode "ghostbb.io/errors/gb_code"
-	gberror "ghostbb.io/errors/gb_error"
-	"ghostbb.io/internal/intlog"
-	gbcmd "ghostbb.io/os/gb_cmd"
-	gbstr "ghostbb.io/text/gb_str"
+	gbjson "ghostbb.io/gb/encoding/gb_json"
+	gbcode "ghostbb.io/gb/errors/gb_code"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	"ghostbb.io/gb/internal/intlog"
+	gbcmd "ghostbb.io/gb/os/gb_cmd"
+	gbstr "ghostbb.io/gb/text/gb_str"
 )
 
 // LocalService provides a default implements for interface Service.

@@ -1,7 +1,7 @@
 package gbtype
 
 import (
-	gbconv "ghostbb.io/util/gb_conv"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 	"math"
 	"strconv"
 	"sync/atomic"

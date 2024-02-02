@@ -14,18 +14,17 @@ package gbtimer
 
 import (
 	"context"
-	gbtype "ghostbb.io/container/gb_type"
-	gbcode "ghostbb.io/errors/gb_code"
-	gberror "ghostbb.io/errors/gb_error"
-	"ghostbb.io/internal/command"
+	gbtype "ghostbb.io/gb/container/gb_type"
+	gbcode "ghostbb.io/gb/errors/gb_code"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	"ghostbb.io/gb/internal/command"
 	"strconv"
-	"sync"
 	"time"
 )
 
 // Timer is the timer manager, which uses ticks to calculate the timing interval.
 type Timer struct {
-	mu      sync.RWMutex
+	// mu      sync.RWMutex
 	queue   *priorityQueue // queue is a priority queue based on heap structure.
 	status  *gbtype.Int    // status is the current timer status.
 	ticks   *gbtype.Int64  // ticks is the proceeded interval number by the timer.

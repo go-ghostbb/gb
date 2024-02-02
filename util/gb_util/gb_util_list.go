@@ -1,7 +1,7 @@
 package gbutil
 
 import (
-	"ghostbb.io/internal/utils"
+	"ghostbb.io/gb/internal/utils"
 	"reflect"
 )
 

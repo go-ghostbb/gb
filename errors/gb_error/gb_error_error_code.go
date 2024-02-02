@@ -1,6 +1,6 @@
 package gberror
 
-import gbcode "ghostbb.io/errors/gb_code"
+import gbcode "ghostbb.io/gb/errors/gb_code"
 
 // Code returns the error code.
 // It returns CodeNil if it has no error code.

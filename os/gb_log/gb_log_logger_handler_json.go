@@ -2,8 +2,8 @@ package gblog
 
 import (
 	"context"
-	"ghostbb.io/internal/json"
-	gbconv "ghostbb.io/util/gb_conv"
+	"ghostbb.io/gb/internal/json"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 )
 
 // HandlerOutputJson is the structure outputting logging content as single json.

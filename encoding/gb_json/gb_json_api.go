@@ -2,10 +2,10 @@ package gbjson
 
 import (
 	"fmt"
-	gbvar "ghostbb.io/container/gb_var"
-	gbcode "ghostbb.io/errors/gb_code"
-	gberror "ghostbb.io/errors/gb_error"
-	gbutil "ghostbb.io/util/gb_util"
+	gbvar "ghostbb.io/gb/container/gb_var"
+	gbcode "ghostbb.io/gb/errors/gb_code"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	gbutil "ghostbb.io/gb/util/gb_util"
 )
 
 // Interface returns the json value.

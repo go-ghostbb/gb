@@ -1,7 +1,7 @@
 package gbvar
 
 import (
-	gbconv "ghostbb.io/util/gb_conv"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 )
 
 // Scan automatically checks the type of `pointer` and converts `params` to `pointer`. It supports `pointer`

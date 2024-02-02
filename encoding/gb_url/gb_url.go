@@ -2,7 +2,7 @@
 package gburl
 
 import (
-	gberror "ghostbb.io/errors/gb_error"
+	gberror "ghostbb.io/gb/errors/gb_error"
 	"net/url"
 	"strings"
 )

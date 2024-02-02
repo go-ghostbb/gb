@@ -3,11 +3,11 @@ package gbvalid
 import (
 	"context"
 	"errors"
-	gbi18n "ghostbb.io/i18n/gb_i18n"
-	"ghostbb.io/internal/reflection"
-	"ghostbb.io/internal/utils"
-	gbstr "ghostbb.io/text/gb_str"
-	gbconv "ghostbb.io/util/gb_conv"
+	gbi18n "ghostbb.io/gb/i18n/gb_i18n"
+	"ghostbb.io/gb/internal/reflection"
+	"ghostbb.io/gb/internal/utils"
+	gbstr "ghostbb.io/gb/text/gb_str"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 	"reflect"
 )
 

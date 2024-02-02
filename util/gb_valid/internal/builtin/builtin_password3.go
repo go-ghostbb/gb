@@ -2,7 +2,7 @@ package builtin
 
 import (
 	"errors"
-	gbregex "ghostbb.io/text/gb_regex"
+	gbregex "ghostbb.io/gb/text/gb_regex"
 )
 
 // RulePassword3 implements `password3` rule:

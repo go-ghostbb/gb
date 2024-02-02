@@ -1,8 +1,8 @@
 package gbstr
 
 import (
-	"ghostbb.io/internal/utils"
-	gbconv "ghostbb.io/util/gb_conv"
+	"ghostbb.io/gb/internal/utils"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 	"strings"
 )
 

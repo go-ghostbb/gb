@@ -2,12 +2,12 @@ package gbfile
 
 import (
 	"context"
-	gbcode "ghostbb.io/errors/gb_code"
-	gberror "ghostbb.io/errors/gb_error"
-	"ghostbb.io/internal/command"
-	"ghostbb.io/internal/intlog"
-	gbcache "ghostbb.io/os/gb_cache"
-	gbfsnotify "ghostbb.io/os/gb_fsnotify"
+	gbcode "ghostbb.io/gb/errors/gb_code"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	"ghostbb.io/gb/internal/command"
+	"ghostbb.io/gb/internal/intlog"
+	gbcache "ghostbb.io/gb/os/gb_cache"
+	gbfsnotify "ghostbb.io/gb/os/gb_fsnotify"
 	"time"
 )
 

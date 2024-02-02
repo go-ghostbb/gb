@@ -2,7 +2,7 @@ package redis
 
 import (
 	"context"
-	gbredis "ghostbb.io/database/gb_redis"
+	gbredis "ghostbb.io/gb/database/gb_redis"
 )
 
 // GroupPubSub provides pub/sub functions for redis.

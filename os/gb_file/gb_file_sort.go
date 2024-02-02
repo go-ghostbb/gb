@@ -1,7 +1,7 @@
 package gbfile
 
 import (
-	gbarray "ghostbb.io/container/gb_array"
+	gbarray "ghostbb.io/gb/container/gb_array"
 	"strings"
 )
 

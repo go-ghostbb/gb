@@ -2,11 +2,11 @@ package gbsvc
 
 import (
 	"context"
-	gbmap "ghostbb.io/container/gb_map"
-	gbcode "ghostbb.io/errors/gb_code"
-	gberror "ghostbb.io/errors/gb_error"
-	"ghostbb.io/internal/intlog"
-	gbutil "ghostbb.io/util/gb_util"
+	gbmap "ghostbb.io/gb/container/gb_map"
+	gbcode "ghostbb.io/gb/errors/gb_code"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	"ghostbb.io/gb/internal/intlog"
+	gbutil "ghostbb.io/gb/util/gb_util"
 	"time"
 )
 

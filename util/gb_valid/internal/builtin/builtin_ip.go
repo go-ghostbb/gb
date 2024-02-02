@@ -2,8 +2,8 @@ package builtin
 
 import (
 	"errors"
-	gbipv4 "ghostbb.io/net/gb_ipv4"
-	gbipv6 "ghostbb.io/net/gb_ipv6"
+	gbipv4 "ghostbb.io/gb/net/gb_ipv4"
+	gbipv6 "ghostbb.io/gb/net/gb_ipv6"
 )
 
 // RuleIp implements `ip` rule:

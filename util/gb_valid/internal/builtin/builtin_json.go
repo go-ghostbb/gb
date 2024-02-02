@@ -2,7 +2,7 @@ package builtin
 
 import (
 	"errors"
-	"ghostbb.io/internal/json"
+	"ghostbb.io/gb/internal/json"
 )
 
 // RuleJson implements `json` rule:

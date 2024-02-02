@@ -3,13 +3,13 @@ package gbcfg
 
 import (
 	"context"
-	gbvar "ghostbb.io/container/gb_var"
-	gbcode "ghostbb.io/errors/gb_code"
-	gberror "ghostbb.io/errors/gb_error"
-	"ghostbb.io/internal/command"
-	"ghostbb.io/internal/intlog"
-	"ghostbb.io/internal/utils"
-	gbenv "ghostbb.io/os/gb_env"
+	gbvar "ghostbb.io/gb/container/gb_var"
+	gbcode "ghostbb.io/gb/errors/gb_code"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	"ghostbb.io/gb/internal/command"
+	"ghostbb.io/gb/internal/intlog"
+	"ghostbb.io/gb/internal/utils"
+	gbenv "ghostbb.io/gb/os/gb_env"
 )
 
 // Config is the configuration management object.

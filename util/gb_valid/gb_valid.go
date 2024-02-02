@@ -3,9 +3,9 @@ package gbvalid
 
 import (
 	"context"
-	"ghostbb.io/internal/intlog"
-	gbregex "ghostbb.io/text/gb_regex"
-	gbtag "ghostbb.io/util/gb_tag"
+	"ghostbb.io/gb/internal/intlog"
+	gbregex "ghostbb.io/gb/text/gb_regex"
+	gbtag "ghostbb.io/gb/util/gb_tag"
 	"reflect"
 	"regexp"
 	"strings"

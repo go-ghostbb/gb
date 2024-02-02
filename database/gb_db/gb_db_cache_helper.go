@@ -55,7 +55,7 @@ func getPrimaryKeysFromWhereClause(db *gorm.DB) []string {
 		exprStruct, ok := expr.(clause.Expr)
 		if ok {
 			ttype := getExprType(exprStruct)
-			//fmt.Printf("expr: %+v, ttype: %s\n", exprStruct, ttype)
+			// fmt.Printf("expr: %+v, ttype: %s\n", exprStruct, ttype)
 			if ttype == "in" || ttype == "eq" {
 				fieldName := getColNameFromExpr(exprStruct, ttype)
 				if fieldName == dbName {
@@ -129,7 +129,7 @@ func hasOtherClauseExceptPrimaryField(db *gorm.DB) bool {
 
 func getExprType(expr clause.Expr) string {
 	// delete spaces
-	sql := strings.Replace(strings.ToLower(expr.SQL), " ", "", -1)
+	sql := strings.ReplaceAll(strings.ToLower(expr.SQL), " ", "")
 
 	// see if sql has more than one clause
 	hasConnector := strings.Contains(sql, "and") || strings.Contains(sql, "or")
@@ -156,7 +156,7 @@ func getExprType(expr clause.Expr) string {
 }
 
 func getColNameFromExpr(expr clause.Expr, _type string) string {
-	sql := strings.Replace(strings.ToLower(expr.SQL), " ", "", -1)
+	sql := strings.ReplaceAll(strings.ToLower(expr.SQL), " ", "")
 	if _type == "in" {
 		fields := strings.Split(sql, "in")
 		return fields[0]
@@ -168,7 +168,7 @@ func getColNameFromExpr(expr clause.Expr, _type string) string {
 }
 
 func getPrimaryKeysFromExpr(expr clause.Expr, _type string) []string {
-	sql := strings.Replace(strings.ToLower(expr.SQL), " ", "", -1)
+	sql := strings.ReplaceAll(strings.ToLower(expr.SQL), " ", "")
 
 	primaryKeys := make([]string, 0)
 

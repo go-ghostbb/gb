@@ -1,8 +1,8 @@
 package gblog
 
 import (
-	gbcode "ghostbb.io/errors/gb_code"
-	gberror "ghostbb.io/errors/gb_error"
+	gbcode "ghostbb.io/gb/errors/gb_code"
+	gberror "ghostbb.io/gb/errors/gb_error"
 	"strings"
 )
 
@@ -94,8 +94,8 @@ func (l *Logger) GetLevelPrefix(level int) string {
 	return l.config.LevelPrefixes[level]
 }
 
-// getLevelPrefixWithBrackets returns the prefix string with brackets for specified level.
-func (l *Logger) getLevelPrefixWithBrackets(level int) string {
+// GetLevelPrefixWithBrackets returns the prefix string with brackets for specified level.
+func (l *Logger) GetLevelPrefixWithBrackets(level int) string {
 	levelStr := ""
 	if s, ok := l.config.LevelPrefixes[level]; ok {
 		levelStr = "[" + s + "]"

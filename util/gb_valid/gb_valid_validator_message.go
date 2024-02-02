@@ -2,7 +2,7 @@ package gbvalid
 
 import (
 	"context"
-	"ghostbb.io/util/gb_valid/internal/builtin"
+	"ghostbb.io/gb/util/gb_valid/internal/builtin"
 )
 
 // getErrorMessageByRule retrieves and returns the error message for specified rule.

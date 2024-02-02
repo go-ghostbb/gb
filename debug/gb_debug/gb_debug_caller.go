@@ -64,7 +64,6 @@ func CallerWithFilter(filters []string, skip ...int) (function string, path stri
 				if filterFileByFilters(file, filters) {
 					continue
 				}
-				function = ""
 				if fn := runtime.FuncForPC(pc); fn == nil {
 					function = "unknown"
 				} else {

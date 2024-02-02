@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"container/list"
 	"fmt"
-	"ghostbb.io/internal/consts"
-	"ghostbb.io/internal/errors"
+	"ghostbb.io/gb/internal/consts"
+	"ghostbb.io/gb/internal/errors"
 	"runtime"
 	"strings"
 )

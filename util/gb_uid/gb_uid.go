@@ -2,12 +2,12 @@
 package gbuid
 
 import (
-	gbtype "ghostbb.io/container/gb_type"
-	gbhash "ghostbb.io/encoding/gb_hash"
-	gbcode "ghostbb.io/errors/gb_code"
-	gberror "ghostbb.io/errors/gb_error"
-	gbipv4 "ghostbb.io/net/gb_ipv4"
-	gbrand "ghostbb.io/util/gb_rand"
+	gbtype "ghostbb.io/gb/container/gb_type"
+	gbhash "ghostbb.io/gb/encoding/gb_hash"
+	gbcode "ghostbb.io/gb/errors/gb_code"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	gbipv4 "ghostbb.io/gb/net/gb_ipv4"
+	gbrand "ghostbb.io/gb/util/gb_rand"
 	"os"
 	"strconv"
 	"time"

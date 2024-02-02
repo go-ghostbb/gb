@@ -1,6 +1,6 @@
 package gbres
 
-import gbmap "ghostbb.io/container/gb_map"
+import gbmap "ghostbb.io/gb/container/gb_map"
 
 const (
 	// DefaultName default group name for instance usage.

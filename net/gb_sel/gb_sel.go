@@ -3,7 +3,7 @@ package gbsel
 
 import (
 	"context"
-	gbsvc "ghostbb.io/net/gb_svc"
+	gbsvc "ghostbb.io/gb/net/gb_svc"
 )
 
 // Builder creates and returns selector in runtime.

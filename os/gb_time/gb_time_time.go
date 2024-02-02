@@ -2,8 +2,8 @@ package gbtime
 
 import (
 	"bytes"
-	gbcode "ghostbb.io/errors/gb_code"
-	gberror "ghostbb.io/errors/gb_error"
+	gbcode "ghostbb.io/gb/errors/gb_code"
+	gberror "ghostbb.io/gb/errors/gb_error"
 	"strconv"
 	"time"
 )

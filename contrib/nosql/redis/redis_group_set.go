@@ -2,9 +2,9 @@ package redis
 
 import (
 	"context"
-	gbvar "ghostbb.io/container/gb_var"
-	gbredis "ghostbb.io/database/gb_redis"
-	gbconv "ghostbb.io/util/gb_conv"
+	gbvar "ghostbb.io/gb/container/gb_var"
+	gbredis "ghostbb.io/gb/database/gb_redis"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 )
 
 // GroupSet provides set functions for redis.

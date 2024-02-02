@@ -1,6 +1,6 @@
 package gbconv
 
-import gbtime "ghostbb.io/os/gb_time"
+import gbtime "ghostbb.io/gb/os/gb_time"
 
 // iVal is used for type assert api for String().
 type iVal interface {

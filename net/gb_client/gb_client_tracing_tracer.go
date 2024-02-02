@@ -4,20 +4,18 @@ import (
 	"context"
 	"crypto/tls"
 	"fmt"
-	"ghostbb.io/internal/utils"
-	gbtrace "ghostbb.io/net/gb_trace"
-	gbstr "ghostbb.io/text/gb_str"
-	gbconv "ghostbb.io/util/gb_conv"
+	"ghostbb.io/gb/internal/utils"
+	gbtrace "ghostbb.io/gb/net/gb_trace"
+	gbstr "ghostbb.io/gb/text/gb_str"
+	gbconv "ghostbb.io/gb/util/gb_conv"
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/codes"
+	"go.opentelemetry.io/otel/trace"
 	"io"
 	"net/http"
 	"net/http/httptrace"
 	"net/textproto"
 	"strings"
-	"sync"
-
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/trace"
 )
 
 // clientTracer is used for implementing httptrace.ClientTrace.
@@ -27,7 +25,6 @@ type clientTracer struct {
 	request     *http.Request
 	requestBody []byte
 	headers     map[string]interface{}
-	mtx         sync.Mutex
 }
 
 // newClientTrace creates and returns object of newClientTrace.

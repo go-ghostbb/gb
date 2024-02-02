@@ -3,7 +3,7 @@ package gblog
 import (
 	"bytes"
 	"context"
-	gbconv "ghostbb.io/util/gb_conv"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 	"time"
 )
 

@@ -1,10 +1,10 @@
 package gbmap
 
 import (
-	"ghostbb.io/internal/empty"
-	"ghostbb.io/internal/json"
-	"ghostbb.io/internal/rwmutex"
-	gbconv "ghostbb.io/util/gb_conv"
+	"ghostbb.io/gb/internal/empty"
+	"ghostbb.io/gb/internal/json"
+	"ghostbb.io/gb/internal/rwmutex"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 )
 
 // IntStrMap implements map[int]string with RWMutex that has switch.

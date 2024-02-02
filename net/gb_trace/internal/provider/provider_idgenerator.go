@@ -2,7 +2,7 @@ package provider
 
 import (
 	"context"
-	"ghostbb.io/internal/tracing"
+	"ghostbb.io/gb/internal/tracing"
 
 	"go.opentelemetry.io/otel/trace"
 )

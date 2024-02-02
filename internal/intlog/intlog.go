@@ -5,8 +5,8 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	gbdebug "ghostbb.io/debug/gb_debug"
-	"ghostbb.io/internal/utils"
+	gbdebug "ghostbb.io/gb/debug/gb_debug"
+	"ghostbb.io/gb/internal/utils"
 	"path/filepath"
 	"time"
 

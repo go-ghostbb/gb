@@ -3,8 +3,8 @@ package gbtype
 import (
 	"bytes"
 	"encoding/base64"
-	gberror "ghostbb.io/errors/gb_error"
-	gbconv "ghostbb.io/util/gb_conv"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 	"sync/atomic"
 )
 

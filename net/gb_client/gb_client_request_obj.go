@@ -2,14 +2,14 @@ package gbclient
 
 import (
 	"context"
-	gbcode "ghostbb.io/errors/gb_code"
-	gberror "ghostbb.io/errors/gb_error"
-	gbregex "ghostbb.io/text/gb_regex"
-	gbstr "ghostbb.io/text/gb_str"
-	gbconv "ghostbb.io/util/gb_conv"
-	gbmeta "ghostbb.io/util/gb_meta"
-	gbtag "ghostbb.io/util/gb_tag"
-	gbutil "ghostbb.io/util/gb_util"
+	gbcode "ghostbb.io/gb/errors/gb_code"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	gbregex "ghostbb.io/gb/text/gb_regex"
+	gbstr "ghostbb.io/gb/text/gb_str"
+	gbconv "ghostbb.io/gb/util/gb_conv"
+	gbmeta "ghostbb.io/gb/util/gb_meta"
+	gbtag "ghostbb.io/gb/util/gb_tag"
+	gbutil "ghostbb.io/gb/util/gb_util"
 	"net/http"
 	"reflect"
 )

@@ -1,8 +1,8 @@
 package gbtrace
 
 import (
-	"ghostbb.io/internal/json"
-	gbconv "ghostbb.io/util/gb_conv"
+	"ghostbb.io/gb/internal/json"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 )
 
 // Carrier is the storage medium used by a TextMapPropagator.

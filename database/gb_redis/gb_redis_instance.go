@@ -2,8 +2,8 @@ package gbredis
 
 import (
 	"context"
-	gbmap "ghostbb.io/container/gb_map"
-	"ghostbb.io/internal/intlog"
+	gbmap "ghostbb.io/gb/container/gb_map"
+	"ghostbb.io/gb/internal/intlog"
 )
 
 var (

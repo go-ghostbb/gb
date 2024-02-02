@@ -1,8 +1,8 @@
 package gbfile
 
 import (
-	gberror "ghostbb.io/errors/gb_error"
-	gbstr "ghostbb.io/text/gb_str"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	gbstr "ghostbb.io/gb/text/gb_str"
 	"path/filepath"
 	"sort"
 )

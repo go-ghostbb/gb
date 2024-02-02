@@ -2,9 +2,9 @@ package gbcfg
 
 import (
 	"context"
-	gbvar "ghostbb.io/container/gb_var"
-	gbjson "ghostbb.io/encoding/gb_json"
-	gberror "ghostbb.io/errors/gb_error"
+	gbvar "ghostbb.io/gb/container/gb_var"
+	gbjson "ghostbb.io/gb/encoding/gb_json"
+	gberror "ghostbb.io/gb/errors/gb_error"
 )
 
 // AdapterContent implements interface Adapter using content.
@@ -44,10 +44,7 @@ func (a *AdapterContent) SetContent(content string) error {
 // Note that this function does not return error as it just does simply check for
 // backend configuration service.
 func (a *AdapterContent) Available(ctx context.Context, resource ...string) (ok bool) {
-	if a.jsonVar.IsNil() {
-		return false
-	}
-	return true
+	return !a.jsonVar.IsNil()
 }
 
 // Get retrieves and returns value by specified `pattern` in current resource.

@@ -2,11 +2,11 @@ package gbdb
 
 import (
 	"fmt"
-	gberror "ghostbb.io/errors/gb_error"
-	"ghostbb.io/internal/deepcopy"
-	"ghostbb.io/internal/json"
-	gbstr "ghostbb.io/text/gb_str"
-	gbconv "ghostbb.io/util/gb_conv"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	"ghostbb.io/gb/internal/deepcopy"
+	"ghostbb.io/gb/internal/json"
+	gbstr "ghostbb.io/gb/text/gb_str"
+	gbconv "ghostbb.io/gb/util/gb_conv"
 	"gorm.io/gorm"
 	"gorm.io/gorm/callbacks"
 	"reflect"

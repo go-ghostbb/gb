@@ -3,8 +3,8 @@ package gbtoml
 
 import (
 	"bytes"
-	gberror "ghostbb.io/errors/gb_error"
-	"ghostbb.io/internal/json"
+	gberror "ghostbb.io/gb/errors/gb_error"
+	"ghostbb.io/gb/internal/json"
 
 	"github.com/BurntSushi/toml"
 )
