@@ -1,29 +1,33 @@
-name: GB Release
+name: Goreleaser
 
 on:
   push:
-    # Sequence of patterns matched against refs/tags
     tags:
       - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
-env:
-  TZ: Asia/Shanghai
+permissions:
+  contents: write
 
 jobs:
-  build:
-    name: Build And Release
+  goreleaser:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Github Code
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Create Github Release
-        id: create_release
-        uses: softprops/action-gh-release@v1
+        with:
+          fetch-depth: 0
+      -
+        name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "^1"
+      -
+        name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v5
+        with:
+          # either 'goreleaser' (default) or 'goreleaser-pro'
+          distribution: goreleaser
+          version: latest
+          args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          name: GB Release ${GITHUB_REF#refs/*/}
-          draft: false
-          prerelease: false
