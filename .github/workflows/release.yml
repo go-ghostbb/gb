@@ -24,6 +24,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          name: GB Release ${{ github.ref }}
+          name: GB Release ${{ github.event.ref }}
           draft: false
           prerelease: false
