@@ -8,10 +8,13 @@ import (
 	"gorm.io/gorm"
 )
 
-type cacheLevel int
+type (
+	cacheLevel int
+	exprType   string
+)
 
 const (
-	cacheCtxLevelKey = "gb:gorm:cache:ctx_level"
+	CacheCtxLevelKey = "gb:gorm:cache:ctx_level"
 	afterCreateKey   = "gb:gorm:cache:after_create"
 	afterDeleteKey   = "gb:gorm:cache:after_delete"
 	afterQueryKey    = "gb:gorm:cache:after_query"
@@ -20,14 +23,25 @@ const (
 
 	querySFCallKey = "gb:gorm:cache:sf_call"
 
-	cacheNone    cacheLevel = 0
-	cacheAll     cacheLevel = 1
-	cachePrimary cacheLevel = 2
-	cacheSearch  cacheLevel = 3
+	CacheNone    cacheLevel = 0
+	CacheAll     cacheLevel = 1
+	CachePrimary cacheLevel = 2
+	CacheSearch  cacheLevel = 3
+
+	exprEq    exprType = "eq"
+	exprIn    exprType = "in"
+	exprOther exprType = "other"
 )
 
+type Result struct {
+	Dest         any
+	RowsAffected int64
+}
+
 var (
-	ErrSFHit = gberror.New("single flight hit")
+	ErrSFHit           = gberror.New("single flight hit")
+	ErrCacheUnmarshal  = gberror.New("cache hit, but unmarshal error")
+	ErrPrimaryCacheHit = gberror.New("primary cache hit")
 )
 
 func New(cache *cache.Cache) *Handler {
@@ -41,6 +55,8 @@ func New(cache *cache.Cache) *Handler {
 type Handler struct {
 	cache *cache.Cache
 	sf    singleflight.Group
+
+	query func(db *gorm.DB)
 
 	hitCount  *gbtype.Int
 	missCount *gbtype.Int
@@ -62,12 +78,9 @@ func (h *Handler) Bind(db *gorm.DB) (err error) {
 		return err
 	}
 
-	err = db.Callback().Query().Before("gorm:query").Register(beforeQueryKey, h.beforeQuery)
-	if err != nil {
-		return err
-	}
+	h.query = db.Callback().Query().Get("gorm:query")
 
-	err = db.Callback().Query().After("gorm:after_query").Register(afterQueryKey, h.afterQuery)
+	err = db.Callback().Query().Replace("gorm:query", h.beforeQuery)
 	if err != nil {
 		return err
 	}

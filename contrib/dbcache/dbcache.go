@@ -1,8 +1,10 @@
 package dbcache
 
 import (
+	"context"
 	"ghostbb.io/gb/contrib/dbcache/cache"
 	"ghostbb.io/gb/contrib/dbcache/crud"
+	gbctx "ghostbb.io/gb/os/gb_ctx"
 	"gorm.io/gorm"
 )
 
@@ -27,4 +29,8 @@ func (c *Plugin) Initialize(db *gorm.DB) (err error) {
 		return err
 	}
 	return nil
+}
+
+func WithLevelAllCtx() context.Context {
+	return context.WithValue(gbctx.New(), crud.CacheCtxLevelKey, crud.CacheAll)
 }

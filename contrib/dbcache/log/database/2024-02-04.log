@@ -1,0 +1,167 @@
+2024-02-04 16:49:30.249 [INFO] test replacing callback `gorm:create` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 16:49:30.249 [INFO] test replacing callback `gorm:update` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 16:49:30.260 [INFO] test [BeforeQuery] parse primary keys = [1]
+2024-02-04 16:49:30.266 [INFO] test [AfterQuery] start to set search cache for sql: SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+2024-02-04 16:49:30.266 [INFO] test [AfterQuery] start to set primary cache for kvs: [{Key:1 Value:{"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}}]
+2024-02-04 16:49:30.266 [INFO] test [AfterQuery] set cache: {"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}
+2024-02-04 16:49:30.266 [INFO] test [AfterQuery] sql SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY cached
+2024-02-04 16:49:30.266 [INFO] testing.go:1595 【test】｜  6.4526ms｜    rows:1
+    SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+
+2024-02-04 16:49:45.738 [INFO] test replacing callback `gorm:create` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 16:49:45.738 [INFO] test replacing callback `gorm:update` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 16:49:45.747 [INFO] test [BeforeQuery] parse primary keys = [1]
+2024-02-04 16:49:45.747 [INFO] test [AfterQuery] start to set search cache for sql: SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+2024-02-04 16:49:45.747 [INFO] test [AfterQuery] start to set primary cache for kvs: [{Key:1 Value:{"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}}]
+2024-02-04 16:49:45.748 [INFO] test [AfterQuery] set cache: {"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}
+2024-02-04 16:49:45.748 [INFO] test [AfterQuery] sql SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY cached
+2024-02-04 16:49:45.748 [INFO] testing.go:1595 【test】｜   999.8µs｜    rows:1
+    SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+
+2024-02-04 16:50:39.431 [INFO] test replacing callback `gorm:create` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 16:50:39.431 [INFO] test replacing callback `gorm:update` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 16:50:39.440 [INFO] test [BeforeQuery] parse primary keys = [1]
+2024-02-04 16:50:44.741 [INFO] test [AfterQuery] start to set search cache for sql: SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+2024-02-04 16:50:44.741 [INFO] test [AfterQuery] start to set primary cache for kvs: [{Key:1 Value:{"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}}]
+2024-02-04 16:50:44.742 [INFO] test [AfterQuery] set cache: {"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}
+2024-02-04 16:50:44.742 [INFO] test [AfterQuery] sql SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY cached
+2024-02-04 16:50:44.742 [WARN] testing.go:1595 【test】｜5.3021093s｜    rows:1
+    SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+
+2024-02-04 16:54:57.657 [INFO] test replacing callback `gorm:create` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 16:54:57.658 [INFO] test replacing callback `gorm:update` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 16:54:57.667 [INFO] {4cb5f09f039db017a1636c5027c2f077} test [BeforeQuery] parse primary keys = [1]
+2024-02-04 16:55:14.256 [INFO] {4cb5f09f039db017a1636c5027c2f077} test [AfterQuery] start to set search cache for sql: SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+2024-02-04 16:55:14.256 [INFO] {4cb5f09f039db017a1636c5027c2f077} test [AfterQuery] set cache: {"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}
+2024-02-04 16:55:14.256 [INFO] {4cb5f09f039db017a1636c5027c2f077} test [AfterQuery] start to set primary cache for kvs: [{Key:1 Value:{"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}}]
+2024-02-04 16:55:14.256 [INFO] {4cb5f09f039db017a1636c5027c2f077} test [AfterQuery] sql SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY cached
+2024-02-04 16:55:14.256 [WARN] {4cb5f09f039db017a1636c5027c2f077} testing.go:1595 【test】｜16.589679s｜    rows:1
+    SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+
+2024-02-04 16:55:38.305 [INFO] test replacing callback `gorm:create` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 16:55:38.305 [INFO] test replacing callback `gorm:update` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 16:55:38.315 [INFO] {70aab6160d9db0172df1fd1320c6fd25} test [BeforeQuery] parse primary keys = [1]
+2024-02-04 16:56:12.611 [INFO] {70aab6160d9db0172df1fd1320c6fd25} test [AfterQuery] start to set search cache for sql: SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+2024-02-04 16:56:12.611 [INFO] {70aab6160d9db0172df1fd1320c6fd25} test [AfterQuery] start to set primary cache for kvs: [{Key:1 Value:{"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}}]
+2024-02-04 16:56:12.611 [INFO] {70aab6160d9db0172df1fd1320c6fd25} test [AfterQuery] set cache: {"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}
+2024-02-04 16:56:12.611 [INFO] {70aab6160d9db0172df1fd1320c6fd25} test [AfterQuery] sql SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY cached
+2024-02-04 16:56:12.611 [WARN] {70aab6160d9db0172df1fd1320c6fd25} testing.go:1595 【test】｜34.297291s｜    rows:1
+    SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+
+2024-02-04 16:56:35.289 [INFO] test replacing callback `gorm:create` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 16:56:35.289 [INFO] test replacing callback `gorm:update` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 16:56:35.299 [INFO] {48d53e5b1a9db017c8fa4d5add4baa3a} test [BeforeQuery] parse primary keys = [1]
+2024-02-04 16:57:36.103 [INFO] {48d53e5b1a9db017c8fa4d5add4baa3a} test [AfterQuery] start to set search cache for sql: SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+2024-02-04 16:57:36.103 [INFO] {48d53e5b1a9db017c8fa4d5add4baa3a} test [AfterQuery] start to set primary cache for kvs: [{Key:1 Value:{"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}}]
+2024-02-04 16:57:36.103 [INFO] {48d53e5b1a9db017c8fa4d5add4baa3a} test [AfterQuery] set cache: {"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}
+2024-02-04 16:57:36.103 [INFO] {48d53e5b1a9db017c8fa4d5add4baa3a} test [AfterQuery] sql SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY cached
+2024-02-04 16:57:36.103 [WARN] {48d53e5b1a9db017c8fa4d5add4baa3a} testing.go:1595 【test】｜1m0.8046195s｜    rows:1
+    SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+
+2024-02-04 16:57:40.050 [INFO] test replacing callback `gorm:create` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 16:57:40.050 [INFO] test replacing callback `gorm:update` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 16:57:40.059 [INFO] {b4df406f299db01767a96b20d312be0e} test [BeforeQuery] parse primary keys = [1]
+2024-02-04 16:57:48.125 [INFO] {b4df406f299db01767a96b20d312be0e} test [AfterQuery] start to set search cache for sql: SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+2024-02-04 16:57:48.125 [INFO] {b4df406f299db01767a96b20d312be0e} test [AfterQuery] start to set primary cache for kvs: [{Key:1 Value:{"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}}]
+2024-02-04 16:57:48.125 [INFO] {b4df406f299db01767a96b20d312be0e} test [AfterQuery] set cache: {"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}
+2024-02-04 16:57:48.125 [INFO] {b4df406f299db01767a96b20d312be0e} test [AfterQuery] sql SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY cached
+2024-02-04 16:57:48.125 [WARN] {b4df406f299db01767a96b20d312be0e} testing.go:1595 【test】｜8.0668144s｜    rows:1
+    SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+
+2024-02-04 16:57:51.828 [INFO] test replacing callback `gorm:create` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 16:57:51.828 [INFO] test replacing callback `gorm:update` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 16:57:51.838 [INFO] {c8034d2d2c9db017b314136d9e163de8} test [BeforeQuery] parse primary keys = [1]
+2024-02-04 16:58:06.182 [INFO] {c8034d2d2c9db017b314136d9e163de8} test [AfterQuery] start to set search cache for sql: SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+2024-02-04 16:58:06.182 [INFO] {c8034d2d2c9db017b314136d9e163de8} test [AfterQuery] start to set primary cache for kvs: [{Key:1 Value:{"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}}]
+2024-02-04 16:58:06.182 [INFO] {c8034d2d2c9db017b314136d9e163de8} test [AfterQuery] set cache: {"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}
+2024-02-04 16:58:06.182 [INFO] {c8034d2d2c9db017b314136d9e163de8} test [AfterQuery] sql SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY cached
+2024-02-04 16:58:06.183 [WARN] {c8034d2d2c9db017b314136d9e163de8} testing.go:1595 【test】｜14.3446664s｜    rows:1
+    SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+
+2024-02-04 16:58:19.022 [INFO] test replacing callback `gorm:create` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 16:58:19.023 [INFO] test replacing callback `gorm:update` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 16:58:19.032 [INFO] {8c163e82329db017dc6acd0231bc5e94} test [BeforeQuery] parse primary keys = [1]
+2024-02-04 16:58:21.055 [INFO] {8c163e82329db017dc6acd0231bc5e94} test [AfterQuery] start to set search cache for sql: SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+2024-02-04 16:58:21.055 [INFO] {8c163e82329db017dc6acd0231bc5e94} test [AfterQuery] start to set primary cache for kvs: [{Key:1 Value:{"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}}]
+2024-02-04 16:58:21.055 [INFO] {8c163e82329db017dc6acd0231bc5e94} test [AfterQuery] set cache: {"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}
+2024-02-04 16:58:21.055 [INFO] {8c163e82329db017dc6acd0231bc5e94} test [AfterQuery] sql SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY cached
+2024-02-04 16:58:22.972 [WARN] {8c163e82329db017dc6acd0231bc5e94} testing.go:1595 【test】｜3.9399986s｜    rows:1
+    SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+
+2024-02-04 16:59:14.096 [INFO] test replacing callback `gorm:create` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 16:59:14.096 [INFO] test replacing callback `gorm:update` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 16:59:14.104 [INFO] {40a2c4543f9db017315cd9699d18b884} test [BeforeQuery] parse primary keys = [1]
+2024-02-04 16:59:14.933 [INFO] {40a2c4543f9db017315cd9699d18b884} test [AfterQuery] start to set search cache for sql: SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+2024-02-04 16:59:14.933 [INFO] {40a2c4543f9db017315cd9699d18b884} test [AfterQuery] start to set primary cache for kvs: [{Key:1 Value:{"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}}]
+2024-02-04 16:59:14.933 [INFO] {40a2c4543f9db017315cd9699d18b884} test [AfterQuery] set cache: {"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}
+2024-02-04 16:59:14.933 [INFO] {40a2c4543f9db017315cd9699d18b884} test [AfterQuery] sql SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY cached
+2024-02-04 16:59:16.175 [WARN] {40a2c4543f9db017315cd9699d18b884} testing.go:1595 【test】｜2.0712631s｜    rows:1
+    SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+
+2024-02-04 16:59:46.085 [INFO] test replacing callback `gorm:create` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 16:59:46.086 [INFO] test replacing callback `gorm:update` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 16:59:46.095 [INFO] {788197c7469db01710e6ca3c3d6577cb} test [BeforeQuery] parse primary keys = [1]
+2024-02-04 17:01:32.504 [INFO] {788197c7469db01710e6ca3c3d6577cb} test [AfterQuery] start to set search cache for sql: SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+2024-02-04 17:01:32.504 [INFO] {788197c7469db01710e6ca3c3d6577cb} test [AfterQuery] start to set primary cache for kvs: [{Key:1 Value:{"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}}]
+2024-02-04 17:01:32.504 [INFO] {788197c7469db01710e6ca3c3d6577cb} test [AfterQuery] set cache: {"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}
+2024-02-04 17:01:32.504 [INFO] {788197c7469db01710e6ca3c3d6577cb} test [AfterQuery] sql SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY cached
+2024-02-04 17:01:32.504 [WARN] {788197c7469db01710e6ca3c3d6577cb} testing.go:1595 【test】｜1m46.4095012s｜    rows:1
+    SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+
+2024-02-04 17:05:42.187 [INFO] test replacing callback `gorm:create` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 17:05:42.187 [INFO] test replacing callback `gorm:update` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 17:05:42.196 [INFO] test replacing callback `gorm:query` from D:/ghostbb.io/golang/gb/contrib/dbcache/crud/crud.go:83
+
+2024-02-04 17:05:42.197 [INFO] {bc8be4b0999db017915d7e424a7e19c8} test [BeforeQuery] parse primary keys = [1]
+2024-02-04 17:06:01.017 [INFO] test replacing callback `gorm:create` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 17:06:01.018 [INFO] test replacing callback `gorm:update` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 17:06:01.027 [INFO] test replacing callback `gorm:query` from D:/ghostbb.io/golang/gb/contrib/dbcache/crud/crud.go:83
+
+2024-02-04 17:06:01.027 [INFO] {a04e45139e9db017d78dee1b25be14c0} test [BeforeQuery] parse primary keys = [1]
+2024-02-04 17:06:18.093 [INFO] test replacing callback `gorm:create` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 17:06:18.094 [INFO] test replacing callback `gorm:update` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 17:06:18.102 [INFO] test replacing callback `gorm:query` from D:/ghostbb.io/golang/gb/contrib/dbcache/crud/crud.go:83
+
+2024-02-04 17:06:18.102 [INFO] {449f070da29db01712734364e7ba47b0} test [BeforeQuery] parse primary keys = [1]
+2024-02-04 17:06:44.061 [INFO] test replacing callback `gorm:create` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 17:06:44.061 [INFO] test replacing callback `gorm:update` from C:/Users/Ghostbb/go/pkg/mod/ghostbb.io/gb/contrib/drivers/mssql@v1.0.3/mssql.go:54
+
+2024-02-04 17:06:44.070 [INFO] test replacing callback `gorm:query` from D:/ghostbb.io/golang/gb/contrib/dbcache/crud/crud.go:83
+
+2024-02-04 17:06:44.071 [INFO] {084ce418a89db017790e4c52fbaf4217} test [BeforeQuery] parse primary keys = [1]
+2024-02-04 17:10:57.417 [INFO] {084ce418a89db017790e4c52fbaf4217} test [AfterQuery] start to set search cache for sql: SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+2024-02-04 17:10:57.417 [INFO] {084ce418a89db017790e4c52fbaf4217} test [AfterQuery] start to set primary cache for kvs: [{Key:1 Value:{"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}}]
+2024-02-04 17:10:57.418 [INFO] {084ce418a89db017790e4c52fbaf4217} test [AfterQuery] set cache: {"ID":1,"CreatedAt":"2024-01-31T21:01:05.023Z","UpdatedAt":"2024-01-31T21:01:06.845Z","DeletedAt":null,"Username":"123465","Password":"123456"}
+2024-02-04 17:10:57.418 [INFO] {084ce418a89db017790e4c52fbaf4217} test [AfterQuery] sql SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY cached
+2024-02-04 17:10:57.418 [WARN] {084ce418a89db017790e4c52fbaf4217} testing.go:1595 【test】｜4m13.3470039s｜    rows:1
+    SELECT * FROM "users" WHERE id = 1 AND "users"."deleted_at" IS NULL ORDER BY "users"."id" OFFSET 0 ROW FETCH NEXT 1 ROWS ONLY
+
