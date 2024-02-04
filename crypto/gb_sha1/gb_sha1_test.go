@@ -1,23 +1,14 @@
-package gbsha1
+package gbsha1_test
 
-import "testing"
+import (
+	gbsha1 "ghostbb.io/gb/crypto/gb_sha1"
+	gbtest "ghostbb.io/gb/test/gb_test"
+	"testing"
+)
 
 func TestEncrypt(t *testing.T) {
-	type args struct {
-		v interface{}
-	}
-	tests := []struct {
-		name string
-		args args
-		want string
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := Encrypt(tt.args.v); got != tt.want {
-				t.Errorf("Encrypt() = %v, want %v", got, tt.want)
-			}
-		})
-	}
+	gbtest.C(t, func(t *gbtest.T) {
+		test1 := gbsha1.Encrypt("ghostbb.io")
+		t.Assert(test1, "fe6696b8cce1f8f4562f21e6b59d5f71d9941a1a")
+	})
 }
