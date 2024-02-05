@@ -1,12 +1,10 @@
 package gbdb
 
 import (
-	"context"
 	gbmap "ghostbb.io/gb/container/gb_map"
 	gbcode "ghostbb.io/gb/errors/gb_code"
 	gberror "ghostbb.io/gb/errors/gb_error"
 	"ghostbb.io/gb/internal/intlog"
-	gbcache "ghostbb.io/gb/os/gb_cache"
 	gbctx "ghostbb.io/gb/os/gb_ctx"
 	gblog "ghostbb.io/gb/os/gb_log"
 	gbrand "ghostbb.io/gb/util/gb_rand"
@@ -43,7 +41,6 @@ type Core struct {
 	group         string           // Configuration group name.
 	links         *gbmap.StrAnyMap // links caches all created links by node.
 	logger        ILogger          // Logger for logging functionality.
-	cache         *gbcache.Cache   // cache
 	config        *ConfigNode      // Current config node.
 	dynamicConfig dynamicConfig    // Dynamic configurations, which can be changed in runtime.
 }
@@ -223,8 +220,4 @@ func getConfigNodeByWeight(cg ConfigGroup) *ConfigNode {
 		min = max
 	}
 	return nil
-}
-
-func WithCacheCtx() context.Context {
-	return context.WithValue(gbctx.New(), DBCacheName, struct{}{})
 }
