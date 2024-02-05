@@ -43,9 +43,6 @@ type ConfigNode struct {
 	IgnoreRecordNotFoundError bool          `json:"ignoreRecordNotFoundError"` // (Optional) Ignore record not found error.
 	LogCat                    string        `json:"logCat"`                    // (Optional) Log cat.
 	LogStdout                 bool          `json:"logStdout"`                 // (Optional) Stdout.
-	CacheLevel                string        `json:"cacheLevel"`                // (Optional) Cache level
-	CacheTTL                  time.Duration `json:"ttl"`
-	CacheMaxItemCnt           int64         `json:"maxItemCnt"`
 }
 
 const (

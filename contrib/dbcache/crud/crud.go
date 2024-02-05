@@ -4,7 +4,6 @@ import (
 	gbtype "ghostbb.io/gb/container/gb_type"
 	"ghostbb.io/gb/contrib/dbcache/cache"
 	"ghostbb.io/gb/contrib/dbcache/singleflight"
-	gberror "ghostbb.io/gb/errors/gb_error"
 	"gorm.io/gorm"
 )
 
@@ -14,19 +13,13 @@ type (
 )
 
 const (
-	CacheCtxLevelKey = "gb:gorm:cache:ctx_level"
-	afterCreateKey   = "gb:gorm:cache:after_create"
-	afterDeleteKey   = "gb:gorm:cache:after_delete"
-	afterQueryKey    = "gb:gorm:cache:after_query"
-	afterUpdateKey   = "gb:gorm:cache:after_update"
-	beforeQueryKey   = "gb:gorm:cache:before_query"
+	CacheCtxKey    = "gb:gorm:cache:ctx"
+	afterCreateKey = "gb:gorm:cache:after_create"
+	afterDeleteKey = "gb:gorm:cache:after_delete"
+	afterUpdateKey = "gb:gorm:cache:after_update"
 
-	querySFCallKey = "gb:gorm:cache:sf_call"
-
-	CacheNone    cacheLevel = 0
-	CacheAll     cacheLevel = 1
-	CachePrimary cacheLevel = 2
-	CacheSearch  cacheLevel = 3
+	CacheNone   cacheLevel = 0
+	CacheSearch cacheLevel = 1
 
 	exprEq    exprType = "eq"
 	exprIn    exprType = "in"
@@ -37,12 +30,6 @@ type Result struct {
 	Dest         any
 	RowsAffected int64
 }
-
-var (
-	ErrSFHit           = gberror.New("single flight hit")
-	ErrCacheUnmarshal  = gberror.New("cache hit, but unmarshal error")
-	ErrPrimaryCacheHit = gberror.New("primary cache hit")
-)
 
 func New(cache *cache.Cache) *Handler {
 	return &Handler{

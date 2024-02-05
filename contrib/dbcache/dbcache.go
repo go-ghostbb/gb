@@ -4,11 +4,17 @@ import (
 	"context"
 	"ghostbb.io/gb/contrib/dbcache/cache"
 	"ghostbb.io/gb/contrib/dbcache/crud"
-	gbctx "ghostbb.io/gb/os/gb_ctx"
+	gbcache "ghostbb.io/gb/os/gb_cache"
 	"gorm.io/gorm"
 )
 
 const PluginName = "gb:gorm:cache"
+
+var Context = context.WithValue(context.Background(), crud.CacheCtxKey, crud.CacheSearch)
+
+func WithCtx(parent context.Context) context.Context {
+	return context.WithValue(parent, crud.CacheCtxKey, crud.CacheSearch)
+}
 
 func New() *Plugin {
 	return &Plugin{
@@ -28,9 +34,11 @@ func (c *Plugin) Initialize(db *gorm.DB) (err error) {
 	if err = crud.New(c.cache).Bind(db); err != nil {
 		return err
 	}
+	c.cache.ClearCache(context.TODO())
 	return nil
 }
 
-func WithLevelAllCtx() context.Context {
-	return context.WithValue(gbctx.New(), crud.CacheCtxLevelKey, crud.CacheAll)
+func (c *Plugin) SetAdapter(adapter gbcache.Adapter) {
+	c.cache.SetAdapter(adapter)
+	c.cache.ClearCache(context.TODO())
 }

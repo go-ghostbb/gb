@@ -131,20 +131,6 @@ func Database(name ...string) *gbdb.Core {
 
 		// Create a new ORM object with given configurations.
 		if db, err := gbdb.NewByGroup(name...); err == nil {
-			// Initialize cache for ORM
-			var (
-				cacheConfigMap map[string]interface{}
-				cacheNodeName  = fmt.Sprintf("%s.%s", configNodeKey, consts.ConfigNodeNameCache)
-			)
-			if v, _ := Config().Get(ctx, cacheNodeName); !v.IsEmpty() {
-				cacheConfigMap = v.Map()
-			}
-			if len(cacheConfigMap) > 0 {
-				if err = db.UseCacheWithMap(cacheConfigMap); err != nil {
-					panic(err)
-				}
-			}
-
 			return db
 		} else {
 			// If panics, often because it does not find its configuration for given group.
@@ -182,9 +168,6 @@ func parseDBConfigNode(value interface{}) *gbdb.ConfigNode {
 	}
 	if _, v := gbutil.MapPossibleItemByKey(nodeMap, "LogStdout"); v == nil {
 		node.LogStdout = true
-	}
-	if _, v := gbutil.MapPossibleItemByKey(nodeMap, "CacheLevel"); v == nil {
-		node.CacheLevel = ""
 	}
 	return node
 }

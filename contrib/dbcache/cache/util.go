@@ -8,10 +8,6 @@ import (
 	"strings"
 )
 
-func (c *Cache) genPrimaryCacheKey(tableName string, primaryKey string) string {
-	return fmt.Sprintf("%s:%s:p:%s:%s", cacheName, c.InstanceId, tableName, primaryKey)
-}
-
 func (c *Cache) genSearchCacheKey(tableName string, sql string, vars ...interface{}) string {
 	buf := strings.Builder{}
 	buf.WriteString(sql)
@@ -22,7 +18,7 @@ func (c *Cache) genSearchCacheKey(tableName string, sql string, vars ...interfac
 }
 
 func (c *Cache) genCachePrefix(tableName string) string {
-	return cacheName + ":" + c.InstanceId + ":p:" + tableName
+	return cacheName + ":" + c.InstanceId + ":s:" + tableName
 }
 
 func (c *Cache) TTL() int64 {

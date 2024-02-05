@@ -18,8 +18,7 @@ type call struct {
 	// These fields are read and written with the singleflight
 	// mutex held before the WaitGroup is done, and are read but
 	// not written after the WaitGroup is done.
-	dups  int
-	chans []chan<- Result
+	dups int
 }
 
 // Group represents a class of work and forms a namespace in
@@ -62,30 +61,6 @@ func (g *Group) Do(key string, fn func() (interface{}, error)) (v interface{}, e
 	return c.val, c.err, c.dups > 0
 }
 
-// DoChan is like Do but returns a channel that will receive the
-// results when they are ready.
-func (g *Group) DoChan(key string, fn func() (interface{}, error)) <-chan Result {
-	ch := make(chan Result, 1)
-	g.mu.Lock()
-	if g.m == nil {
-		g.m = make(map[string]*call)
-	}
-	if c, ok := g.m[key]; ok {
-		c.dups++
-		c.chans = append(c.chans, ch)
-		g.mu.Unlock()
-		return ch
-	}
-	c := &call{chans: []chan<- Result{ch}}
-	c.wg.Add(1)
-	g.m[key] = c
-	g.mu.Unlock()
-
-	go g.doCall(c, key, fn)
-
-	return ch
-}
-
 // doCall handles the single call for a key.
 func (g *Group) doCall(c *call, key string, fn func() (interface{}, error)) {
 	c.val, c.err = fn()
@@ -94,9 +69,6 @@ func (g *Group) doCall(c *call, key string, fn func() (interface{}, error)) {
 	g.mu.Lock()
 	if !c.forgotten {
 		delete(g.m, key)
-	}
-	for _, ch := range c.chans {
-		ch <- Result{c.val, c.err, c.dups > 0}
 	}
 	g.mu.Unlock()
 }
