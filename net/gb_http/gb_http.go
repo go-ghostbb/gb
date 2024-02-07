@@ -1,58 +1,20 @@
 package gbhttp
 
 import (
-	"context"
 	gbmap "ghostbb.io/gb/container/gb_map"
 	gbtype "ghostbb.io/gb/container/gb_type"
-	gblog "ghostbb.io/gb/os/gb_log"
-	gbproc "ghostbb.io/gb/os/gb_proc"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"time"
-)
-
-func init() {
-	gin.SetMode(gin.ReleaseMode)
-}
-
-type (
-	Server struct {
-		server *http.Server
-		*Engine
-		config    ServerConfig
-		closeChan chan struct{}
-	}
-
-	Engine struct {
-		*gin.Engine                   // origin engine
-		instance     string           // Instance name of current HTTP server.
-		groupMapping *gbmap.StrAnyMap // version group
-		logger       *gblog.Logger
-	}
-
-	ServerConfig struct {
-		Address        string        `json:"address"`
-		Https          bool          `json:"https"`
-		CertFile       string        `json:"cert-file"`
-		KeyFile        string        `json:"key-file"`
-		ReadTimeout    time.Duration `json:"read-timeout"`
-		WriteTimeout   time.Duration `json:"write-timeout"`
-		IdleTimeout    time.Duration `json:"idle-timeout"`
-		MaxHeaderBytes int           `json:"max-header-bytes"`
-		KeepAlive      bool          `json:"keep-alive"`
-
-		LogCat    string `json:"log-cat"`
-		LogStdout bool   `json:"log-stdout"`
-	}
-
-	IBind interface {
-		Register(*gin.RouterGroup)
-	}
 )
 
 const (
-	DefaultServerName = "default"
-	ServerContextKey  = "gb.server.ctx"
+	DefaultServerName                = "default"
+	ServerContextKey                 = "gb.server.ctx"
+	ServerStatusStopped ServerStatus = 0
+	ServerStatusRunning ServerStatus = 1
+
+	// FreePortAddress marks the server listens using random free port.
+	FreePortAddress = ":0"
 )
 
 var (
@@ -63,20 +25,27 @@ var (
 	// serverRunning marks the running server counts.
 	// If there is no successful server running or all servers' shutdown, this value is 0.
 	serverRunning = gbtype.NewInt()
+
+	// allShutdownChan is the event for all servers have done its serving and exit.
+	// It is used for process blocking purpose.
+	allShutdownChan = make(chan struct{}, 1000)
 )
 
-func RunMultiple(servers ...*Server) {
-	chanList := make([]chan struct{}, 0)
-	for _, server := range servers {
-		chanList = append(chanList, server.closeChan)
-		serverRunning.Add(1)
-		go server.startServer()
-		go handleProcessSignal()
-	}
-	for _, closeChan := range chanList {
-		<-closeChan
-		serverRunning.Add(-1)
+type (
+	Server struct {
+		*gin.Engine
+		instance    string            // Instance name of current HTTP server.
+		config      ServerConfig      // Server configuration.
+		handler     http.Handler      // Http server handler
+		servers     []*internalServer // Underlying http.Server array.
+		serverCount *gbtype.Int       // Underlying http.Server number for internal usage.
+		closeChan   chan struct{}     // Used for underlying server closing event notification.
 	}
 
-	gblog.Stdout(true).Infof(context.TODO(), "pid[%d]: servers shutdown", gbproc.Pid())
-}
+	// ServerStatus is the server status enum type.
+	ServerStatus = int
+
+	// Listening file descriptor mapping.
+	// The key is either "http" or "https" and the value is its FD.
+	listenerFdMap = map[string]string
+)

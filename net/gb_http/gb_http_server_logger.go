@@ -10,6 +10,11 @@ import (
 	"time"
 )
 
+// Logger is alias of GetLogger.
+func (s *Server) Logger() *gblog.Logger {
+	return s.config.Logger
+}
+
 func (s *Server) loggerMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var (
@@ -29,15 +34,9 @@ func (s *Server) loggerMiddleware() gin.HandlerFunc {
 		err := strings.TrimRight(c.Errors.ByType(gin.ErrorTypePrivate).String(), "\n")
 
 		logger := instance.GetOrSetFuncLock(loggerInstanceKey, func() interface{} {
-			l := s.logger.Clone()
-			if s.config.LogCat != "" {
-				l = l.Cat(s.config.LogCat)
-			}
-			if s.logger.GetConfig().StdoutPrint {
-				l.SetStdoutPrint(s.config.LogStdout)
-			} else {
-				l.SetStdoutPrint(false)
-			}
+			l := s.config.Logger.Clone()
+			l.SetFile(s.config.AccessLogPattern)
+			l.SetStdoutPrint(s.config.LogStdout)
 			l.SetLevelPrint(false)
 			return l
 		}).(*gblog.Logger)

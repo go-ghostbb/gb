@@ -30,10 +30,10 @@ func NewVar(i interface{}, safe ...bool) *Var {
 	return gbvar.New(i, safe...)
 }
 
-// RunMultiple is an alias of gbhttp.RunMultiple, which blocks until all the web servers shutdown.
+// Wait is an alias of ghttp.Wait, which blocks until all the web servers shutdown.
 // It's commonly used in multiple servers' situation.
-func RunMultiple(servers ...*gbhttp.Server) {
-	gbhttp.RunMultiple(servers...)
+func Wait() {
+	gbhttp.Wait()
 }
 
 // Listen is an alias of gbproc.Listen, which handles the signals received and automatically

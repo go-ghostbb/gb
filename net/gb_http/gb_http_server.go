@@ -3,132 +3,298 @@ package gbhttp
 import (
 	"bytes"
 	"context"
+	gbtype "ghostbb.io/gb/container/gb_type"
+	gbcode "ghostbb.io/gb/errors/gb_code"
 	gberror "ghostbb.io/gb/errors/gb_error"
+	"ghostbb.io/gb/internal/intlog"
 	gbctx "ghostbb.io/gb/os/gb_ctx"
+	gbenv "ghostbb.io/gb/os/gb_env"
+	gbfile "ghostbb.io/gb/os/gb_file"
 	gblog "ghostbb.io/gb/os/gb_log"
 	gbproc "ghostbb.io/gb/os/gb_proc"
+	gbtimer "ghostbb.io/gb/os/gb_timer"
 	gbstr "ghostbb.io/gb/text/gb_str"
 	gbconv "ghostbb.io/gb/util/gb_conv"
 	gbutil "ghostbb.io/gb/util/gb_util"
 	"github.com/gin-gonic/gin"
 	"github.com/olekukonko/tablewriter"
 	"net/http"
+	"runtime"
+	"strings"
+	"sync"
 	"time"
 )
 
-func NewServer(engin *Engine) *Server {
-	return &Server{
-		server: &http.Server{
-			Handler: engin,
-		},
-		Engine:    engin,
-		closeChan: make(chan struct{}, 10000),
-	}
-}
-
-func GetServer(name ...string) *Server {
+func GetServer(name ...interface{}) *Server {
 	serverName := DefaultServerName
 	if len(name) > 0 && name[0] != "" {
 		serverName = gbconv.String(name[0])
 	}
 
 	v := serverMapping.GetOrSetFuncLock(serverName, func() interface{} {
-		engine := Default()
-		engine.instance = serverName
-		server := NewServer(engine)
+		e := gin.New()
+		s := &Server{
+			Engine:      e,
+			instance:    serverName,
+			servers:     make([]*internalServer, 0),
+			handler:     e,
+			closeChan:   make(chan struct{}, 10000),
+			serverCount: gbtype.NewInt(),
+		}
+		// Initialize the server using default configurations.
+		if err := s.SetConfig(NewConfig()); err != nil {
+			panic(gberror.WrapCode(gbcode.CodeInvalidConfiguration, err, ""))
+		}
 
-		server.Use(gin.Recovery(), engine.GBCtxMiddleware(), server.loggerMiddleware(), gin.LoggerWithFormatter(server.debugLog))
-		return server
+		e.Use(gin.Recovery(), s.loggerMiddleware(), gin.LoggerWithFormatter(s.debugLog), func(c *gin.Context) {
+			c.Set(ServerContextKey, gbctx.New())
+		})
+		return s
 	})
+
 	return v.(*Server)
 }
 
-func (s *Server) SetConfigWithMap(m map[string]interface{}) error {
-	m = gbutil.MapCopy(m)
+// GetName returns the name of the server.
+func (s *Server) GetName() string {
+	return s.config.Name
+}
 
+// SetName sets the name for the server.
+func (s *Server) SetName(name string) {
+	s.config.Name = name
+}
+
+// SetConfigWithMap sets the configuration for the server using map.
+func (s *Server) SetConfigWithMap(m map[string]interface{}) error {
+	// The m now is a shallow copy of m.
+	// Any changes to m does not affect the original one.
+	// A little tricky, isn't it?
+	m = gbutil.MapCopy(m)
+	// Allow setting the size configuration items using string size like:
+	// 1m, 100mb, 512kb, etc.
+	if k, v := gbutil.MapPossibleItemByKey(m, "MaxHeaderBytes"); k != "" {
+		m[k] = gbfile.StrToSize(gbconv.String(v))
+	}
+	// Update the current configuration object.
+	// It only updates the configured keys not all the object.
 	if err := gbconv.Struct(m, &s.config); err != nil {
 		return err
 	}
-
-	if _, kValue := gbutil.MapPossibleItemByKey(m, "KeepAlive"); kValue == nil {
-		s.server.SetKeepAlivesEnabled(true)
-	}
-	if _, sValue := gbutil.MapPossibleItemByKey(m, "LogStdout"); sValue == nil {
-		s.SetStdout(true)
-	}
-
 	return s.SetConfig(s.config)
 }
 
-func (s *Server) SetConfig(c ServerConfig) error {
-	s.config = c
-	if s.config.Address != "" && !gbstr.Contains(s.config.Address, ":") {
-		s.config.Address = ":" + s.config.Address
+// Start starts listening on configured port.
+// This function does not block the process, you can use function Wait blocking the process.
+func (s *Server) Start() error {
+	var ctx = gbctx.GetInitCtx()
+
+	// Server can only be run once.
+	if s.Status() == ServerStatusRunning {
+		return gberror.NewCode(gbcode.CodeInvalidOperation, "server is already running")
 	}
-	s.server.Addr = s.config.Address
-	s.server.ReadTimeout = s.config.ReadTimeout
-	s.server.WriteTimeout = s.config.WriteTimeout
-	s.server.IdleTimeout = s.config.IdleTimeout
-	s.server.MaxHeaderBytes = s.config.MaxHeaderBytes
-	s.server.SetKeepAlivesEnabled(s.config.KeepAlive)
+
+	// Logging path setting check.
+	if s.config.LogPath != "" && s.config.LogPath != s.config.Logger.GetPath() {
+		if err := s.config.Logger.SetPath(s.config.LogPath); err != nil {
+			return err
+		}
+	}
+
+	// ================================================================================================
+	// Start the HTTP server.
+	// ================================================================================================
+	reloaded := false
+	fdMapStr := gbenv.Get(adminActionReloadEnvKey).String()
+	if len(fdMapStr) > 0 {
+		sfm := bufferToServerFdMap([]byte(fdMapStr))
+		if v, ok := sfm[s.config.Name]; ok {
+			s.startServer(v)
+			reloaded = true
+		}
+	}
+	if !reloaded {
+		s.startServer(nil)
+	}
+
+	// If this is a child process, it then notifies its parent exit.
+	if gbproc.IsChild() {
+		gbtimer.SetTimeout(ctx, time.Duration(s.config.GracefulTimeout)*time.Second, func(ctx context.Context) {
+			if err := gbproc.Send(gbproc.PPid(), []byte("exit"), adminGProcCommGroup); err != nil {
+				intlog.Errorf(ctx, `server error in process communication: %+v`, err)
+			}
+		})
+	}
+
+	s.doRouterMapDump()
+
 	return nil
 }
 
-func (s *Server) getProto() string {
-	proto := "http"
-	if s.config.Https {
-		proto = "https"
+func (s *Server) startServer(fdMap listenerFdMap) {
+	var (
+		ctx          = context.TODO()
+		httpsEnabled bool
+	)
+	// HTTPS
+	if s.config.HTTPSCertPath != "" && s.config.HTTPSKeyPath != "" {
+		if len(s.config.HTTPSAddr) == 0 {
+			if len(s.config.Address) > 0 {
+				s.config.HTTPSAddr = s.config.Address
+				s.config.Address = ""
+			} else {
+				s.config.HTTPSAddr = defaultHttpsAddr
+			}
+			httpsEnabled = len(s.config.HTTPSAddr) > 0
+			var array []string
+			if v, ok := fdMap["https"]; ok && len(v) > 0 {
+				array = strings.Split(v, ",")
+			} else {
+				array = strings.Split(s.config.HTTPSAddr, ",")
+			}
+			for _, v := range array {
+				if len(v) == 0 {
+					continue
+				}
+				var (
+					fd        = 0
+					itemFunc  = v
+					addrAndFd = strings.Split(v, "#")
+				)
+				if len(addrAndFd) > 1 {
+					itemFunc = addrAndFd[0]
+					// The Windows OS does not support socket file descriptor passing
+					// from parent process.
+					if runtime.GOOS != "windows" {
+						fd = gbconv.Int(addrAndFd[1])
+					}
+				}
+				if fd > 0 {
+					s.servers = append(s.servers, s.newInternalServer(itemFunc, fd))
+				} else {
+					s.servers = append(s.servers, s.newInternalServer(itemFunc))
+				}
+				s.servers[len(s.servers)-1].isHttps = true
+			}
+		}
 	}
-	return proto
+	// HTTP
+	if !httpsEnabled && len(s.config.Address) == 0 {
+		s.config.Address = defaultHttpAddr
+	}
+	var array []string
+	if v, ok := fdMap["http"]; ok && len(v) > 0 {
+		array = gbstr.SplitAndTrim(v, ",")
+	} else {
+		array = gbstr.SplitAndTrim(s.config.Address, ",")
+	}
+	for _, v := range array {
+		if len(v) == 0 {
+			continue
+		}
+		var (
+			fd        = 0
+			itemFunc  = v
+			addrAndFd = strings.Split(v, "#")
+		)
+		if len(addrAndFd) > 1 {
+			itemFunc = addrAndFd[0]
+			// The Window OS does not support socket file descriptor passing
+			// from the parent process.
+			if runtime.GOOS != "windows" {
+				fd = gbconv.Int(addrAndFd[1])
+			}
+		}
+		if fd > 0 {
+			s.servers = append(s.servers, s.newInternalServer(itemFunc, fd))
+		} else {
+			s.servers = append(s.servers, s.newInternalServer(itemFunc))
+		}
+	}
+
+	// Start listening asynchronously.
+	serverRunning.Add(1)
+	var wg = sync.WaitGroup{}
+	for _, v := range s.servers {
+		wg.Add(1)
+		go func(server *internalServer) {
+			s.serverCount.Add(1)
+			var err error
+			// Create listener.
+			if server.isHttps {
+				err = server.CreateListenerTLS(
+					s.config.HTTPSCertPath, s.config.HTTPSKeyPath, s.config.TLSConfig,
+				)
+			} else {
+				err = server.CreateListener()
+			}
+			if err != nil {
+				s.Logger().Fatalf(ctx, `%+v`, err)
+			}
+			wg.Done()
+			// Start listening and serving in blocking way.
+			err = server.Serve(ctx)
+			// The process exits if the server is closed with none closing error.
+			if err != nil && !strings.EqualFold(http.ErrServerClosed.Error(), err.Error()) {
+				s.Logger().Fatalf(ctx, `%+v`, err)
+			}
+			// If all the underlying servers' shutdown, the process exits.
+			if s.serverCount.Add(-1) < 1 {
+				s.closeChan <- struct{}{}
+				if serverRunning.Add(-1) < 1 {
+					serverMapping.Remove(s.instance)
+					allShutdownChan <- struct{}{}
+				}
+			}
+		}(v)
+	}
+	wg.Wait()
 }
 
-func (s *Server) Logger() *gblog.Logger {
-	return s.logger
-}
+// Wait blocks to wait for all servers done.
+// It's commonly used in multiple server situation.
+func Wait() {
+	var ctx = context.TODO()
 
-func (s *Server) Config() *ServerConfig {
-	return &s.config
-}
-
-func (s *Server) SetStdout(stdout bool) {
-	s.config.LogStdout = false
-}
-
-func (s *Server) Run() {
-	go s.startServer()
+	// Signal handler in asynchronous way.
 	go handleProcessSignal()
 
-	<-s.closeChan
-	s.Logger().Stdout(true).Infof(context.TODO(), "pid[%d]: server shutdown", gbproc.Pid())
+	<-allShutdownChan
+
+	gblog.Infof(ctx, "pid[%d]: all servers shutdown", gbproc.Pid())
 }
 
-func (s *Server) startServer() {
-	var err error
+// Status retrieves and returns the server status.
+func (s *Server) Status() ServerStatus {
+	if serverRunning.Val() == 0 {
+		return ServerStatusStopped
+	}
+	// If any underlying server is running, the server status is running.
+	for _, v := range s.servers {
+		if v.status.Val() == ServerStatusRunning {
+			return ServerStatusRunning
+		}
+	}
+	return ServerStatusStopped
+}
 
-	s.Logger().Stdout(true).Infof(context.TODO(),
-		"pid[%d]: %s server started listening on [%s]",
-		gbproc.Pid(), s.getProto(), s.Config().Address,
-	)
-	s.doRouterMapDump()
-
-	if s.Config().Https {
-		err = s.server.ListenAndServeTLS(s.Config().CertFile, s.Config().KeyFile)
+func (s *Server) GetRoutes() gin.RoutesInfo {
+	if v, ok := s.handler.(*gin.Engine); ok {
+		return v.Routes()
 	} else {
-		err = s.server.ListenAndServe()
-	}
-	if err != nil && !gberror.Is(err, http.ErrServerClosed) {
-		s.Logger().Error(gbctx.New(), err)
+		panic(gberror.WrapCode(gbcode.CodeInternalError, gberror.New("handler type wrong"), ""))
 	}
 }
 
-func (s *Server) GetEngine() *gin.Engine {
-	return s.Engine.Engine
-}
-
+// doRouterMapDump checks and dumps the router map to the log.
 func (s *Server) doRouterMapDump() {
+	if !s.config.DumpRouterMap {
+		return
+	}
+
 	var (
 		headers = []string{"GROUP", "ADDRESS", "METHOD", "ROUTE", "HANDLER"}
-		routes  = s.GetEngine().Routes()
+		routes  = s.GetRoutes()
 	)
 	if len(routes) > 0 {
 		buffer := bytes.NewBuffer(nil)
@@ -140,7 +306,7 @@ func (s *Server) doRouterMapDump() {
 
 		for _, route := range routes {
 			table.Append([]string{
-				s.instance, s.Config().Address, route.Method, route.Path, route.Handler,
+				s.instance, s.config.Address, route.Method, route.Path, route.Handler,
 			})
 		}
 
@@ -149,34 +315,20 @@ func (s *Server) doRouterMapDump() {
 	}
 }
 
-func (s *Server) Bind(groups ...IBind) {
-	for _, group := range groups {
-		group.Register(s.Group("/"))
-	}
-}
+// Run starts server listening in blocking way.
+// It's commonly used for single server situation.
+func (s *Server) Run() {
+	var ctx = context.TODO()
 
-func (s *Server) SetPort(p string) {
-	if p == "" {
-		return
+	if err := s.Start(); err != nil {
+		s.Logger().Fatalf(ctx, `%+v`, err)
 	}
-	if p != "" && !gbstr.Contains(p, ":") {
-		p = ":" + p
-	}
-	s.server.Addr = p
-}
 
-func (s *Server) Showdown(ctx context.Context) {
-	timeoutCtx, cancelFunc := context.WithTimeout(
-		ctx,
-		time.Duration(5*time.Second),
-	)
-	defer cancelFunc()
-	if err := s.server.Shutdown(timeoutCtx); err != nil {
-		s.Logger().Errorf(
-			ctx,
-			"%d: %s server [%s] shutdown error: %v",
-			gbproc.Pid(), s.getProto(), s.config.Address, err,
-		)
-	}
-	s.closeChan <- struct{}{}
+	// Signal handler in asynchronous way.
+	go handleProcessSignal()
+
+	// Blocking using channel.
+	<-s.closeChan
+
+	s.Logger().Infof(ctx, "pid[%d]: all servers shutdown", gbproc.Pid())
 }
