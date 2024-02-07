@@ -11,6 +11,8 @@ import (
 	gbutil "ghostbb.io/gb/util/gb_util"
 )
 
+// Server returns an instance of http server with specified name.
+// Note that it panics if any error occurs duration instance creating.
 func Server(name ...interface{}) *gbhttp.Server {
 	var (
 		err          error
@@ -21,7 +23,6 @@ func Server(name ...interface{}) *gbhttp.Server {
 	if len(name) > 0 && name[0] != "" {
 		instanceName = gbconv.String(name[0])
 	}
-
 	return instance.GetOrSetFuncLock(instanceKey, func() interface{} {
 		server := gbhttp.GetServer(instanceName)
 		if Config().Available(ctx) {
@@ -69,13 +70,20 @@ func Server(name ...interface{}) *gbhttp.Server {
 			// Server logger configuration checks.
 			serverLoggerConfigMap = Config().MustGet(
 				ctx,
-				fmt.Sprintf(`%s.%s`, configNodeName, consts.ConfigNodeNameLogger),
+				fmt.Sprintf(`%s.%s.%s`, configNodeName, instanceName, consts.ConfigNodeNameLogger),
 			).Map()
+			if len(serverLoggerConfigMap) == 0 && len(serverConfigMap) > 0 {
+				serverLoggerConfigMap = gbconv.Map(serverConfigMap[consts.ConfigNodeNameLogger])
+			}
 			if len(serverLoggerConfigMap) > 0 {
 				if err = server.Logger().SetConfigWithMap(serverLoggerConfigMap); err != nil {
 					panic(err)
 				}
 			}
+		}
+		// The server name is necessary. It sets a default server name is it is not configured.
+		if server.GetName() == "" || server.GetName() == gbhttp.DefaultServerName {
+			server.SetName(instanceName)
 		}
 		return server
 	}).(*gbhttp.Server)

@@ -9,6 +9,7 @@ require (
 	github.com/fsnotify/fsnotify v1.7.0
 	github.com/gin-gonic/gin v1.9.1
 	github.com/gorilla/websocket v1.5.1
+	github.com/grokify/html-strip-tags-go v0.1.0
 	github.com/magiconair/properties v1.8.7
 	github.com/olekukonko/tablewriter v0.0.5
 	go.opentelemetry.io/otel v1.22.0
