@@ -4,8 +4,11 @@ import (
 	gbmap "ghostbb.io/gb/container/gb_map"
 	gbtype "ghostbb.io/gb/container/gb_type"
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
+
+func init() {
+	gin.SetMode(gin.ReleaseMode)
+}
 
 const (
 	DefaultServerName                = "default"
@@ -36,7 +39,6 @@ type (
 		*gin.Engine
 		instance    string            // Instance name of current HTTP server.
 		config      ServerConfig      // Server configuration.
-		handler     http.Handler      // Http server handler
 		servers     []*internalServer // Underlying http.Server array.
 		serverCount *gbtype.Int       // Underlying http.Server number for internal usage.
 		closeChan   chan struct{}     // Used for underlying server closing event notification.

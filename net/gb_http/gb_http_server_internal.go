@@ -12,7 +12,6 @@ import (
 	gbstr "ghostbb.io/gb/text/gb_str"
 	"net"
 	"net/http"
-	"os"
 	"strconv"
 	"sync"
 	"time"
@@ -20,7 +19,6 @@ import (
 
 type internalServer struct {
 	server      *Server      // Belonged server.
-	fd          uintptr      // File descriptor for passing to the child process when graceful reload.
 	address     string       // Listening address like:":80", ":8080".
 	httpServer  *http.Server // Underlying http.Server.
 	rawListener net.Listener // Underlying net.Listener.
@@ -30,7 +28,7 @@ type internalServer struct {
 	listener    net.Listener // Wrapped net.Listener.
 }
 
-func (s *Server) newInternalServer(address string, fd ...int) *internalServer {
+func (s *Server) newInternalServer(address string) *internalServer {
 	// Change port to address like: 80 -> :80
 	if gbstr.IsNumeric(address) {
 		address = ":" + address
@@ -43,9 +41,6 @@ func (s *Server) newInternalServer(address string, fd ...int) *internalServer {
 		status:     gbtype.NewInt(),
 	}
 
-	if len(fd) > 0 && fd[0] > 0 {
-		is.fd = uintptr(fd[0])
-	}
 	if s.config.Listeners != nil {
 		addrArray := gbstr.SplitAndTrim(address, ":")
 		addrPort, err := strconv.Atoi(addrArray[len(addrArray)-1])
@@ -65,7 +60,7 @@ func (s *Server) newInternalServer(address string, fd ...int) *internalServer {
 func (s *Server) newHttpServer(address string) *http.Server {
 	server := &http.Server{
 		Addr:           address,
-		Handler:        s.handler,
+		Handler:        s.Engine,
 		ReadTimeout:    s.config.ReadTimeout,
 		WriteTimeout:   s.config.WriteTimeout,
 		IdleTimeout:    s.config.IdleTimeout,
@@ -73,18 +68,6 @@ func (s *Server) newHttpServer(address string) *http.Server {
 	}
 	server.SetKeepAlivesEnabled(s.config.KeepAlive)
 	return server
-}
-
-// Fd retrieves and returns the file descriptor of the current server.
-// It is available ony in *nix like operating systems like linux, unix, darwin.
-func (s *internalServer) Fd() uintptr {
-	if ln := s.getRawListener(); ln != nil {
-		file, err := ln.(*net.TCPListener).File()
-		if err == nil {
-			return file.Fd()
-		}
-	}
-	return 0
 }
 
 // CreateListenerTLS creates listener on configured address with HTTPS.
@@ -133,22 +116,9 @@ func (s *internalServer) getNetListener() (net.Listener, error) {
 		return s.rawListener, nil
 	}
 
-	var (
-		ln  net.Listener
-		err error
-	)
-	if s.fd > 0 {
-		f := os.NewFile(s.fd, "")
-		ln, err = net.FileListener(f)
-		if err != nil {
-			err = gberror.Wrap(err, "net.FileListener failed")
-			return nil, err
-		}
-	} else {
-		ln, err = net.Listen("tcp", s.httpServer.Addr)
-		if err != nil {
-			err = gberror.Wrapf(err, `net.Listen address "%s" failed`, s.httpServer.Addr)
-		}
+	ln, err := net.Listen("tcp", s.httpServer.Addr)
+	if err != nil {
+		err = gberror.Wrapf(err, `net.Listen address "%s" failed`, s.httpServer.Addr)
 	}
 
 	return ln, err
@@ -175,9 +145,6 @@ func (s *internalServer) Serve(ctx context.Context) error {
 	}
 
 	action := "started"
-	if s.fd != 0 {
-		action = "reloaded"
-	}
 
 	s.server.Logger().Infof(
 		ctx,

@@ -8,7 +8,6 @@ import (
 	gberror "ghostbb.io/gb/errors/gb_error"
 	"ghostbb.io/gb/internal/intlog"
 	gbctx "ghostbb.io/gb/os/gb_ctx"
-	gbenv "ghostbb.io/gb/os/gb_env"
 	gbfile "ghostbb.io/gb/os/gb_file"
 	gblog "ghostbb.io/gb/os/gb_log"
 	gbproc "ghostbb.io/gb/os/gb_proc"
@@ -19,7 +18,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/olekukonko/tablewriter"
 	"net/http"
-	"runtime"
 	"strings"
 	"sync"
 	"time"
@@ -37,7 +35,6 @@ func GetServer(name ...interface{}) *Server {
 			Engine:      e,
 			instance:    serverName,
 			servers:     make([]*internalServer, 0),
-			handler:     e,
 			closeChan:   make(chan struct{}, 10000),
 			serverCount: gbtype.NewInt(),
 		}
@@ -103,19 +100,8 @@ func (s *Server) Start() error {
 
 	// ================================================================================================
 	// Start the HTTP server.
-	// ================================================================================================
-	reloaded := false
-	fdMapStr := gbenv.Get(adminActionReloadEnvKey).String()
-	if len(fdMapStr) > 0 {
-		sfm := bufferToServerFdMap([]byte(fdMapStr))
-		if v, ok := sfm[s.config.Name]; ok {
-			s.startServer(v)
-			reloaded = true
-		}
-	}
-	if !reloaded {
-		s.startServer(nil)
-	}
+	// ===============================================================================================
+	s.startServer()
 
 	// If this is a child process, it then notifies its parent exit.
 	if gbproc.IsChild() {
@@ -131,7 +117,7 @@ func (s *Server) Start() error {
 	return nil
 }
 
-func (s *Server) startServer(fdMap listenerFdMap) {
+func (s *Server) startServer() {
 	var (
 		ctx          = context.TODO()
 		httpsEnabled bool
@@ -146,34 +132,13 @@ func (s *Server) startServer(fdMap listenerFdMap) {
 				s.config.HTTPSAddr = defaultHttpsAddr
 			}
 			httpsEnabled = len(s.config.HTTPSAddr) > 0
-			var array []string
-			if v, ok := fdMap["https"]; ok && len(v) > 0 {
-				array = strings.Split(v, ",")
-			} else {
-				array = strings.Split(s.config.HTTPSAddr, ",")
-			}
-			for _, v := range array {
+
+			for _, v := range strings.Split(s.config.HTTPSAddr, ",") {
 				if len(v) == 0 {
 					continue
 				}
-				var (
-					fd        = 0
-					itemFunc  = v
-					addrAndFd = strings.Split(v, "#")
-				)
-				if len(addrAndFd) > 1 {
-					itemFunc = addrAndFd[0]
-					// The Windows OS does not support socket file descriptor passing
-					// from parent process.
-					if runtime.GOOS != "windows" {
-						fd = gbconv.Int(addrAndFd[1])
-					}
-				}
-				if fd > 0 {
-					s.servers = append(s.servers, s.newInternalServer(itemFunc, fd))
-				} else {
-					s.servers = append(s.servers, s.newInternalServer(itemFunc))
-				}
+
+				s.servers = append(s.servers, s.newInternalServer(v))
 				s.servers[len(s.servers)-1].isHttps = true
 			}
 		}
@@ -182,34 +147,12 @@ func (s *Server) startServer(fdMap listenerFdMap) {
 	if !httpsEnabled && len(s.config.Address) == 0 {
 		s.config.Address = defaultHttpAddr
 	}
-	var array []string
-	if v, ok := fdMap["http"]; ok && len(v) > 0 {
-		array = gbstr.SplitAndTrim(v, ",")
-	} else {
-		array = gbstr.SplitAndTrim(s.config.Address, ",")
-	}
-	for _, v := range array {
+
+	for _, v := range gbstr.SplitAndTrim(s.config.Address, ",") {
 		if len(v) == 0 {
 			continue
 		}
-		var (
-			fd        = 0
-			itemFunc  = v
-			addrAndFd = strings.Split(v, "#")
-		)
-		if len(addrAndFd) > 1 {
-			itemFunc = addrAndFd[0]
-			// The Window OS does not support socket file descriptor passing
-			// from the parent process.
-			if runtime.GOOS != "windows" {
-				fd = gbconv.Int(addrAndFd[1])
-			}
-		}
-		if fd > 0 {
-			s.servers = append(s.servers, s.newInternalServer(itemFunc, fd))
-		} else {
-			s.servers = append(s.servers, s.newInternalServer(itemFunc))
-		}
+		s.servers = append(s.servers, s.newInternalServer(v))
 	}
 
 	// Start listening asynchronously.
@@ -279,11 +222,7 @@ func (s *Server) Status() ServerStatus {
 }
 
 func (s *Server) GetRoutes() gin.RoutesInfo {
-	if v, ok := s.handler.(*gin.Engine); ok {
-		return v.Routes()
-	} else {
-		panic(gberror.WrapCode(gbcode.CodeInternalError, gberror.New("handler type wrong"), ""))
-	}
+	return s.Engine.Routes()
 }
 
 // doRouterMapDump checks and dumps the router map to the log.
