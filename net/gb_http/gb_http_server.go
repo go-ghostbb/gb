@@ -43,9 +43,11 @@ func GetServer(name ...interface{}) *Server {
 			panic(gberror.WrapCode(gbcode.CodeInvalidConfiguration, err, ""))
 		}
 
-		e.Use(gin.Recovery(), s.loggerMiddleware(), gin.LoggerWithFormatter(s.debugLog), func(c *gin.Context) {
+		e.Use(func(c *gin.Context) {
 			c.Set(ServerContextKey, gbctx.New())
 		})
+
+		e.Use(s.loggerMiddleware(), s.terminal(), s.Recovery())
 		return s
 	})
 

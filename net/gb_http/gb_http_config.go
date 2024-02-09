@@ -33,6 +33,7 @@ type ServerConfig struct {
 	// Logging.
 	// ======================================================================================================
 
+	Terminal         bool          `json:"terminal"`         // Terminal stdout
 	Logger           *gblog.Logger `json:"logger"`           // Logger specifies the logger for server.
 	LogPath          string        `json:"logPath"`          // LogPath specifies the directory for storing logging files.
 	LogLevel         string        `json:"logLevel"`         // LogLevel specifies the logging level for logger.
@@ -66,9 +67,10 @@ func NewConfig() ServerConfig {
 		IdleTimeout:             60 * time.Second,
 		MaxHeaderBytes:          10240, // 10KB
 		KeepAlive:               true,
+		Terminal:                true,
 		Logger:                  gblog.New(),
 		LogLevel:                "all",
-		LogStdout:               true,
+		LogStdout:               false,
 		ErrorStack:              true,
 		ErrorLogEnabled:         true,
 		ErrorLogPattern:         "error-{Ymd}.log",

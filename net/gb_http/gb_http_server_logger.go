@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"ghostbb.io/gb/internal/instance"
 	gblog "ghostbb.io/gb/os/gb_log"
+	gbstr "ghostbb.io/gb/text/gb_str"
 	"github.com/gin-gonic/gin"
-	"strings"
 	"time"
 )
 
@@ -31,7 +31,7 @@ func (s *Server) loggerMiddleware() gin.HandlerFunc {
 		)
 		c.Next()
 		m["body"], _ = c.GetRawData()
-		err := strings.TrimRight(c.Errors.ByType(gin.ErrorTypePrivate).String(), "\n")
+		err := gbstr.TrimRight(errorsString(c.Errors.ByType(gin.ErrorTypePrivate)), "\n")
 
 		logger := instance.GetOrSetFuncLock(loggerInstanceKey, func() interface{} {
 			l := s.config.Logger.Clone()
@@ -55,32 +55,59 @@ func (s *Server) loggerMiddleware() gin.HandlerFunc {
 			path,
 		)
 		if err != "" {
-			msg += fmt.Sprintf("｜ERROR｜%s", err)
-			logger.Error(ctx, msg+"\n    ", m, "\n")
+			logger.Stack(false).Error(ctx, msg+"\n    ", m)
+			logger.Stack(false).Header(false).Error(context.Background(), err+"\n")
 		} else {
 			logger.Info(ctx, msg+"\n    ", m, "\n")
 		}
 	}
 }
 
-func (s *Server) debugLog(param gin.LogFormatterParams) string {
-	var statusColor, methodColor, resetColor string
-	statusColor = param.StatusCodeColor()
-	methodColor = param.MethodColor()
-	resetColor = param.ResetColor()
+func (s *Server) terminal() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		if !s.config.Terminal {
+			return
+		}
 
-	if param.Latency > time.Minute {
-		param.Latency = param.Latency.Truncate(time.Second)
+		var (
+			start = time.Now()
+			path  = c.Request.URL.Path
+			raw   = c.Request.URL.RawQuery
+		)
+
+		// Process request
+		c.Next()
+
+		// Stop timer
+		var (
+			timeStamp    = time.Now()
+			latency      = timeStamp.Sub(start).Truncate(time.Second)
+			clientIP     = c.ClientIP()
+			method       = c.Request.Method
+			statusCode   = c.Writer.Status()
+			errorMessage = gbstr.TrimRight(errorsString(c.Errors.ByType(gin.ErrorTypePrivate)), "\n")
+
+			statusColor = statusCodeColor(statusCode)
+			methodColor = methodColor(method)
+			resetColor  = resetColor()
+		)
+
+		if raw != "" {
+			path = path + "?" + raw
+		}
+
+		msg := fmt.Sprintf("%v [SERVER] %s |%s %3d %s| %13v | %15s |%s %-7s %s %#v",
+			timeStamp.Format("2006/01/02 15:04:05"),
+			s.instance,
+			statusColor, statusCode, resetColor,
+			latency,
+			clientIP,
+			methodColor, method, resetColor,
+			path,
+		)
+		if errorMessage != "" {
+			msg += "\n" + errorMessage + "\n"
+		}
+		fmt.Println(msg)
 	}
-
-	return fmt.Sprintf("%v [SERVER] %s |%s %3d %s| %13v | %15s |%s %-7s %s %#v\n%s",
-		param.TimeStamp.Format("2006/01/02 15:04:05"),
-		s.instance,
-		statusColor, param.StatusCode, resetColor,
-		param.Latency,
-		param.ClientIP,
-		methodColor, param.Method, resetColor,
-		param.Path,
-		param.ErrorMessage,
-	)
 }

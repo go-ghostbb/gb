@@ -3,7 +3,7 @@ module ghostbb.io/gb/contrib/drivers/mssql
 go 1.21.0
 
 require (
-	ghostbb.io/gb v1.2.4
+	ghostbb.io/gb v1.2.5
 	gorm.io/driver/sqlserver v1.5.2
 	gorm.io/gorm v1.25.6
 )
