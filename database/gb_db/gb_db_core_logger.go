@@ -30,6 +30,7 @@ type ILogger interface {
 	SetIgnoreRecordNotFoundError(b bool)
 	SetLogCat(s string)
 	SetLogStdout(b bool)
+	SetTerminal(b bool)
 	LogMode(gormlogger.LogLevel) gormlogger.Interface
 	Info(context.Context, string, ...interface{})
 	Warn(context.Context, string, ...interface{})
@@ -51,6 +52,7 @@ type Logger struct {
 }
 
 type LogConfig struct {
+	Terminal                  bool
 	SlowThreshold             time.Duration
 	IgnoreRecordNotFoundError bool
 	LogLevel                  gormlogger.LogLevel
@@ -76,6 +78,10 @@ func (l *Logger) SetLogStdout(b bool) {
 	} else {
 		l.LogStdout = false
 	}
+}
+
+func (l *Logger) SetTerminal(b bool) {
+	l.Terminal = b
 }
 
 func (l *Logger) LogMode(level gormlogger.LogLevel) gormlogger.Interface {
@@ -125,14 +131,16 @@ func (l *Logger) Trace(ctx context.Context, begin time.Time, fc func() (string, 
 		logger.Info(ctx, msg)
 	}
 
-	fmt.Printf("%s [ORM] %s ｜%s %15v %s｜%s %-8s %s｜%-10s｜ %s \n",
-		time.Now().Format("2006/01/02 15:04:05"),
-		track,
-		elapsedColor, elapsed, resetColor,
-		magenta, fmt.Sprintf("rows:%d", rows), reset,
-		l.group,
-		sql,
-	)
+	if l.LogConfig.Terminal {
+		fmt.Printf("%s [ORM] %s ｜%s %15v %s｜%s %-8s %s｜%-10s｜ %s \n",
+			time.Now().Format("2006/01/02 15:04:05"),
+			track,
+			elapsedColor, elapsed, resetColor,
+			magenta, fmt.Sprintf("rows:%d", rows), reset,
+			l.group,
+			sql,
+		)
+	}
 }
 
 func (l *Logger) ElapsedColor(elapsed time.Duration) string {

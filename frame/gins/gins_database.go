@@ -167,7 +167,10 @@ func parseDBConfigNode(value interface{}) *gbdb.ConfigNode {
 		node.IgnoreRecordNotFoundError = true
 	}
 	if _, v := gbutil.MapPossibleItemByKey(nodeMap, "LogStdout"); v == nil {
-		node.LogStdout = true
+		node.LogStdout = false
+	}
+	if _, v := gbutil.MapPossibleItemByKey(nodeMap, "Terminal"); v == nil {
+		node.Terminal = true
 	}
 	return node
 }

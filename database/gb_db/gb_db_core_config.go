@@ -41,6 +41,7 @@ type ConfigNode struct {
 	MaxOpenConnCount          int           `json:"maxOpen"`                   // (Optional) Max open connection configuration for underlying connection pool.
 	SlowThreshold             time.Duration `json:"slowThreshold"`             // (Optional) Slow threshold.
 	IgnoreRecordNotFoundError bool          `json:"ignoreRecordNotFoundError"` // (Optional) Ignore record not found error.
+	Terminal                  bool          `json:"terminal"`                  // (Optional) Terminal stdout
 	LogCat                    string        `json:"logCat"`                    // (Optional) Log cat.
 	LogStdout                 bool          `json:"logStdout"`                 // (Optional) Stdout.
 }

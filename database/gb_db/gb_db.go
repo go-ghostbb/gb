@@ -125,6 +125,7 @@ func newDBByConfigNode(node *ConfigNode, group string) (core *Core, err error) {
 	c.logger.SetIgnoreRecordNotFoundError(node.IgnoreRecordNotFoundError)
 	c.logger.SetLogCat(node.LogCat)
 	c.logger.SetLogStdout(node.LogStdout)
+	c.logger.SetTerminal(node.Terminal)
 
 	if v, ok := driverMap[node.Type]; ok {
 		if c.DB, err = v.New(c, node); err != nil {
