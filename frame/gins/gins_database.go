@@ -4,173 +4,101 @@ import (
 	"context"
 	"fmt"
 	gbdb "ghostbb.io/gb/database/gb_db"
-	gbcode "ghostbb.io/gb/errors/gb_code"
-	gberror "ghostbb.io/gb/errors/gb_error"
 	"ghostbb.io/gb/internal/consts"
 	"ghostbb.io/gb/internal/instance"
 	"ghostbb.io/gb/internal/intlog"
-	gbcfg "ghostbb.io/gb/os/gb_cfg"
 	gbconv "ghostbb.io/gb/util/gb_conv"
 	gbutil "ghostbb.io/gb/util/gb_util"
-	"time"
 )
 
-func Database(name ...string) *gbdb.Core {
+func Database(name ...string) *gbdb.DB {
 	var (
-		ctx   = context.Background()
-		group = gbdb.DefaultGroupName
+		err          error
+		ctx          = context.Background()
+		instanceName = gbdb.DefaultGroupName
 	)
 	if len(name) > 0 && name[0] != "" {
-		group = name[0]
+		instanceName = name[0]
 	}
-	instanceKey := fmt.Sprintf("%s.%s", frameCoreComponentNameDatabase, group)
-	db := instance.GetOrSetFuncLock(instanceKey, func() interface{} {
-		// It ignores returned error to avoid file no found error while it's not necessary.
-		var (
-			configMap     map[string]interface{}
-			configNodeKey = consts.ConfigNodeNameDatabase
-		)
-		// It firstly searches the configuration of the instance name.
-		if configData, _ := Config().Data(ctx); len(configData) > 0 {
-			if v, _ := gbutil.MapPossibleItemByKey(configData, consts.ConfigNodeNameDatabase); v != "" {
-				configNodeKey = v
-			}
-		}
-		if v, _ := Config().Get(ctx, configNodeKey); !v.IsEmpty() {
-			configMap = v.Map()
-		}
-		// No configuration found, it formats and panics error.
-		if len(configMap) == 0 && !gbdb.IsConfigured() {
-			// File configuration object checks.
-			var err error
-			if fileConfig, ok := Config().GetAdapter().(*gbcfg.AdapterFile); ok {
-				if _, err = fileConfig.GetFilePath(); err != nil {
-					panic(gberror.WrapCode(gbcode.CodeMissingConfiguration, err,
-						`configuration not found, did you miss the configuration file or misspell the configuration file name`,
-					))
-				}
-			}
-			// Panic if nothing found in Config object or in gdb configuration.
-			if len(configMap) == 0 && !gbdb.IsConfigured() {
-				panic(gberror.NewCodef(
-					gbcode.CodeMissingConfiguration,
-					`database initialization failed: configuration missing for database node "%s"`,
-					consts.ConfigNodeNameDatabase,
-				))
-			}
+	instanceKey := fmt.Sprintf("%s.%s", frameCoreComponentNameDatabase, instanceName)
+	return instance.GetOrSetFuncLock(instanceKey, func() interface{} {
+		if !Config().Available(ctx) {
+			return nil
 		}
 
-		if len(configMap) == 0 {
-			configMap = make(map[string]interface{})
-		}
-		// Parse `m` as map-slice and adds it to global configurations for package gbdb.
-		for g, groupConfig := range configMap {
-			cg := gbdb.ConfigGroup{}
-			switch value := groupConfig.(type) {
-			case []interface{}:
-				for _, v := range value {
-					if node := parseDBConfigNode(v); node != nil {
-						cg = append(cg, *node)
-					}
-				}
-			case map[string]interface{}:
-				if node := parseDBConfigNode(value); node != nil {
-					cg = append(cg, *node)
-				}
-			}
-			if len(cg) > 0 {
-				if gbdb.GetConfig(group) == nil {
-					intlog.Printf(ctx, "add configuration for group: %s, %#v", g, cg)
-					gbdb.SetConfigGroup(g, cg)
-				} else {
-					intlog.Printf(ctx, "ignore configuration as it already exists for group: %s, %#v", g, cg)
-					intlog.Printf(ctx, "%s, %#v", g, cg)
-				}
-			}
-		}
-		// Parse `m` as a single node configuration,
-		// which is the default group configuration.
-		if node := parseDBConfigNode(configMap); node != nil {
-			cg := gbdb.ConfigGroup{}
-			if node.Link != "" || node.Host != "" {
-				cg = append(cg, *node)
-			}
-			if len(cg) > 0 {
-				if gbdb.GetConfig(group) == nil {
-					intlog.Printf(ctx, "add configuration for group: %s, %#v", gbdb.DefaultGroupName, cg)
-					gbdb.SetConfigGroup(gbdb.DefaultGroupName, cg)
-				} else {
-					intlog.Printf(
-						ctx,
-						"ignore configuration as it already exists for group: %s, %#v",
-						gbdb.DefaultGroupName, cg,
-					)
-					intlog.Printf(ctx, "%s, %#v", gbdb.DefaultGroupName, cg)
-				}
-			}
-		}
-
-		// Initialize logger
 		var (
-			loggerConfigMap map[string]interface{}
-			loggerNodeName  = fmt.Sprintf("%s.%s", configNodeKey, consts.ConfigNodeNameLogger)
+			configMap         map[string]interface{}
+			dbConfigMap       map[string]interface{}
+			dbLoggerConfigMap map[string]interface{}
+			configNodeName    string
+			db                *gbdb.DB
+			dbConfig          gbdb.DatabaseConfig
 		)
-		if v, _ := Config().Get(ctx, loggerNodeName); !v.IsEmpty() {
-			loggerConfigMap = v.Map()
+
+		if configMap, err = Config().Data(ctx); err != nil {
+			intlog.Errorf(ctx, `retrieve config data map failed: %+v`, err)
 		}
-		if len(loggerConfigMap) == 0 {
-			if v, _ := Config().Get(ctx, configNodeKey); !v.IsEmpty() {
-				loggerConfigMap = v.Map()
+		// Find possible server configuration item by possible names.
+		if len(configMap) > 0 {
+			if v, _ := gbutil.MapPossibleItemByKey(configMap, consts.ConfigNodeNameDatabase); v != "" {
+				configNodeName = v
 			}
 		}
-		if len(loggerConfigMap) > 0 {
-			if err := gbdb.SetGlobalLoggerConfigWithMap(loggerConfigMap); err != nil {
+		// Automatically retrieve configuration by instance name.
+		dbConfigMap = Config().MustGet(
+			ctx,
+			fmt.Sprintf(`%s.%s`, configNodeName, instanceName),
+		).Map()
+		if len(dbConfigMap) == 0 {
+			dbConfigMap = Config().MustGet(ctx, configNodeName).Map()
+		}
+		if len(dbConfigMap) > 0 {
+			if dbConfig, err = parseDatabaseConfig(dbConfigMap); err != nil {
 				panic(err)
 			}
+
+			// Database logger configuration checks.
+			dbLoggerConfigMap = Config().MustGet(
+				ctx,
+				fmt.Sprintf(`%s.%s.%s`, configNodeName, instanceName, consts.ConfigNodeNameLogger),
+			).Map()
+			if len(dbLoggerConfigMap) == 0 && len(dbConfigMap) > 0 {
+				dbLoggerConfigMap = gbconv.Map(dbConfigMap[consts.ConfigNodeNameLogger])
+			}
+			if len(dbLoggerConfigMap) > 0 {
+				if err = dbConfig.Logger.SetConfigWithMap(dbLoggerConfigMap); err != nil {
+					panic(err)
+				}
+			}
+
+			if db, err = gbdb.NewDBByConfig(instanceName, dbConfig); err != nil {
+				panic(err)
+			}
+		} else {
+			// The configuration is not necessary, so it just prints internal logs.
+			intlog.Printf(
+				ctx,
+				`missing configuration from configuration component for database "%s"`,
+				instanceName,
+			)
 		}
 
-		// Create a new ORM object with given configurations.
-		if db, err := gbdb.NewByGroup(name...); err == nil {
-			return db
-		} else {
-			// If panics, often because it does not find its configuration for given group.
-			panic(err)
-		}
-		return nil
-	})
-	if db != nil {
-		return db.(*gbdb.Core)
-	}
-	return nil
+		return db
+	}).(*gbdb.DB)
 }
 
-func parseDBConfigNode(value interface{}) *gbdb.ConfigNode {
-	nodeMap, ok := value.(map[string]interface{})
-	if !ok {
-		return nil
+func parseDatabaseConfig(m map[string]interface{}) (gbdb.DatabaseConfig, error) {
+	// The m now is a shallow copy of m.
+	// Any changes to m does not affect the original one.
+	// A little tricky, isn't it?
+	m = gbutil.MapCopy(m)
+
+	config := gbdb.NewConfig()
+
+	// Update the current configuration object.
+	// It only updates the configured keys not all the object.
+	if err := gbconv.Struct(m, &config); err != nil {
+		return gbdb.DatabaseConfig{}, err
 	}
-	var (
-		node = &gbdb.ConfigNode{}
-		err  = gbconv.Struct(nodeMap, node)
-	)
-	if err != nil {
-		panic(err)
-	}
-	// Find possible `Link` configuration content.
-	if _, v := gbutil.MapPossibleItemByKey(nodeMap, "Link"); v != nil {
-		node.Link = gbconv.String(v)
-	}
-	if _, v := gbutil.MapPossibleItemByKey(nodeMap, "SlowThreshold"); v == nil {
-		node.SlowThreshold = 200 * time.Millisecond
-	}
-	if _, v := gbutil.MapPossibleItemByKey(nodeMap, "IgnoreRecordNotFoundError"); v == nil {
-		node.IgnoreRecordNotFoundError = true
-	}
-	if _, v := gbutil.MapPossibleItemByKey(nodeMap, "LogStdout"); v == nil {
-		node.LogStdout = false
-	}
-	if _, v := gbutil.MapPossibleItemByKey(nodeMap, "Terminal"); v == nil {
-		node.Terminal = true
-	}
-	return node
+	return config, nil
 }

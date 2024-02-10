@@ -2,17 +2,21 @@ package gbdb
 
 import "gorm.io/gorm"
 
-// DriverWrapper is a driver wrapper for extending features with embedded driver.
-type DriverWrapper struct {
-	driver Driver
+type IDriver interface {
+	// New creates and returns a database object for specified database server.
+	New(config DatabaseConfig) (*gorm.DB, error)
 }
 
-func (d *DriverWrapper) New(core *Core, node *ConfigNode) (*gorm.DB, error) {
-	return d.driver.New(core, node)
+type DriverWrapper struct {
+	driver IDriver
+}
+
+func (d *DriverWrapper) New(config DatabaseConfig) (*gorm.DB, error) {
+	return d.driver.New(config)
 }
 
 // newDriverWrapper creates and returns a driver wrapper.
-func newDriverWrapper(driver Driver) Driver {
+func newDriverWrapper(driver IDriver) IDriver {
 	return &DriverWrapper{
 		driver: driver,
 	}

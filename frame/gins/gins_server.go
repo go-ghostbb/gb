@@ -18,11 +18,11 @@ func Server(name ...interface{}) *gbhttp.Server {
 		err          error
 		ctx          = context.Background()
 		instanceName = gbhttp.DefaultServerName
-		instanceKey  = fmt.Sprintf("%s.%v", frameCoreComponentNameServer, name)
 	)
 	if len(name) > 0 && name[0] != "" {
 		instanceName = gbconv.String(name[0])
 	}
+	instanceKey := fmt.Sprintf("%s.%s", frameCoreComponentNameServer, instanceName)
 	return instance.GetOrSetFuncLock(instanceKey, func() interface{} {
 		server := gbhttp.GetServer(instanceName)
 		if Config().Available(ctx) {
@@ -47,6 +47,21 @@ func Server(name ...interface{}) *gbhttp.Server {
 					}
 				}
 			}
+
+			// Server logger configuration checks.
+			serverLoggerConfigMap = Config().MustGet(
+				ctx,
+				fmt.Sprintf(`%s.%s.%s`, configNodeName, instanceName, consts.ConfigNodeNameLogger),
+			).Map()
+			if len(serverLoggerConfigMap) == 0 && len(serverConfigMap) > 0 {
+				serverLoggerConfigMap = gbconv.Map(serverConfigMap[consts.ConfigNodeNameLogger])
+			}
+			if len(serverLoggerConfigMap) > 0 {
+				if err = server.Logger().SetConfigWithMap(serverLoggerConfigMap); err != nil {
+					panic(err)
+				}
+			}
+
 			// Automatically retrieve configuration by instance name.
 			serverConfigMap = Config().MustGet(
 				ctx,
@@ -66,19 +81,6 @@ func Server(name ...interface{}) *gbhttp.Server {
 					`missing configuration from configuration component for HTTP server "%s"`,
 					instanceName,
 				)
-			}
-			// Server logger configuration checks.
-			serverLoggerConfigMap = Config().MustGet(
-				ctx,
-				fmt.Sprintf(`%s.%s.%s`, configNodeName, instanceName, consts.ConfigNodeNameLogger),
-			).Map()
-			if len(serverLoggerConfigMap) == 0 && len(serverConfigMap) > 0 {
-				serverLoggerConfigMap = gbconv.Map(serverConfigMap[consts.ConfigNodeNameLogger])
-			}
-			if len(serverLoggerConfigMap) > 0 {
-				if err = server.Logger().SetConfigWithMap(serverLoggerConfigMap); err != nil {
-					panic(err)
-				}
 			}
 		}
 		// The server name is necessary. It sets a default server name is it is not configured.

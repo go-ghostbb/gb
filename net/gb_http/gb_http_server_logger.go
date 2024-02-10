@@ -55,9 +55,16 @@ func (s *Server) loggerMiddleware() gin.HandlerFunc {
 			path,
 		)
 		if err != "" {
-			logger.Stack(false).Error(ctx, msg+"\n    ", m)
-			logger.Stack(false).Header(false).Error(context.Background(), err+"\n")
+			if !s.IsErrorLogEnabled() {
+				return
+			}
+			logger = logger.File(s.config.ErrorLogPattern).Stack(false)
+			logger.Error(ctx, msg+"\n    ", m)
+			logger.Header(false).Error(context.Background(), err+"\n")
 		} else {
+			if !s.IsAccessLogEnabled() {
+				return
+			}
 			logger.Info(ctx, msg+"\n    ", m, "\n")
 		}
 	}

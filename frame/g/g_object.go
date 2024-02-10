@@ -59,7 +59,7 @@ func Log(name ...string) *gblog.Logger {
 }
 
 // DB returns an instance of database ORM object with specified configuration group name.
-func DB(name ...string) *gbdb.Core {
+func DB(name ...string) *gbdb.DB {
 	return gins.Database(name...)
 }
 

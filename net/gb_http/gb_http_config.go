@@ -32,7 +32,6 @@ type ServerConfig struct {
 	// ======================================================================================================
 	// Logging.
 	// ======================================================================================================
-
 	Terminal         bool          `json:"terminal"`         // Terminal stdout
 	Logger           *gblog.Logger `json:"logger"`           // Logger specifies the logger for server.
 	LogPath          string        `json:"logPath"`          // LogPath specifies the directory for storing logging files.
@@ -42,7 +41,7 @@ type ServerConfig struct {
 	ErrorLogEnabled  bool          `json:"errorLogEnabled"`  // ErrorLogEnabled enables error logging content to files.
 	ErrorLogPattern  string        `json:"errorLogPattern"`  // ErrorLogPattern specifies the error log file pattern like: error-{Ymd}.log
 	AccessLogEnabled bool          `json:"accessLogEnabled"` // AccessLogEnabled enables access logging content to files.
-	AccessLogPattern string        `json:"accessLogPattern"` // AccessLogPattern specifies the error log file pattern like: access-{Ymd}.log
+	AccessLogPattern string        `json:"accessLogPattern"` // AccessLogPattern specifies the access log file pattern like: access-{Ymd}.log
 
 	// DumpRouterMap specifies whether automatically dumps router map when server starts.
 	DumpRouterMap bool `json:"dumpRouterMap"`
@@ -101,4 +100,12 @@ func (s *Server) SetConfig(c ServerConfig) error {
 	}
 	intlog.Printf(context.TODO(), "SetConfig: %+v", s.config)
 	return nil
+}
+
+func (s *Server) IsAccessLogEnabled() bool {
+	return s.config.AccessLogEnabled
+}
+
+func (s *Server) IsErrorLogEnabled() bool {
+	return s.config.ErrorLogEnabled
 }
