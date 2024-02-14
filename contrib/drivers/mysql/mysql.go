@@ -40,7 +40,7 @@ func (d *Driver) New(config gbdb.DatabaseConfig) (db *gorm.DB, err error) {
 		DefaultStringSize: 191,    // string 類型字段默認長度
 	}
 
-	if db, err := gorm.Open(mysql.New(mysqlConfig), config.GormConfig()); err != nil {
+	if db, err = gorm.Open(mysql.New(mysqlConfig), config.GormConfig()); err != nil {
 		return nil, err
 	} else {
 		sqlDB, _ := db.DB()
