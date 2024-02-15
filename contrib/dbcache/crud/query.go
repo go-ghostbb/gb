@@ -23,6 +23,7 @@ func (h *Handler) beforeQuery(db *gorm.DB) {
 	)
 	callbacks.BuildQuerySQL(db)
 	if level == CacheNone {
+		h.query(db)
 		return
 	}
 
