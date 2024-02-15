@@ -88,7 +88,7 @@ func (s *Server) terminal() gin.HandlerFunc {
 		// Stop timer
 		var (
 			timeStamp    = time.Now()
-			latency      = timeStamp.Sub(start).Truncate(time.Second)
+			latency      = timeStamp.Sub(start)
 			clientIP     = c.ClientIP()
 			method       = c.Request.Method
 			statusCode   = c.Writer.Status()
