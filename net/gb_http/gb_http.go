@@ -52,6 +52,6 @@ type (
 	listenerFdMap = map[string]string
 
 	IBind interface {
-		Register(group *gin.RouterGroup)
+		Init(group *gin.RouterGroup)
 	}
 )

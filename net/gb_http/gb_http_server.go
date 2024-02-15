@@ -276,6 +276,6 @@ func (s *Server) Run() {
 
 func (s *Server) Bind(obj ...IBind) {
 	for _, o := range obj {
-		o.Register(s.Group(""))
+		o.Init(s.Group(""))
 	}
 }
