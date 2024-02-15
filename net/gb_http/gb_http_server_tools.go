@@ -1,6 +1,7 @@
 package gbhttp
 
 import (
+	"context"
 	"fmt"
 	gbvar "ghostbb.io/gb/container/gb_var"
 	gberror "ghostbb.io/gb/errors/gb_error"
@@ -48,6 +49,10 @@ func ParseForm(c *gin.Context, obj interface{}) error {
 		return gberror.New(fmt.Sprintf("Parse request form failed: %s", err.Error()))
 	}
 	return nil
+}
+
+func Ctx(c *gin.Context) context.Context {
+	return Get(c, ServerContextKey).Interface().(context.Context)
 }
 
 func Set(c *gin.Context, key string, value any) {
