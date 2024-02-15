@@ -11,7 +11,6 @@ import (
 	gormlogger "gorm.io/gorm/logger"
 	"path/filepath"
 	"runtime"
-	"strings"
 	"time"
 )
 
@@ -105,6 +104,7 @@ const (
 	gormPackage = "gorm.io"
 	gbdbPackage = "database/gb_db"
 	testFile    = "_test.go"
+	genFile     = ".gen.go"
 )
 
 func (d *dbLogger) pathTrack(ctx context.Context) string {
@@ -113,9 +113,10 @@ func (d *dbLogger) pathTrack(ctx context.Context) string {
 		_, file, line, ok := runtime.Caller(i)
 		switch {
 		case !ok:
-		case strings.HasSuffix(file, testFile):
-		case strings.Contains(file, gormPackage):
-		case strings.Contains(file, gbdbPackage):
+		case gbstr.HasSuffix(file, testFile):
+		case gbstr.HasSuffix(file, genFile):
+		case gbstr.Contains(file, gormPackage):
+		case gbstr.Contains(file, gbdbPackage):
 		default:
 			return filepath.Base(fmt.Sprintf("%s:%d", file, line))
 		}

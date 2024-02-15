@@ -3,7 +3,7 @@ module ghostbb.io/gb/contrib/dbcache
 go 1.21.0
 
 require (
-	ghostbb.io/gb v1.2.10
+	ghostbb.io/gb v1.2.11
 	gorm.io/gorm v1.25.6
 )
 
