@@ -50,4 +50,8 @@ type (
 	// Listening file descriptor mapping.
 	// The key is either "http" or "https" and the value is its FD.
 	listenerFdMap = map[string]string
+
+	IBind interface {
+		Register(group *gin.RouterGroup)
+	}
 )

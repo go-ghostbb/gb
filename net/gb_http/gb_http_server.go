@@ -273,3 +273,9 @@ func (s *Server) Run() {
 
 	s.Logger().Infof(ctx, "pid[%d]: all servers shutdown", gbproc.Pid())
 }
+
+func (s *Server) Bind(obj ...IBind) {
+	for _, o := range obj {
+		o.Register(s.Group(""))
+	}
+}
