@@ -36,8 +36,8 @@ const (
 	defaultFileFlags                  = os.O_CREATE | os.O_WRONLY | os.O_APPEND
 	defaultFilePerm                   = os.FileMode(0666)
 	defaultFileExpire                 = time.Minute
-	pathFilterKey                     = "/os/glog/glog"
-	memoryLockPrefixForPrintingToFile = "glog.printToFile:"
+	pathFilterKey                     = "/os/gb_log/gb_log"
+	memoryLockPrefixForPrintingToFile = "gblog.printToFile:"
 )
 
 const (
