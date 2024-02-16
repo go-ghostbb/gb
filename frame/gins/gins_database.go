@@ -71,6 +71,11 @@ func Database(name ...string) *gbdb.DB {
 				}
 			}
 
+			// path
+			if k, _ := gbutil.MapPossibleItemByKey(dbConfigMap, "LogPath"); k == "" {
+				dbConfig.LogPath = dbConfig.Logger.GetPath()
+			}
+
 			if db, err = gbdb.NewDBByConfig(instanceName, dbConfig); err != nil {
 				panic(err)
 			}

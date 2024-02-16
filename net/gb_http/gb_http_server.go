@@ -75,6 +75,10 @@ func (s *Server) SetConfigWithMap(m map[string]interface{}) error {
 	if k, v := gbutil.MapPossibleItemByKey(m, "MaxHeaderBytes"); k != "" {
 		m[k] = gbfile.StrToSize(gbconv.String(v))
 	}
+	// path
+	if k, _ := gbutil.MapPossibleItemByKey(m, "LogPath"); k == "" {
+		m["LogPath"] = s.Logger().GetPath()
+	}
 	// Update the current configuration object.
 	// It only updates the configured keys not all the object.
 	if err := gbconv.Struct(m, &s.config); err != nil {
