@@ -48,10 +48,19 @@ func Server(name ...interface{}) *gbhttp.Server {
 				}
 			}
 
+			// Automatically retrieve configuration by instance name.
+			serverConfigMap = Config().MustGet(
+				ctx,
+				fmt.Sprintf(`%s.%s`, configNodeName, instanceName),
+			).Map()
+			if len(serverConfigMap) == 0 {
+				serverConfigMap = Config().MustGet(ctx, configNodeName).Map()
+			}
+
 			// Server logger configuration checks.
 			serverLoggerConfigMap = Config().MustGet(
 				ctx,
-				fmt.Sprintf(`%s.%s.%s`, configNodeName, instanceName, consts.ConfigNodeNameLogger),
+				fmt.Sprintf(`%s.%s`, configNodeName, consts.ConfigNodeNameLogger),
 			).Map()
 			if len(serverLoggerConfigMap) == 0 && len(serverConfigMap) > 0 {
 				serverLoggerConfigMap = gbconv.Map(serverConfigMap[consts.ConfigNodeNameLogger])
@@ -62,14 +71,6 @@ func Server(name ...interface{}) *gbhttp.Server {
 				}
 			}
 
-			// Automatically retrieve configuration by instance name.
-			serverConfigMap = Config().MustGet(
-				ctx,
-				fmt.Sprintf(`%s.%s`, configNodeName, instanceName),
-			).Map()
-			if len(serverConfigMap) == 0 {
-				serverConfigMap = Config().MustGet(ctx, configNodeName).Map()
-			}
 			if len(serverConfigMap) > 0 {
 				if err = server.SetConfigWithMap(serverConfigMap); err != nil {
 					panic(err)

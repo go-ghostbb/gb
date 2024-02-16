@@ -60,7 +60,7 @@ func Database(name ...string) *gbdb.DB {
 			// Database logger configuration checks.
 			dbLoggerConfigMap = Config().MustGet(
 				ctx,
-				fmt.Sprintf(`%s.%s.%s`, configNodeName, instanceName, consts.ConfigNodeNameLogger),
+				fmt.Sprintf(`%s.%s`, configNodeName, consts.ConfigNodeNameLogger),
 			).Map()
 			if len(dbLoggerConfigMap) == 0 && len(dbConfigMap) > 0 {
 				dbLoggerConfigMap = gbconv.Map(dbConfigMap[consts.ConfigNodeNameLogger])
