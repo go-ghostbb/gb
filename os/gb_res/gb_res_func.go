@@ -16,7 +16,7 @@ const (
 	packedGoSourceTemplate = `
 package %s
 
-import gbres "ghostbb.io/gb/os/gb-res"
+import gbres "ghostbb.io/gb/os/gb_res"
 
 func init() {
 	if err := gbres.Add("%s"); err != nil {

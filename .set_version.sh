@@ -46,10 +46,18 @@ for file in `find ${workdir} -name go.mod`; do
     echo ""
     echo "processing dir: $goModPath"
     cd $goModPath
+    if [ $goModPath = "./cmd/gb" ]; then
+        mv go.work go.work.version.bak
+        go mod edit -replace ghostbb.io/gb=../../
+    fi
     go mod tidy
     # Upgrading only gb related libraries, sometimes even if a version number is specified, it may not be possible to successfully upgrade. Please confirm before submitting the code
     go list -f "{{if and (not .Indirect) (not .Main)}}{{.Path}}@${newVersion}{{end}}" -m all | grep "^ghostbb.io/gb"
     go list -f "{{if and (not .Indirect) (not .Main)}}{{.Path}}@${newVersion}{{end}}" -m all | grep "^ghostbb.io/gb" | xargs -L1 go get -v
     go mod tidy
+    if [ $goModPath = "./cmd/gb" ]; then
+        go mod edit -dropreplace ghostbb.io/gb
+        mv go.work.version.bak go.work
+    fi
     cd -
 done

@@ -20,6 +20,8 @@ func GetCommand(ctx context.Context) (*Command, error) {
 	}
 	err = root.AddObject(
 		cmd.Version,
+		cmd.Pack,
+		cmd.Install,
 	)
 	if err != nil {
 		return nil, err
