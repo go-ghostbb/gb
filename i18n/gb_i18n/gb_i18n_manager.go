@@ -71,8 +71,8 @@ func New(options ...Options) *Manager {
 			}
 		}
 		if opts.Path != "" {
-			// To avoid of the source path of GoFrame: github.com/gogf/i18n/gi18n
-			if gbfile.Exists(opts.Path + gbfile.Separator + "gi18n") {
+			// To avoid of the source path of GoFrame: ghostbb.io/gb/i18n/gb_i18n
+			if gbfile.Exists(opts.Path + gbfile.Separator + "gb_i18n") {
 				opts.Path = ""
 				pathType = pathTypeNone
 			}
