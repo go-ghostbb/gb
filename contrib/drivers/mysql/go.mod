@@ -3,7 +3,7 @@ module ghostbb.io/gb/contrib/drivers/mysql
 go 1.21.6
 
 require (
-	ghostbb.io/gb v1.2.14
+	ghostbb.io/gb v1.3.0
 	gorm.io/driver/mysql v1.5.4
 	gorm.io/gorm v1.25.7
 )
