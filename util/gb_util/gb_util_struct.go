@@ -22,8 +22,8 @@ func StructToSlice(data interface{}) []interface{} {
 	switch reflectKind {
 	case reflect.Struct:
 		array := make([]interface{}, 0)
-		// Note that, it uses the gconv tag name instead of the attribute name if
-		// the gconv tag is fined in the struct attributes.
+		// Note that, it uses the gbconv tag name instead of the attribute name if
+		// the gbconv tag is fined in the struct attributes.
 		for k, v := range gbconv.Map(reflectValue) {
 			array = append(array, k)
 			array = append(array, v)

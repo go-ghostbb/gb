@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	pathFilterKey = "/test/gtest/gtest"
+	pathFilterKey = "/test/gb_test/gb_test"
 )
 
 // C creates a unit testing case.

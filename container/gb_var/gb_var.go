@@ -161,10 +161,10 @@ func (v *Var) Duration() time.Duration {
 	return gbconv.Duration(v.Val())
 }
 
-// GTime converts and returns `v` as *gtime.Time.
+// GBTime converts and returns `v` as *gtime.Time.
 // The parameter `format` specifies the format of the time string using gtime,
 // eg: Y-m-d H:i:s.
-func (v *Var) GTime(format ...string) *gbtime.Time {
+func (v *Var) GBTime(format ...string) *gbtime.Time {
 	return gbconv.GBTime(v.Val(), format...)
 }
 
