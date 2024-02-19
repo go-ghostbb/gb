@@ -10,6 +10,7 @@ import (
 	gbcfg "ghostbb.io/gb/os/gb_cfg"
 	gblog "ghostbb.io/gb/os/gb_log"
 	gbres "ghostbb.io/gb/os/gb_res"
+	gbview "ghostbb.io/gb/os/gb_view"
 	gbvalid "ghostbb.io/gb/util/gb_valid"
 )
 
@@ -71,4 +72,9 @@ func Redis(name ...string) *gbredis.Redis {
 // Validator is a convenience function, which creates and returns a new validation manager object.
 func Validator() *gbvalid.Validator {
 	return gbvalid.New()
+}
+
+// View returns an instance of template engine object with specified name.
+func View(name ...string) *gbview.View {
+	return gins.View(name...)
 }

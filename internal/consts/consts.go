@@ -6,6 +6,7 @@ const (
 	ConfigNodeNameLogger          = "logger"
 	ConfigNodeNameRedis           = "redis"
 	ConfigNodeNameCache           = "cache"
+	ConfigNodeNameViewer          = "viewer"
 	ConfigNodeNameServer          = "server"
 	ConfigNodeNameServerSecondary = "httpserver"
 
