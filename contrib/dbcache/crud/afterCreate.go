@@ -22,7 +22,7 @@ func (h *Handler) afterCreate(db *gorm.DB) {
 
 	go func() {
 		defer wg.Done()
-		intlog.Print(ctx, "[AfterUpdate] now start to invalidate search cache for model: %s", tableName)
+		intlog.Printf(ctx, "[AfterUpdate] now start to invalidate search cache for model: %s", tableName)
 		if err := h.cache.InvalidateSearchCache(ctx, tableName); err != nil {
 			intlog.Errorf(ctx, "[AfterUpdate] invalidating search cache for model %s error: %v", tableName, err)
 			return
