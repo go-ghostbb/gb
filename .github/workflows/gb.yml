@@ -21,12 +21,25 @@ jobs:
         uses: szenius/set-timezone@v1.1
         with:
           timezoneLinux: "Asia/Taipei"
+
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Golang ${{ matrix.go-version }}
         uses: actions/setup-go@v4
         with:
           go-version: ${{ matrix.go-version }}
           cache: false
+
       - name: Test
         run: go test ./... -race
+
+      - name: Coverage
+        run: go test ./... -race -coverprofile=coverage.out -covermode=atomic -coverpkg=./...,ghostbb.io/gb/...
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+        env:
+          slug: go-ghostbb/gb
