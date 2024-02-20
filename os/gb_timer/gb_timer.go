@@ -1,12 +1,12 @@
 // Package gbtimer implements timer for interval/delayed jobs running and management.
 //
 // This package is designed for management for millions of timing jobs. The differences
-// between gbtimer and gcron are as follows:
-//  1. package gcron is implemented based on package gbtimer.
+// between gbtimer and gbcron are as follows:
+//  1. package gbcron is implemented based on package gbtimer.
 //  2. gbtimer is designed for high performance and for millions of timing jobs.
-//  3. gcron supports configuration pattern grammar like linux crontab, which is more manually
+//  3. gbcron supports configuration pattern grammar like linux crontab, which is more manually
 //     readable.
-//  4. gbtimer's benchmark OP is measured in nanoseconds, and gcron's benchmark OP is measured
+//  4. gbtimer's benchmark OP is measured in nanoseconds, and gbcron's benchmark OP is measured
 //     in microseconds.
 //
 // ALSO VERY NOTE the common delay of the timer: https://github.com/golang/go/issues/14410

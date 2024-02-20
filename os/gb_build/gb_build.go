@@ -12,7 +12,7 @@ import (
 
 // BuildInfo maintains the built info of current binary.
 type BuildInfo struct {
-	GoFrame string                 // Built used GoFrame version.
+	GB      string                 // Built used GB version.
 	Golang  string                 // Built used Golang version.
 	Git     string                 // Built used git repo. commit id and datetime.
 	Time    string                 // Built datetime.
@@ -53,7 +53,7 @@ func init() {
 // which automatically injects necessary information into the binary.
 func Info() BuildInfo {
 	return BuildInfo{
-		GoFrame: Get(gbVersion).String(),
+		GB:      Get(gbVersion).String(),
 		Golang:  Get(goVersion).String(),
 		Git:     Get(BuiltGit).String(),
 		Time:    Get(BuiltTime).String(),

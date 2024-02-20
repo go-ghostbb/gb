@@ -59,7 +59,7 @@ func (c cVersion) Index(ctx context.Context, in cVersionInput) (*cVersionOutput,
 	detailBuffer.appendLine(0, "CLI Detail:")
 	detailBuffer.appendLine(1, fmt.Sprintf("Installed At: %s", gbfile.SelfPath()))
 	info := gbbuild.Info()
-	if info.GoFrame == "" {
+	if info.GB == "" {
 		detailBuffer.appendLine(1, fmt.Sprintf("Built Go Version: %s", runtime.Version()))
 		detailBuffer.appendLine(1, fmt.Sprintf("Built GB Version: %s", gb.VERSION))
 	} else {
@@ -67,7 +67,7 @@ func (c cVersion) Index(ctx context.Context, in cVersionInput) (*cVersionOutput,
 			info.Git = "none"
 		}
 		detailBuffer.appendLine(1, fmt.Sprintf("Built Go Version: %s", info.Golang))
-		detailBuffer.appendLine(1, fmt.Sprintf("Built GB Version: %s", info.GoFrame))
+		detailBuffer.appendLine(1, fmt.Sprintf("Built GB Version: %s", info.GB))
 		detailBuffer.appendLine(1, fmt.Sprintf("Git Commit: %s", info.Git))
 		detailBuffer.appendLine(1, fmt.Sprintf("Built Time: %s", info.Time))
 	}

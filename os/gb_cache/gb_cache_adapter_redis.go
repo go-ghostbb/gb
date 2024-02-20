@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-// AdapterRedis is the gcache adapter implements using Redis server.
+// AdapterRedis is the gbcache adapter implements using Redis server.
 type AdapterRedis struct {
 	redis *gbredis.Redis
 }
