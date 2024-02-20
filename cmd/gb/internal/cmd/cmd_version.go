@@ -107,7 +107,7 @@ func getGoVersion() (goVersion string, ok bool) {
 }
 
 // getGBVersion returns the gb version of current project using.
-func getGBVersion(indentLevel int) (gfVersion string) {
+func getGBVersion(indentLevel int) (gbVersion string) {
 	pkgInfo, err := gbproc.ShellExec(context.Background(), `go list -f "{{if (not .Main)}}{{.Path}}@{{.Version}}{{end}}" -m all`)
 	if err != nil {
 		return "cannot find go.mod"
@@ -115,7 +115,7 @@ func getGBVersion(indentLevel int) (gfVersion string) {
 	pkgList := gbstr.Split(pkgInfo, "\n")
 	for _, v := range pkgList {
 		if strings.HasPrefix(v, "ghostbb.io/gb") {
-			gfVersion += fmt.Sprintf("\n%s%s", strings.Repeat(defaultIndent, indentLevel), v)
+			gbVersion += fmt.Sprintf("\n%s%s", strings.Repeat(defaultIndent, indentLevel), v)
 		}
 	}
 	return

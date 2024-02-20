@@ -270,13 +270,13 @@ func newCommandFromMethod(
 				if arg.Orphan {
 					if orphanValue := parser.GetOpt(arg.Name); orphanValue != nil {
 						if orphanValue.String() == "" {
-							// Eg: gf -f
+							// Eg: gb -f
 							data[arg.Name] = "true"
 						} else {
 							// Adapter with common user habits.
 							// Eg:
-							// `gf -f=0`: which parameter `f` is parsed as false
-							// `gf -f=1`: which parameter `f` is parsed as true
+							// `gb -f=0`: which parameter `f` is parsed as false
+							// `gb -f=1`: which parameter `f` is parsed as true
 							data[arg.Name] = orphanValue.Bool()
 						}
 					}

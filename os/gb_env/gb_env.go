@@ -78,8 +78,8 @@ func Remove(key ...string) (err error) {
 // It returns the default value `def` if none of them exists.
 //
 // Fetching Rules:
-// 1. Environment arguments are in uppercase format, eg: GF_<package name>_<variable name>；
-// 2. Command line arguments are in lowercase format, eg: gf.<package name>.<variable name>;
+// 1. Environment arguments are in uppercase format, eg: GB_<package name>_<variable name>；
+// 2. Command line arguments are in lowercase format, eg: gb.<package name>.<variable name>;
 func GetWithCmd(key string, def ...interface{}) *gbvar.Var {
 	envKey := utils.FormatEnvKey(key)
 	if v := os.Getenv(envKey); v != "" {

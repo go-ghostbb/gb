@@ -130,7 +130,7 @@ func (c *Config) GetWithEnv(ctx context.Context, pattern string, def ...interfac
 // If the configuration value does not exist, then it retrieves and returns the command line option specified by `key`.
 // It returns the default value `def` if none of them exists.
 //
-// Fetching Rules: Command line arguments are in lowercase format, eg: gf.package.variable.
+// Fetching Rules: Command line arguments are in lowercase format, eg: gb.package.variable.
 func (c *Config) GetWithCmd(ctx context.Context, pattern string, def ...interface{}) (*gbvar.Var, error) {
 	value, err := c.Get(ctx, pattern)
 	if err != nil && gberror.Code(err) != gbcode.CodeNotFound {

@@ -22,7 +22,7 @@ import (
 )
 
 const (
-	tracingInstrumentName                        = "github.com/gogf/gf/v2/net/gclient.Client"
+	tracingInstrumentName                        = "ghostbb.io/gb/net/gbclient.Client"
 	tracingAttrHttpAddressRemote                 = "http.address.remote"
 	tracingAttrHttpAddressLocal                  = "http.address.local"
 	tracingAttrHttpDnsStart                      = "http.dns.start"

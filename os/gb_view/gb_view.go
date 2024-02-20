@@ -30,7 +30,7 @@ type (
 )
 
 const (
-	commandEnvKeyForPath = "gf.gview.path"
+	commandEnvKeyForPath = "gb.view.path"
 )
 
 var (

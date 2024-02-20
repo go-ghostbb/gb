@@ -149,7 +149,7 @@ func (v *Var) Float64() float64 {
 }
 
 // Time converts and returns `v` as time.Time.
-// The parameter `format` specifies the format of the time string using gtime,
+// The parameter `format` specifies the format of the time string using gbtime,
 // eg: Y-m-d H:i:s.
 func (v *Var) Time(format ...string) time.Time {
 	return gbconv.Time(v.Val(), format...)
@@ -161,8 +161,8 @@ func (v *Var) Duration() time.Duration {
 	return gbconv.Duration(v.Val())
 }
 
-// GBTime converts and returns `v` as *gtime.Time.
-// The parameter `format` specifies the format of the time string using gtime,
+// GBTime converts and returns `v` as *gbtime.Time.
+// The parameter `format` specifies the format of the time string using gbtime,
 // eg: Y-m-d H:i:s.
 func (v *Var) GBTime(format ...string) *gbtime.Time {
 	return gbconv.GBTime(v.Val(), format...)

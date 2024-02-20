@@ -4,7 +4,7 @@ import (
 	"io"
 )
 
-// Expose returns the default logger of package glog.
+// Expose returns the default logger of package gblog.
 func Expose() *Logger {
 	return defaultLogger
 }

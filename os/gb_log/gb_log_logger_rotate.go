@@ -16,7 +16,7 @@ import (
 )
 
 const (
-	memoryLockPrefixForRotating = "glog.rotateChecksTimely:"
+	memoryLockPrefixForRotating = "gblog.rotateChecksTimely:"
 )
 
 // rotateFileBySize rotates the current logging file according to the
@@ -33,7 +33,7 @@ func (l *Logger) rotateFileBySize(ctx context.Context, now time.Time) {
 
 // doRotateFile rotates the given logging file.
 func (l *Logger) doRotateFile(ctx context.Context, filePath string) error {
-	memoryLockKey := "glog.doRotateFile:" + filePath
+	memoryLockKey := "gblog.doRotateFile:" + filePath
 	if !gbmlock.TryLock(memoryLockKey) {
 		return nil
 	}

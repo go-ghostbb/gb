@@ -10,7 +10,7 @@ import (
 // Command holds the info about an argument that can handle custom logic.
 type Command struct {
 	Name          string        // Command name(case-sensitive).
-	Usage         string        // A brief line description about its usage, eg: gf build main.go [OPTION]
+	Usage         string        // A brief line description about its usage, eg: gb build main.go [OPTION]
 	Brief         string        // A brief info that describes what this command will do.
 	Description   string        // A detailed description.
 	Arguments     []Argument    // Argument array, configuring how this command act.

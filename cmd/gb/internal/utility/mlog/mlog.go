@@ -23,7 +23,7 @@ func init() {
 		logger.SetHeaderPrint(false)
 	}
 
-	if gbcmd.GetOpt("debug") != nil || gbcmd.GetOpt("gf.debug") != nil {
+	if gbcmd.GetOpt("debug") != nil || gbcmd.GetOpt("gb.debug") != nil {
 		logger.SetHeaderPrint(true)
 		logger.SetStackSkip(4)
 		logger.SetFlags(logger.GetFlags() | gblog.F_FILE_LONG)

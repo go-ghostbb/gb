@@ -12,7 +12,7 @@ type Command struct {
 	*gbcmd.Command
 }
 
-// GetCommand retrieves and returns the root command of CLI `gf`.
+// GetCommand retrieves and returns the root command of CLI `gb`.
 func GetCommand(ctx context.Context) (*Command, error) {
 	root, err := gbcmd.NewFromObject(cmd.GB)
 	if err != nil {

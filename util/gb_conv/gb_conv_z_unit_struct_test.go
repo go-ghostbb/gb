@@ -1,9 +1,3 @@
-// Copyright GoFrame Author(https://goframe.org). All Rights Reserved.
-//
-// This Source Code Form is subject to the terms of the MIT License.
-// If a copy of the MIT was not distributed with this file,
-// You can obtain one at https://github.com/gogf/gf.
-
 package gbconv_test
 
 import (
@@ -314,7 +308,7 @@ func Test_Struct_Attr_Struct_Slice_Ptr(t *testing.T) {
 			},
 		}
 
-		// 嵌套struct转换，属性为slice类型，数值为slice map类型
+		// 嵌套struct转换，属性为slice类型，數值为slice map类型
 		if err := gbconv.Struct(scores, user); err != nil {
 			t.Error(err)
 		} else {
@@ -500,7 +494,6 @@ func Test_StructEmbedded3(t *testing.T) {
 	})
 }
 
-// https://github.com/gogf/gf/issues/775
 func Test_StructEmbedded4(t *testing.T) {
 	gbtest.C(t, func(t *gbtest.T) {
 		type Sub2 struct {
@@ -640,8 +633,7 @@ func Test_Struct_Time(t *testing.T) {
 	})
 }
 
-func Test_Struct_GTime(t *testing.T) {
-	// https://github.com/gogf/gf/issues/1387
+func Test_Struct_GBTime(t *testing.T) {
 	gbtest.C(t, func(t *gbtest.T) {
 		type User struct {
 			Name       string
@@ -1259,8 +1251,7 @@ func Test_Struct_Empty_MapStringString(t *testing.T) {
 	})
 }
 
-// https://github.com/gogf/gf/issues/1563
-func Test_Struct_Issue1563(t *testing.T) {
+func Test_Struct_Custom1(t *testing.T) {
 	type User struct {
 		Pass1 string `c:"password1"`
 	}
@@ -1279,8 +1270,7 @@ func Test_Struct_Issue1563(t *testing.T) {
 	})
 }
 
-// https://github.com/gogf/gf/issues/1597
-func Test_Struct_Issue1597(t *testing.T) {
+func Test_Struct_Custom2(t *testing.T) {
 	gbtest.C(t, func(t *gbtest.T) {
 		type S struct {
 			A int
@@ -1302,8 +1292,7 @@ func Test_Struct_Issue1597(t *testing.T) {
 	})
 }
 
-// https://github.com/gogf/gf/issues/2980
-func Test_Struct_Issue2980(t *testing.T) {
+func Test_Struct_Custom3(t *testing.T) {
 	type Post struct {
 		CreatedAt *gbtime.Time `json:"createdAt" `
 	}

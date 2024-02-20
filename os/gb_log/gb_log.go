@@ -60,7 +60,7 @@ func DefaultLogger() *Logger {
 	return defaultLogger
 }
 
-// SetDefaultLogger sets the default logger for package glog.
+// SetDefaultLogger sets the default logger for package gblog.
 // Note that there might be concurrent safety issue if calls this function
 // in different goroutines.
 func SetDefaultLogger(l *Logger) {

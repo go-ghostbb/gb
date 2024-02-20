@@ -54,7 +54,7 @@ func (c cGB) Index(ctx context.Context, in cGBInput) (out *cGBOutput, err error)
 		mlog.Print("hi, it seams it's the first time you installing gb cli.")
 		answer = gbcmd.Scanf("do you want to install gb(%s) binary to your system? [y/n]: ", gb.VERSION)
 	} else if !data.IsSelf {
-		mlog.Print("hi, you have installed gf cli.")
+		mlog.Print("hi, you have installed gb cli.")
 		answer = gbcmd.Scanf("do you want to install gb(%s) binary to your system? [y/n]: ", gb.VERSION)
 	}
 	if strings.EqualFold(answer, "y") {

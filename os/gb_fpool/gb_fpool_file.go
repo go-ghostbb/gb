@@ -18,7 +18,7 @@ func Open(path string, flag int, perm os.FileMode, ttl ...time.Duration) (file *
 	// DO NOT search the path here wasting performance!
 	// Leave following codes just for warning you.
 	//
-	// path, err = gfile.Search(path)
+	// path, err = gbfile.Search(path)
 	// if err != nil {
 	//	return nil, err
 	// }

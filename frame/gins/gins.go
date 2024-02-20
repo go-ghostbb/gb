@@ -2,9 +2,9 @@
 package gins
 
 const (
-	frameCoreComponentNameViewer   = "gf.core.component.viewer"
+	frameCoreComponentNameViewer   = "gb.core.component.viewer"
 	frameCoreComponentNameLogger   = "gb.core.component.logger"
 	frameCoreComponentNameRedis    = "gb.core.component.redis"
 	frameCoreComponentNameDatabase = "gb.core.component.database"
-	frameCoreComponentNameServer   = "gf.core.component.server"
+	frameCoreComponentNameServer   = "gb.core.component.server"
 )

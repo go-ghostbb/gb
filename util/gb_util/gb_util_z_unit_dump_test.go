@@ -14,13 +14,13 @@ import (
 
 func Test_Dump(t *testing.T) {
 	type CommonReq struct {
-		AppId      int64  `json:"appId" v:"required" in:"path" des:"应用Id" sum:"应用Id Summary"`
-		ResourceId string `json:"resourceId" in:"query" des:"资源Id" sum:"资源Id Summary"`
+		AppId      int64  `json:"appId" v:"required" in:"path" des:"應用Id" sum:"應用Id Summary"`
+		ResourceId string `json:"resourceId" in:"query" des:"資源Id" sum:"資源Id Summary"`
 	}
 	type SetSpecInfo struct {
 		StorageType string   `v:"required|in:CLOUD_PREMIUM,CLOUD_SSD,CLOUD_HSSD" des:"StorageType"`
-		Shards      int32    `des:"shards 分片数" sum:"Shards Summary"`
-		Params      []string `des:"默认参数(json 串-ClickHouseParams)" sum:"Params Summary"`
+		Shards      int32    `des:"shards 分片數" sum:"Shards Summary"`
+		Params      []string `des:"默認參數(json 串-ClickHouseParams)" sum:"Params Summary"`
 	}
 	type CreateResourceReq struct {
 		CommonReq
@@ -90,13 +90,13 @@ func Test_Dump_Map(t *testing.T) {
 
 func TestDumpWithType(t *testing.T) {
 	type CommonReq struct {
-		AppId      int64  `json:"appId" v:"required" in:"path" des:"应用Id" sum:"应用Id Summary"`
-		ResourceId string `json:"resourceId" in:"query" des:"资源Id" sum:"资源Id Summary"`
+		AppId      int64  `json:"appId" v:"required" in:"path" des:"應用Id" sum:"應用Id Summary"`
+		ResourceId string `json:"resourceId" in:"query" des:"資源Id" sum:"資源Id Summary"`
 	}
 	type SetSpecInfo struct {
 		StorageType string   `v:"required|in:CLOUD_PREMIUM,CLOUD_SSD,CLOUD_HSSD" des:"StorageType"`
-		Shards      int32    `des:"shards 分片数" sum:"Shards Summary"`
-		Params      []string `des:"默认参数(json 串-ClickHouseParams)" sum:"Params Summary"`
+		Shards      int32    `des:"shards 分片數" sum:"Shards Summary"`
+		Params      []string `des:"默認參數(json 串-ClickHouseParams)" sum:"Params Summary"`
 	}
 	type CreateResourceReq struct {
 		CommonReq
@@ -159,8 +159,7 @@ func Test_Dump_Slashes(t *testing.T) {
 	})
 }
 
-// https://github.com/gogf/gf/issues/1661
-func Test_Dump_Issue1661(t *testing.T) {
+func Test_Dump_Custom1(t *testing.T) {
 	type B struct {
 		ba int
 		bb string

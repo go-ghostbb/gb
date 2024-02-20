@@ -518,7 +518,7 @@ func bindVarToStructAttr(
 			})
 			return
 		// Hold the time zone consistent in recursive
-		case "*gtime.Time", "gtime.Time":
+		case "*gbtime.Time", "gbtime.Time":
 			doConvertWithReflectValueSet(structFieldValue, doConvertInput{
 				FromValue:  value,
 				ToTypeName: structFieldTypeName,

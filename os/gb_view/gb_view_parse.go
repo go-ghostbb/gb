@@ -162,7 +162,7 @@ func (view *View) ParseOption(ctx context.Context, option Option) (result string
 		return "", err
 	}
 	// Using memory lock to ensure concurrent safety for template parsing.
-	gbmlock.LockFunc("gview.Parse:"+item.path, func() {
+	gbmlock.LockFunc("gbview.Parse:"+item.path, func() {
 		if view.config.AutoEncode {
 			tpl, err = tpl.(*htmltpl.Template).Parse(item.content)
 		} else {
@@ -230,7 +230,7 @@ func (view *View) doParseContent(ctx context.Context, content string, params Par
 	)
 	// Using memory lock to ensure concurrent safety for content parsing.
 	hash := strconv.FormatUint(gbhash.DJB64([]byte(content)), 10)
-	gbmlock.LockFunc("gview.ParseContent:"+hash, func() {
+	gbmlock.LockFunc("gbview.ParseContent:"+hash, func() {
 		if view.config.AutoEncode {
 			tpl, err = tpl.(*htmltpl.Template).Parse(content)
 		} else {

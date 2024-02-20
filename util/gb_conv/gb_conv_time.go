@@ -39,7 +39,7 @@ func Duration(any interface{}) time.Duration {
 // GBTime converts `any` to *gbtime.Time.
 // The parameter `format` can be used to specify the format of `any`.
 // It returns the converted value that matched the first format of the formats slice.
-// If no `format` given, it converts `any` using gtime.NewFromTimeStamp if `any` is numeric,
+// If no `format` given, it converts `any` using gbtime.NewFromTimeStamp if `any` is numeric,
 // or using gbtime.StrToTime if `any` is string.
 func GBTime(any interface{}, format ...string) *gbtime.Time {
 	if any == nil {

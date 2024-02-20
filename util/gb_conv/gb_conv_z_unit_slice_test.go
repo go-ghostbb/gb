@@ -309,7 +309,7 @@ func Test_Strings(t *testing.T) {
 		t.AssertEQ(gbconv.Strings([]uint8(`["1","2"]`)), []string{"1", "2"})
 		t.AssertEQ(gbconv.Strings([][]byte{{byte(0)}, {byte(1)}}), []string{"\u0000", "\u0001"})
 	})
-	// https://github.com/gogf/gf/issues/1750
+
 	gbtest.C(t, func(t *gbtest.T) {
 		t.AssertEQ(gbconv.Strings("123"), []string{"123"})
 	})

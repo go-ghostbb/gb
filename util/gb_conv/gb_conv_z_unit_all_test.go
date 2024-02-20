@@ -1027,7 +1027,7 @@ func Test_Struct_Basic1_All(t *testing.T) {
 			Ass      Score
 			Assb     []interface{}
 		}
-		// 使用默认映射规则绑定属性值到对象
+		// 使用默認映射规则绑定属性值到对象
 		user := new(User)
 		params1 := g.Map{
 			"uid":       1,
@@ -1079,7 +1079,7 @@ func Test_Struct_Basic1_All(t *testing.T) {
 	})
 }
 
-// 使用默认映射规则绑定属性值到对象
+// 使用默認映射规则绑定属性值到对象
 func Test_Struct_Basic2_All(t *testing.T) {
 	gbtest.C(t, func(t *gbtest.T) {
 		type User struct {
@@ -1231,7 +1231,7 @@ func Test_Struct_Attr_Struct_Slice1_All(t *testing.T) {
 			},
 		}
 
-		// 嵌套struct转换，属性为slice类型，数值为map类型
+		// 嵌套struct转换，属性为slice类型，數值为map类型
 		if err := gbconv.Struct(scores, user); err != nil {
 			gbtest.Error(err)
 		} else {
@@ -1270,7 +1270,7 @@ func Test_Struct_Attr_Struct_Slice2_All(t *testing.T) {
 			},
 		}
 
-		// 嵌套struct转换，属性为slice类型，数值为slice map类型
+		// 嵌套struct转换，属性为slice类型，數值为slice map类型
 		if err := gbconv.Struct(scores, user); err != nil {
 			gbtest.Error(err)
 		} else {
@@ -1313,7 +1313,7 @@ func Test_Struct_Attr_Struct_Slice_Ptr_All(t *testing.T) {
 			},
 		}
 
-		// 嵌套struct转换，属性为slice类型，数值为slice map类型
+		// 嵌套struct转换，属性为slice类型，數值为slice map类型
 		if err := gbconv.Struct(scores, user); err != nil {
 			gbtest.Error(err)
 		} else {

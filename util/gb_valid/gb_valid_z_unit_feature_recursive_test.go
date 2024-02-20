@@ -292,8 +292,8 @@ func Test_CheckStruct_Recursively_SliceAttribute_WithTypeAlias(t *testing.T) {
 	gbtest.C(t, func(t *gbtest.T) {
 		type ParamsItemBase struct {
 			Component string `v:"required" dc:"组件名称"`
-			Params    string `v:"required" dc:"配置参数(一般是JSON)"`
-			Version   uint64 `v:"required" dc:"参数版本"`
+			Params    string `v:"required" dc:"配置參數(一般是JSON)"`
+			Version   uint64 `v:"required" dc:"參數版本"`
 		}
 		type ParamsItem = ParamsItemBase
 		type ParamsModifyReq struct {

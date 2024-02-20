@@ -541,7 +541,7 @@ func (a *SortedStrArray) RLockFunc(f func(array []string)) *SortedStrArray {
 }
 
 // Merge merges `array` into current array.
-// The parameter `array` can be any garray or slice type.
+// The parameter `array` can be any gbarray or slice type.
 // The difference between Merge and Append is Append supports only specified slice type,
 // but Merge supports more parameter types.
 func (a *SortedStrArray) Merge(array interface{}) *SortedStrArray {

@@ -229,7 +229,6 @@ func TestConverter_Struct(t *testing.T) {
 		t.Assert(dd.ValTa.Val2, "abc")
 	})
 
-	// fix: https://github.com/gogf/gf/issues/2665
 	gbtest.C(t, func(t *gbtest.T) {
 		aa := &tEE{}
 
@@ -246,7 +245,6 @@ func TestConverter_Struct(t *testing.T) {
 		t.Assert(aa.Val3.Local(), gbtime.New("2006-01-02T15:04:05Z07:00").Local().Time)
 	})
 
-	// fix: https://github.com/gogf/gf/issues/3006
 	gbtest.C(t, func(t *gbtest.T) {
 		ff := &tFF{}
 		var tmp = map[string]any{
@@ -312,7 +310,6 @@ func TestConverter_CustomBasicType_ToStruct(t *testing.T) {
 	})
 }
 
-// fix: https://github.com/gogf/gf/issues/3099
 func TestConverter_CustomTimeType_ToStruct(t *testing.T) {
 	type timestamppb struct {
 		S string

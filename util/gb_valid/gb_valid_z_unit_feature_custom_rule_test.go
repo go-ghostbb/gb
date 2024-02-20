@@ -37,7 +37,7 @@ func Test_CustomRule1(t *testing.T) {
 	// Error with struct validation.
 	gbtest.C(t, func(t *gbtest.T) {
 		type T struct {
-			Value string `v:"uid@custom#自定义错误"`
+			Value string `v:"uid@custom#自定義錯誤"`
 			Data  string `p:"data"`
 		}
 		st := &T{
@@ -45,12 +45,12 @@ func Test_CustomRule1(t *testing.T) {
 			Data:  "123456",
 		}
 		err := g.Validator().Data(st).Run(ctx)
-		t.Assert(err.String(), "自定义错误")
+		t.Assert(err.String(), "自定義錯誤")
 	})
 	// No error with struct validation.
 	gbtest.C(t, func(t *gbtest.T) {
 		type T struct {
-			Value string `v:"uid@custom#自定义错误"`
+			Value string `v:"uid@custom#自定義錯誤"`
 			Data  string `p:"data"`
 		}
 		st := &T{
@@ -80,7 +80,7 @@ func Test_CustomRule2(t *testing.T) {
 	// Error with struct validation.
 	gbtest.C(t, func(t *gbtest.T) {
 		type T struct {
-			Value map[string]string `v:"uid@required-map#自定义错误"`
+			Value map[string]string `v:"uid@required-map#自定義錯誤"`
 			Data  string            `p:"data"`
 		}
 		st := &T{
@@ -88,12 +88,12 @@ func Test_CustomRule2(t *testing.T) {
 			Data:  "123456",
 		}
 		err := g.Validator().Data(st).Run(ctx)
-		t.Assert(err.String(), "自定义错误")
+		t.Assert(err.String(), "自定義錯誤")
 	})
 	// No error with struct validation.
 	gbtest.C(t, func(t *gbtest.T) {
 		type T struct {
-			Value map[string]string `v:"uid@required-map#自定义错误"`
+			Value map[string]string `v:"uid@required-map#自定義錯誤"`
 			Data  string            `p:"data"`
 		}
 		st := &T{
@@ -109,7 +109,7 @@ func Test_CustomRule_AllowEmpty(t *testing.T) {
 	rule := "allow-empty-str"
 	gbvalid.RegisterRule(rule, func(ctx context.Context, in gbvalid.RuleFuncInput) error {
 		s := in.Value.String()
-		if len(s) == 0 || s == "gf" {
+		if len(s) == 0 || s == "gb" {
 			return nil
 		}
 		return errors.New(in.Message)
@@ -118,13 +118,13 @@ func Test_CustomRule_AllowEmpty(t *testing.T) {
 	gbtest.C(t, func(t *gbtest.T) {
 		errStr := "error"
 		t.Assert(g.Validator().Data("").Rules(rule).Messages(errStr).Run(ctx), "")
-		t.Assert(g.Validator().Data("gf").Rules(rule).Messages(errStr).Run(ctx), "")
-		t.Assert(g.Validator().Data("gf2").Rules(rule).Messages(errStr).Run(ctx), errStr)
+		t.Assert(g.Validator().Data("gb").Rules(rule).Messages(errStr).Run(ctx), "")
+		t.Assert(g.Validator().Data("gb2").Rules(rule).Messages(errStr).Run(ctx), errStr)
 	})
 	// Error with struct validation.
 	gbtest.C(t, func(t *gbtest.T) {
 		type T struct {
-			Value string `v:"uid@allow-empty-str#自定义错误"`
+			Value string `v:"uid@allow-empty-str#自定義錯誤"`
 			Data  string `p:"data"`
 		}
 		st := &T{
@@ -137,7 +137,7 @@ func Test_CustomRule_AllowEmpty(t *testing.T) {
 	// No error with struct validation.
 	gbtest.C(t, func(t *gbtest.T) {
 		type T struct {
-			Value string `v:"uid@allow-empty-str#自定义错误"`
+			Value string `v:"uid@allow-empty-str#自定義錯誤"`
 			Data  string `p:"data"`
 		}
 		st := &T{
@@ -145,7 +145,7 @@ func Test_CustomRule_AllowEmpty(t *testing.T) {
 			Data:  "123456",
 		}
 		err := g.Validator().Data(st).Run(ctx)
-		t.Assert(err.String(), "自定义错误")
+		t.Assert(err.String(), "自定義錯誤")
 	})
 }
 
@@ -179,7 +179,7 @@ func TestValidator_RuleFunc(t *testing.T) {
 	// Error with struct validation.
 	gbtest.C(t, func(t *gbtest.T) {
 		type T struct {
-			Value string `v:"uid@custom_1#自定义错误"`
+			Value string `v:"uid@custom_1#自定義錯誤"`
 			Data  string `p:"data"`
 		}
 		st := &T{
@@ -187,12 +187,12 @@ func TestValidator_RuleFunc(t *testing.T) {
 			Data:  "123456",
 		}
 		err := g.Validator().RuleFunc(ruleName, ruleFunc).Data(st).Run(ctx)
-		t.Assert(err.String(), "自定义错误")
+		t.Assert(err.String(), "自定義錯誤")
 	})
 	// No error with struct validation.
 	gbtest.C(t, func(t *gbtest.T) {
 		type T struct {
-			Value string `v:"uid@custom_1#自定义错误"`
+			Value string `v:"uid@custom_1#自定義錯誤"`
 			Data  string `p:"data"`
 		}
 		st := &T{
@@ -236,7 +236,7 @@ func TestValidator_RuleFuncMap(t *testing.T) {
 	// Error with struct validation.
 	gbtest.C(t, func(t *gbtest.T) {
 		type T struct {
-			Value string `v:"uid@custom_1#自定义错误"`
+			Value string `v:"uid@custom_1#自定義錯誤"`
 			Data  string `p:"data"`
 		}
 		st := &T{
@@ -247,12 +247,12 @@ func TestValidator_RuleFuncMap(t *testing.T) {
 			RuleFuncMap(map[string]gbvalid.RuleFunc{
 				ruleName: ruleFunc,
 			}).Data(st).Run(ctx)
-		t.Assert(err.String(), "自定义错误")
+		t.Assert(err.String(), "自定義錯誤")
 	})
 	// No error with struct validation.
 	gbtest.C(t, func(t *gbtest.T) {
 		type T struct {
-			Value string `v:"uid@custom_1#自定义错误"`
+			Value string `v:"uid@custom_1#自定義錯誤"`
 			Data  string `p:"data"`
 		}
 		st := &T{

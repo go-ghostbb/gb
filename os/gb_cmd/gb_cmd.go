@@ -19,7 +19,7 @@ const (
 	helpOptionName        = "help"
 	helpOptionNameShort   = "h"
 	maxLineChars          = 120
-	tracingInstrumentName = "github.com/gogf/gf/v2/os/gcmd.Command"
+	tracingInstrumentName = "ghostbb.io/gb/os/gbcmd.Command"
 	tagNameName           = "name"
 	tagNameShort          = "short"
 )
@@ -63,8 +63,8 @@ func GetArgAll() []string {
 // It returns the default value `def` if none of them exists.
 //
 // Fetching Rules:
-// 1. Command line arguments are in lowercase format, eg: gf.`package name`.<variable name>;
-// 2. Environment arguments are in uppercase format, eg: GF_`package name`_<variable name>；
+// 1. Command line arguments are in lowercase format, eg: gb.`package name`.<variable name>;
+// 2. Environment arguments are in uppercase format, eg: GB_`package name`_<variable name>；
 func GetOptWithEnv(key string, def ...interface{}) *gbvar.Var {
 	cmdKey := utils.FormatCmdKey(key)
 	if command.ContainsOpt(cmdKey) {

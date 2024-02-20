@@ -7,7 +7,7 @@ import (
 const (
 	// commandEnvKeyForErrorPrint is used to specify the key controlling error printing to stdout.
 	// This error is designed not to be returned by functions.
-	commandEnvKeyForErrorPrint = "gb.gview.errorprint"
+	commandEnvKeyForErrorPrint = "gb.view.errorprint"
 )
 
 // errorPrint checks whether printing error to stdout.

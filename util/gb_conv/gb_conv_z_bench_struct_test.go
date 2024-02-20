@@ -12,7 +12,7 @@ type structType struct {
 
 var (
 	structMap = map[string]interface{}{
-		"name":  "gf",
+		"name":  "gb",
 		"score": 100,
 	}
 	structObj = structType{

@@ -40,16 +40,16 @@ func ParseUsingDefaultAlgorithm(args ...string) (parsedArgs []string, parsedOpti
 				parsedOptions[array[1]] = array[3]
 			} else if i < len(args)-1 {
 				if len(args[i+1]) > 0 && args[i+1][0] == '-' {
-					// Eg: gf gen -d -n 1
+					// Eg: gb gen -d -n 1
 					parsedOptions[array[1]] = array[3]
 				} else {
-					// Eg: gf gen -n 2
+					// Eg: gb gen -n 2
 					parsedOptions[array[1]] = args[i+1]
 					i += 2
 					continue
 				}
 			} else {
-				// Eg: gf gen -h
+				// Eg: gb gen -h
 				parsedOptions[array[1]] = array[3]
 			}
 		} else {
@@ -108,8 +108,8 @@ func GetArgAll() []string {
 // It returns the default value `def` if none of them exists.
 //
 // Fetching Rules:
-// 1. Command line arguments are in lowercase format, eg: gf.package.variable;
-// 2. Environment arguments are in uppercase format, eg: GF_PACKAGE_VARIABLE；
+// 1. Command line arguments are in lowercase format, eg: gb.package.variable;
+// 2. Environment arguments are in uppercase format, eg: GB_PACKAGE_VARIABLE；
 func GetOptWithEnv(key string, def ...string) string {
 	cmdKey := strings.ToLower(strings.ReplaceAll(key, "_", "."))
 	if ContainsOpt(cmdKey) {

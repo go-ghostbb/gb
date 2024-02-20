@@ -571,7 +571,7 @@ func (a *IntArray) RLockFunc(f func(array []int)) *IntArray {
 }
 
 // Merge merges `array` into current array.
-// The parameter `array` can be any garray or slice type.
+// The parameter `array` can be any gbarray or slice type.
 // The difference between Merge and Append is Append supports only specified slice type,
 // but Merge supports more parameter types.
 func (a *IntArray) Merge(array interface{}) *IntArray {
