@@ -143,11 +143,11 @@ func ExampleGetNextCharOffsetByPath() {
 	gbfile.PutContents(tempFile, "ghostbb example content")
 
 	// read contents
-	index := gbfile.GetNextCharOffsetByPath(tempFile, 'f', 0)
+	index := gbfile.GetNextCharOffsetByPath(tempFile, 'b', 0)
 	fmt.Println(index)
 
 	// Output:
-	// 2
+	// 5
 }
 
 func ExampleGetBytesTilCharByPath() {
@@ -162,10 +162,10 @@ func ExampleGetBytesTilCharByPath() {
 	gbfile.PutContents(tempFile, "ghostbb example content")
 
 	// read contents
-	fmt.Println(gbfile.GetBytesTilCharByPath(tempFile, 'f', 0))
+	fmt.Println(gbfile.GetBytesTilCharByPath(tempFile, 'b', 0))
 
 	// Output:
-	// [103 111 102] 2
+	// [103 104 111 115 116 98] 5
 }
 
 func ExampleGetBytesByTwoOffsetsByPath() {
