@@ -11,7 +11,7 @@ func Test_ShellExec(t *testing.T) {
 	gbtest.C(t, func(t *gbtest.T) {
 		s, err := gbproc.ShellExec(gbctx.New(), `echo 123`)
 		t.AssertNil(err)
-		t.Assert(s, "123\r\n")
+		t.Assert(s, "123\n")
 	})
 	// error
 	gbtest.C(t, func(t *gbtest.T) {
