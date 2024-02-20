@@ -101,7 +101,7 @@ jobs:
 
       - name: Build & Test
         if: ${{ (github.event_name == 'push' && github.ref != 'refs/heads/master') || github.event_name == 'pull_request' }}
-        run: bash .github/workflows/ci-main.sh
+        run: bash .github/workflows/ci-gb.sh
 
       - name: Build & Test & Coverage
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
