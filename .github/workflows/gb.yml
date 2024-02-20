@@ -43,3 +43,4 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
         env:
           slug: go-ghostbb/gb
+          flags: go-${{ matrix.go-version }}
