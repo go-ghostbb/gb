@@ -3,6 +3,7 @@ package gbhttp
 import (
 	"bytes"
 	"context"
+	"fmt"
 	gbtype "ghostbb.io/gb/container/gb_type"
 	gbcode "ghostbb.io/gb/errors/gb_code"
 	gberror "ghostbb.io/gb/errors/gb_error"
@@ -265,6 +266,8 @@ func (s *Server) doRouterMapDump() {
 		table.SetRowLine(true)
 		table.SetBorder(false)
 		table.SetCenterSeparator("|")
+
+		s.config.Address = gbstr.Replace(s.config.Address, FreePortAddress, fmt.Sprintf(`:%d`, s.GetListenedPort()))
 
 		for _, route := range routes {
 			table.Append([]string{
