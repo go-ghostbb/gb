@@ -1,9 +1,9 @@
-module ghostbb.io/gb/contrib/registry/etcd/v2
+module ghostbb.io/gb/contrib/registry/etcd
 
 go 1.22
 
 require (
-	ghostbb.io/gb v1.4.0
+	ghostbb.io/gb v1.4.1
 	go.etcd.io/etcd/client/v3 v3.5.7
 )
 

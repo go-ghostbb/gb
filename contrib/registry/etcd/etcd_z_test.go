@@ -1,7 +1,7 @@
 package etcd_test
 
 import (
-	"ghostbb.io/gb/contrib/registry/etcd/v2"
+	"ghostbb.io/gb/contrib/registry/etcd"
 	gbsvc "ghostbb.io/gb/net/gb_svc"
 	gbctx "ghostbb.io/gb/os/gb_ctx"
 	gbtest "ghostbb.io/gb/test/gb_test"
