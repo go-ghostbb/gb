@@ -27,7 +27,7 @@ func (s *Server) loggerMiddleware() gin.HandlerFunc {
 				"ip":        c.ClientIP(),
 				"userAgent": c.Request.UserAgent(),
 			}
-			ctx = context.Background()
+			ctx = Ctx(c)
 		)
 		c.Next()
 		m["body"], _ = c.GetRawData()
@@ -40,12 +40,6 @@ func (s *Server) loggerMiddleware() gin.HandlerFunc {
 			l.SetLevelPrint(false)
 			return l
 		}).(*gblog.Logger)
-
-		if ctxValue, ok := c.Get(ServerContextKey); ok {
-			if v, ok1 := ctxValue.(context.Context); ok1 {
-				ctx = v
-			}
-		}
 
 		msg := fmt.Sprintf("【%s】｜%d｜%13v｜%s ==> \"%s\"",
 			s.instance,

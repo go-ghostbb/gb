@@ -217,3 +217,16 @@ func (s *internalServer) shutdown(ctx context.Context) {
 		)
 	}
 }
+
+func (s *internalServer) close(ctx context.Context) {
+	if s.status.Val() == ServerStatusStopped {
+		return
+	}
+	if err := s.httpServer.Close(); err != nil {
+		s.server.Logger().Errorf(
+			ctx,
+			"%d: %s server [%s] closed error: %v",
+			gbproc.Pid(), s.getProto(), s.address, err,
+		)
+	}
+}

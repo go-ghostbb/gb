@@ -3,7 +3,9 @@ package gbhttp
 import (
 	gbmap "ghostbb.io/gb/container/gb_map"
 	gbtype "ghostbb.io/gb/container/gb_type"
+	gbsvc "ghostbb.io/gb/net/gb_svc"
 	"github.com/gin-gonic/gin"
+	"sync"
 )
 
 func init() {
@@ -12,9 +14,10 @@ func init() {
 
 const (
 	DefaultServerName                = "default"
-	ServerContextKey                 = "gb.server.ctx"
 	ServerStatusStopped ServerStatus = 0
 	ServerStatusRunning ServerStatus = 1
+
+	defaultEndpointPort = 80
 
 	// FreePortAddress marks the server listens using random free port.
 	FreePortAddress = ":0"
@@ -42,6 +45,9 @@ type (
 		servers     []*internalServer // Underlying http.Server array.
 		serverCount *gbtype.Int       // Underlying http.Server number for internal usage.
 		closeChan   chan struct{}     // Used for underlying server closing event notification.
+		serviceMu   sync.Mutex        // Concurrent safety for operations of attribute service.
+		service     gbsvc.Service     // The service for Registry.
+		registrar   gbsvc.Registrar   // Registrar for service register.
 	}
 
 	// ServerStatus is the server status enum type.

@@ -52,7 +52,7 @@ func ParseForm(c *gin.Context, obj interface{}) error {
 }
 
 func Ctx(c *gin.Context) context.Context {
-	return Get(c, ServerContextKey).Interface().(context.Context)
+	return c.Request.Context()
 }
 
 func Set(c *gin.Context, key string, value any) {

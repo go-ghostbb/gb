@@ -20,6 +20,7 @@ type ServerConfig struct {
 	Address        string         `json:"address"`
 	HTTPSAddr      string         `json:"httpsAddr"`
 	Listeners      []net.Listener `json:"listeners"`
+	Endpoints      []string       `json:"endpoints"` // Endpoints are custom endpoints for service register, it uses Address if empty.
 	HTTPSCertPath  string         `json:"httpsCertPath"`
 	HTTPSKeyPath   string         `json:"httpsKeyPath"`
 	TLSConfig      *tls.Config    `json:"tlsConfig"`

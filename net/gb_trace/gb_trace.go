@@ -25,8 +25,8 @@ import (
 const (
 	tracingCommonKeyIpIntranet        = `ip.intranet`
 	tracingCommonKeyIpHostname        = `hostname`
-	commandEnvKeyForMaxContentLogSize = "gb.gtrace.max.content.log.size" // To avoid too big tracing content.
-	commandEnvKeyForTracingInternal   = "gb.gtrace.tracing.internal"     // For detailed controlling for tracing content.
+	commandEnvKeyForMaxContentLogSize = "gb.trace.max.content.log.size" // To avoid too big tracing content.
+	commandEnvKeyForTracingInternal   = "gb.trace.tracing.internal"     // For detailed controlling for tracing content.
 )
 
 var (
@@ -158,7 +158,7 @@ func WithTraceID(ctx context.Context, traceID string) (context.Context, error) {
 	sc := trace.SpanContextFromContext(ctx)
 	if !sc.HasTraceID() {
 		var span trace.Span
-		ctx, span = NewSpan(ctx, "gtrace.WithTraceID")
+		ctx, span = NewSpan(ctx, "trace.WithTraceID")
 		defer span.End()
 		sc = trace.SpanContextFromContext(ctx)
 	}

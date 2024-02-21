@@ -5,6 +5,7 @@ import (
 	gbredis "ghostbb.io/gb/database/gb_redis"
 	"ghostbb.io/gb/frame/gins"
 	gbi18n "ghostbb.io/gb/i18n/gb_i18n"
+	gbclient "ghostbb.io/gb/net/gb_client"
 	gbhttp "ghostbb.io/gb/net/gb_http"
 	gbtcp "ghostbb.io/gb/net/gb_tcp"
 	gbcfg "ghostbb.io/gb/os/gb_cfg"
@@ -13,6 +14,11 @@ import (
 	gbview "ghostbb.io/gb/os/gb_view"
 	gbvalid "ghostbb.io/gb/util/gb_valid"
 )
+
+// Client is a convenience function, which creates and returns a new HTTP client.
+func Client() *gbclient.Client {
+	return gbclient.New()
+}
 
 // Server returns an instance of http server with specified name.
 func Server(name ...interface{}) *gbhttp.Server {

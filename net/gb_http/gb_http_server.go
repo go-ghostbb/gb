@@ -7,6 +7,7 @@ import (
 	gbcode "ghostbb.io/gb/errors/gb_code"
 	gberror "ghostbb.io/gb/errors/gb_error"
 	"ghostbb.io/gb/internal/intlog"
+	gbsvc "ghostbb.io/gb/net/gb_svc"
 	gbctx "ghostbb.io/gb/os/gb_ctx"
 	gbfile "ghostbb.io/gb/os/gb_file"
 	gblog "ghostbb.io/gb/os/gb_log"
@@ -37,17 +38,14 @@ func GetServer(name ...interface{}) *Server {
 			servers:     make([]*internalServer, 0),
 			closeChan:   make(chan struct{}, 10000),
 			serverCount: gbtype.NewInt(),
+			registrar:   gbsvc.GetRegistry(),
 		}
 		// Initialize the server using default configurations.
 		if err := s.SetConfig(NewConfig()); err != nil {
 			panic(gberror.WrapCode(gbcode.CodeInvalidConfiguration, err, ""))
 		}
 
-		e.Use(func(c *gin.Context) {
-			c.Set(ServerContextKey, gbctx.New())
-		})
-
-		e.Use(s.loggerMiddleware(), s.terminal(), s.Recovery())
+		e.Use(s.traceMiddleware(), s.loggerMiddleware(), s.terminal(), s.Recovery())
 		return s
 	})
 
@@ -118,6 +116,7 @@ func (s *Server) Start() error {
 		})
 	}
 
+	s.doServiceRegister()
 	s.doRouterMapDump()
 
 	return nil
@@ -227,6 +226,24 @@ func (s *Server) Status() ServerStatus {
 	return ServerStatusStopped
 }
 
+// GetListenedPort retrieves and returns one port which is listened by current server.
+func (s *Server) GetListenedPort() int {
+	ports := s.GetListenedPorts()
+	if len(ports) > 0 {
+		return ports[0]
+	}
+	return 0
+}
+
+// GetListenedPorts retrieves and returns the ports which are listened by current server.
+func (s *Server) GetListenedPorts() []int {
+	ports := make([]int, 0)
+	for _, server := range s.servers {
+		ports = append(ports, server.GetListenedPort())
+	}
+	return ports
+}
+
 func (s *Server) GetRoutes() gin.RoutesInfo {
 	return s.Engine.Routes()
 }
@@ -275,6 +292,7 @@ func (s *Server) Run() {
 	// Blocking using channel.
 	<-s.closeChan
 
+	s.doServiceDeregister()
 	s.Logger().Infof(ctx, "pid[%d]: all servers shutdown", gbproc.Pid())
 }
 
@@ -282,4 +300,21 @@ func (s *Server) Bind(obj ...IBind) {
 	for _, o := range obj {
 		o.Init(s.Group(""))
 	}
+}
+
+// Shutdown shuts down current server.
+func (s *Server) Shutdown() error {
+	var ctx = context.TODO()
+	s.doServiceDeregister()
+	// Only shut down current servers.
+	// It may have multiple underlying http servers.
+	for _, v := range s.servers {
+		v.close(ctx)
+	}
+	return nil
+}
+
+// GetRegistrar returns the Registrar of server.
+func (s *Server) GetRegistrar() gbsvc.Registrar {
+	return s.registrar
 }
