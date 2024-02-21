@@ -3,7 +3,7 @@ module ghostbb.io/gb/contrib/registry/file
 go 1.22
 
 require (
-	ghostbb.io/gb v1.3.4
+	ghostbb.io/gb v1.4.0
 	github.com/gin-gonic/gin v1.9.1
 )
 

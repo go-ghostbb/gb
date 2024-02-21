@@ -3,7 +3,7 @@ module ghostbb.io/gb/contrib/registry/polaris
 go 1.22
 
 require (
-	ghostbb.io/gb v1.3.4
+	ghostbb.io/gb v1.4.0
 	github.com/polarismesh/polaris-go v1.5.5
 )
 
