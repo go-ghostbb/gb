@@ -3,7 +3,6 @@ package cache
 import (
 	"context"
 	gbstr "ghostbb.io/gb/text/gb_str"
-	"time"
 )
 
 func (c *Cache) ClearCache(ctx context.Context) error {
@@ -41,5 +40,5 @@ func (c *Cache) DeleteKeysWithPrefix(ctx context.Context, keyPrefix string) erro
 }
 
 func (c *Cache) SetKey(ctx context.Context, kv Kv) error {
-	return c.cache.Set(ctx, kv.Key, kv.Value, time.Duration(c.TTL())*time.Millisecond)
+	return c.cache.Set(ctx, kv.Key, kv.Value, c.TTL())
 }

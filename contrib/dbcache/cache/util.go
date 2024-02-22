@@ -6,6 +6,7 @@ import (
 	gbconv "ghostbb.io/gb/util/gb_conv"
 	"math/rand"
 	"strings"
+	"time"
 )
 
 func (c *Cache) genSearchCacheKey(tableName string, sql string, vars ...interface{}) string {
@@ -21,7 +22,7 @@ func (c *Cache) genCachePrefix(tableName string) string {
 	return cacheName + ":" + c.InstanceId + ":s:" + tableName
 }
 
-func (c *Cache) TTL() int64 {
+func (c *Cache) TTL() time.Duration {
 	randNum := rand.Float64()*0.2 + 0.9
-	return int64(float64(c.config.TTL) * randNum)
+	return time.Duration(float64(c.config.TTL) * randNum)
 }
