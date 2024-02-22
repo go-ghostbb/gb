@@ -36,12 +36,7 @@ func Test_doFormatTag(t *testing.T) {
 			TestStruct: Test{T1: "test1", T2: "test2"},
 		})
 
-		t.Assert(result, User{
-			Model:      Model{ID: 1},
-			Username:   "ghostbb",
-			Password:   "123456",
-			TestStruct: Test{T1: "test1", T2: "test2"},
-		})
+		t.Assert(result, `{"Model":{"ID":1},"username":"ghostbb","password":"123456","testStruct":{"t1":"test1","t2":"test2"}}`)
 	})
 }
 
@@ -179,8 +174,22 @@ func Test_doFormatMany(t *testing.T) {
 		TestStruct Test   `json:"testStruct"  gorm:"embedded"`
 	}
 
+	type TestRes struct {
+		T2 string `json:"t2"`
+	}
+
+	type UserRes struct {
+		Model struct {
+			ID uint
+		}
+		Username   string  `json:"username" gorm:"index"`
+		Password   string  `json:"password"`
+		TestStruct TestRes `json:"testStruct"  gorm:"embedded"`
+	}
+
 	gbtest.C(t, func(t *gbtest.T) {
 		users := make([]*User, 0)
+		output := make([]UserRes, 0)
 		handler := New(cache.New())
 
 		for i := 0; i < 50000; i++ {
@@ -188,12 +197,19 @@ func Test_doFormatMany(t *testing.T) {
 				Model:      gorm.Model{ID: 1},
 				Username:   "ghostbb",
 				Password:   "123456",
-				TestStruct: Test{T1: "test1", T2: "test2"},
+				TestStruct: Test{T1: "", T2: "test2"},
+			})
+			output = append(output, UserRes{
+				Model:    struct{ ID uint }{ID: 1},
+				Username: "ghostbb",
+				Password: "123456",
+				TestStruct: TestRes{
+					T2: "test2",
+				},
 			})
 		}
 
-		result := handler.doFormat(users)
-		t.Assert(result, users)
+		t.Assert(handler.doFormat(users), output)
 	})
 }
 
