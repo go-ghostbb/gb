@@ -20,6 +20,9 @@ func Database(name ...string) *gbdb.DB {
 	if len(name) > 0 && name[0] != "" {
 		instanceName = name[0]
 	}
+	if db := gbdb.GetDB(instanceName); db != nil {
+		return db
+	}
 	instanceKey := fmt.Sprintf("%s.%s", frameCoreComponentNameDatabase, instanceName)
 	return instance.GetOrSetFuncLock(instanceKey, func() interface{} {
 		if !Config().Available(ctx) {

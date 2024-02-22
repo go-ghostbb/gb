@@ -19,7 +19,7 @@ const (
 	helpOptionName        = "help"
 	helpOptionNameShort   = "h"
 	maxLineChars          = 120
-	tracingInstrumentName = "ghostbb.io/gb/os/gbcmd.Command"
+	tracingInstrumentName = "ghostbb.io/gb/os/gb_cmd.Command"
 	tagNameName           = "name"
 	tagNameShort          = "short"
 )

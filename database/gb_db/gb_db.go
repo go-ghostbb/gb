@@ -1,6 +1,7 @@
 package gbdb
 
 import (
+	gbmap "ghostbb.io/gb/container/gb_map"
 	gbcode "ghostbb.io/gb/errors/gb_code"
 	gberror "ghostbb.io/gb/errors/gb_error"
 	"ghostbb.io/gb/internal/intlog"
@@ -35,6 +36,7 @@ func NewDBByConfig(name string, config DatabaseConfig) (*DB, error) {
 			return nil, err
 		}
 		intlog.Printf(gbctx.New(), "%s | %s | database connection successful.", name, config.Type)
+		dbMap.Set(name, db)
 		return db, nil
 	}
 
@@ -43,9 +45,18 @@ func NewDBByConfig(name string, config DatabaseConfig) (*DB, error) {
 	return nil, gberror.NewCodef(gbcode.CodeInvalidConfiguration, errorMsg, config.Type, config.Type)
 }
 
+func GetDB(name string) *DB {
+	if _, ok := dbMap.Map()[name]; !ok {
+		return nil
+	}
+	return dbMap.Get(name).(*DB)
+}
+
 var (
 	// driverMap manages all custom registered driver.
 	driverMap = map[string]IDriver{}
+
+	dbMap = gbmap.NewStrAnyMap(true)
 )
 
 const (
