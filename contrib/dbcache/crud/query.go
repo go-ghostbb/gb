@@ -2,6 +2,7 @@ package crud
 
 import (
 	"fmt"
+	gbvar "ghostbb.io/gb/container/gb_var"
 	"ghostbb.io/gb/contrib/dbcache/cache"
 	gbcode "ghostbb.io/gb/errors/gb_code"
 	gberror "ghostbb.io/gb/errors/gb_error"
@@ -11,7 +12,6 @@ import (
 	gbconv "ghostbb.io/gb/util/gb_conv"
 	"gorm.io/gorm"
 	"gorm.io/gorm/callbacks"
-	"reflect"
 	"sync"
 )
 
@@ -116,29 +116,15 @@ func (h *Handler) doCache(db *gorm.DB) {
 		return
 	}
 
-	var (
-		object  = make([]interface{}, 0)
-		destRef = reflect.Indirect(reflect.ValueOf(db.Statement.Dest))
-	)
-
-	switch destRef.Kind() {
-	case reflect.Slice, reflect.Array:
-		for i := 0; i < destRef.Len(); i++ {
-			object = append(object, destRef.Index(i).Interface())
-		}
-	case reflect.Struct:
-		object = append(object, destRef.Interface())
-	}
-
 	var wg sync.WaitGroup
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
 
-		if h.cache.Config().MaxItem != 0 && len(object) > h.cache.Config().MaxItem {
+		if h.cache.Config().MaxItem != 0 && len(gbvar.New(db.Statement.Dest).Vars()) > h.cache.Config().MaxItem {
 			return
 		}
-		cacheBytes, err := json.Marshal(db.Statement.Dest)
+		cacheBytes, err := json.Marshal(h.doFormat(db.Statement.Dest))
 		if err != nil {
 			intlog.Errorf(ctx, "[AfterQuery] cannot marshal cache for sql: %s, not cached", sql)
 			return
