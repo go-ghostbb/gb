@@ -3,7 +3,7 @@ module ghostbb.io/gb/contrib/drivers/pgsql
 go 1.22
 
 require (
-	ghostbb.io/gb v1.4.1
+	ghostbb.io/gb v1.4.2
 	gorm.io/driver/postgres v1.5.6
 	gorm.io/gorm v1.25.7
 )

@@ -3,7 +3,7 @@ module ghostbb.io/gb/contrib/registry/etcd
 go 1.22
 
 require (
-	ghostbb.io/gb v1.4.1
+	ghostbb.io/gb v1.4.2
 	go.etcd.io/etcd/client/v3 v3.5.7
 )
 
