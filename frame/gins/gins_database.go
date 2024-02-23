@@ -23,12 +23,12 @@ func Database(name ...string) *gbdb.DB {
 	if db := gbdb.GetDB(instanceName); db != nil {
 		return db
 	}
+	if !Config().Available(ctx) {
+		return nil
+	}
+
 	instanceKey := fmt.Sprintf("%s.%s", frameCoreComponentNameDatabase, instanceName)
 	return instance.GetOrSetFuncLock(instanceKey, func() interface{} {
-		if !Config().Available(ctx) {
-			return nil
-		}
-
 		var (
 			configMap         map[string]interface{}
 			dbConfigMap       map[string]interface{}

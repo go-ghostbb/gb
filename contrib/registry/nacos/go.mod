@@ -3,7 +3,7 @@ module ghostbb.io/gb/contrib/registry/nacos
 go 1.22
 
 require (
-	ghostbb.io/gb v1.4.5
+	ghostbb.io/gb v1.4.6
 	github.com/joy999/nacos-sdk-go v0.0.0-20231120071639-10a34b3e7288
 )
 
