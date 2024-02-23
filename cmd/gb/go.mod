@@ -2,7 +2,7 @@ module ghostbb.io/gb/cmd/gb
 
 go 1.22
 
-require ghostbb.io/gb v1.4.2
+require ghostbb.io/gb v1.4.3
 
 require (
 	github.com/BurntSushi/toml v1.3.2 // indirect

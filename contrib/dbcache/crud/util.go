@@ -40,6 +40,7 @@ func (h *Handler) getTableName(db *gorm.DB) string {
 	return db.Statement.Table
 }
 
+// doFormat 將結構體zero值全部刪除
 func (h *Handler) doFormat(dest any) any {
 	destVar := gbvar.New(dest)
 
@@ -54,6 +55,7 @@ func (h *Handler) doFormat(dest any) any {
 	return dest
 }
 
+// sliceFormat 針對slice
 func sliceFormat(destVars []*gbvar.Var) any {
 	result := make([]any, 0)
 	for _, v := range destVars {
@@ -62,6 +64,7 @@ func sliceFormat(destVars []*gbvar.Var) any {
 	return result
 }
 
+// structFormat 針對struct
 func structFormat(destVar *gbvar.Var) any {
 	var (
 		newFields = make([]reflect.StructField, 0)
@@ -102,16 +105,13 @@ func structFormat(destVar *gbvar.Var) any {
 				continue
 			}
 			// 重寫字段結構體
-			newFields = append(newFields, reflect.StructField{
-				Name: field.Name,
-				Type: valueRef.Type(),
-				Tag:  field.Tag,
-			})
+			field.Type = valueRef.Type()
 			newValues = append(newValues, valueRef)
 		} else {
-			newFields = append(newFields, field)
 			newValues = append(newValues, destRef.Field(i))
 		}
+
+		newFields = append(newFields, field)
 	}
 
 	// 創建一个包含新字段的結構體類型
