@@ -5,7 +5,7 @@ go 1.22
 toolchain go1.22.0
 
 require (
-	ghostbb.io/gb v1.4.6
+	ghostbb.io/gb v1.5.0
 	github.com/redis/go-redis/v9 v9.2.1
 	go.opentelemetry.io/otel v1.23.1
 	go.opentelemetry.io/otel/trace v1.23.1
