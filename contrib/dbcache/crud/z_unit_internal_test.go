@@ -2,6 +2,7 @@ package crud
 
 import (
 	"ghostbb.io/gb/contrib/dbcache/cache"
+	gbcache "ghostbb.io/gb/os/gb_cache"
 	gbtest "ghostbb.io/gb/test/gb_test"
 	"gorm.io/gorm"
 	"testing"
@@ -28,7 +29,9 @@ func Test_doFormatTag(t *testing.T) {
 	}
 
 	gbtest.C(t, func(t *gbtest.T) {
-		handler := New(cache.New())
+		handler := New(cache.New(&cache.Memory{
+			Cache: gbcache.New(),
+		}))
 		result := handler.doFormat(&User{
 			Model:      Model{ID: 1},
 			Username:   "ghostbb",
@@ -60,7 +63,9 @@ func Test_doFormatNoTag(t *testing.T) {
 	}
 
 	gbtest.C(t, func(t *gbtest.T) {
-		handler := New(cache.New())
+		handler := New(cache.New(&cache.Memory{
+			Cache: gbcache.New(),
+		}))
 		result := handler.doFormat(&User{
 			Model:      Model{ID: 1},
 			Username:   "ghostbb",
@@ -86,7 +91,9 @@ func Test_doFormatEmbedded(t *testing.T) {
 	}
 
 	gbtest.C(t, func(t *gbtest.T) {
-		handler := New(cache.New())
+		handler := New(cache.New(&cache.Memory{
+			Cache: gbcache.New(),
+		}))
 		result := handler.doFormat(&User{
 			Model:      gorm.Model{ID: 1},
 			Username:   "ghostbb",
@@ -117,7 +124,9 @@ func Test_doFormatNoEmbedded(t *testing.T) {
 	}
 
 	gbtest.C(t, func(t *gbtest.T) {
-		handler := New(cache.New())
+		handler := New(cache.New(&cache.Memory{
+			Cache: gbcache.New(),
+		}))
 		result := handler.doFormat(&User{
 			Model:      gorm.Model{ID: 1},
 			Username:   "ghostbb",
@@ -149,7 +158,9 @@ func Test_doFormatNoEmbeddedNoTag(t *testing.T) {
 	}
 
 	gbtest.C(t, func(t *gbtest.T) {
-		handler := New(cache.New())
+		handler := New(cache.New(&cache.Memory{
+			Cache: gbcache.New(),
+		}))
 		result := handler.doFormat(&User{
 			Model:      Model{ID: 1},
 			Username:   "ghostbb",
@@ -188,7 +199,9 @@ func Test_doFormatMany(t *testing.T) {
 	gbtest.C(t, func(t *gbtest.T) {
 		users := make([]*User, 0)
 		output := make([]UserRes, 0)
-		handler := New(cache.New())
+		handler := New(cache.New(&cache.Memory{
+			Cache: gbcache.New(),
+		}))
 
 		for i := 0; i < 3; i++ {
 			users = append(users, &User{
@@ -233,7 +246,9 @@ func Test_doFormatRecursion(t *testing.T) {
 		Friend   Friend `dbcache:"true"`
 	}
 	gbtest.C(t, func(t *gbtest.T) {
-		handler := New(cache.New())
+		handler := New(cache.New(&cache.Memory{
+			Cache: gbcache.New(),
+		}))
 		result := handler.doFormat(&User{
 			Username: "ghostbb",
 			Password: "123456",
