@@ -4,6 +4,7 @@ import (
 	"context"
 	"ghostbb.io/gb/contrib/dbcache/cache"
 	"ghostbb.io/gb/contrib/dbcache/crud"
+	gbredis "ghostbb.io/gb/database/gb_redis"
 	gbcache "ghostbb.io/gb/os/gb_cache"
 	"gorm.io/gorm"
 )
@@ -16,9 +17,9 @@ func WithCtx(parent context.Context) context.Context {
 	return context.WithValue(parent, crud.CacheCtxKey, crud.CacheSearch)
 }
 
-func New() *Plugin {
+func New(c cache.ICache) *Plugin {
 	return &Plugin{
-		cache: cache.New(),
+		cache: cache.New(c),
 	}
 }
 
@@ -26,19 +27,29 @@ type Plugin struct {
 	cache *cache.Cache
 }
 
-func (c *Plugin) Name() string {
+func (p *Plugin) Name() string {
 	return PluginName
 }
 
-func (c *Plugin) Initialize(db *gorm.DB) (err error) {
-	if err = crud.New(c.cache).Bind(db); err != nil {
+func (p *Plugin) Initialize(db *gorm.DB) (err error) {
+	if err = crud.New(p.cache).Bind(db); err != nil {
 		return err
 	}
-	c.cache.ClearCache(context.TODO())
-	return nil
+
+	if name, ok := db.Get("gb:database:name"); ok {
+		p.cache.SetName(name.(string))
+	}
+	return p.cache.Clear(context.TODO())
 }
 
-func (c *Plugin) SetAdapter(adapter gbcache.Adapter) {
-	c.cache.SetAdapter(adapter)
-	c.cache.ClearCache(context.TODO())
+func NewMemory(c *gbcache.Cache) *cache.Memory {
+	return &cache.Memory{
+		Cache: c,
+	}
+}
+
+func NewRedis(r *gbredis.Redis) *cache.Redis {
+	return &cache.Redis{
+		Redis: r,
+	}
 }

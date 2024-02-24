@@ -15,14 +15,14 @@ func (c *Cache) genSearchCacheKey(tableName string, sql string, vars ...interfac
 	for _, v := range vars {
 		buf.WriteString(fmt.Sprintf(":%s", gbconv.String(v)))
 	}
-	return fmt.Sprintf("%s:%s:s:%s:%s", cacheName, c.InstanceId, tableName, gbsha256.Encrypt256(buf.String()))
+	return fmt.Sprintf("%s:%s:s:%s:%s", cacheName, c.config.instance, tableName, gbsha256.Encrypt256(buf.String()))
 }
 
 func (c *Cache) genCachePrefix(tableName string) string {
-	return cacheName + ":" + c.InstanceId + ":s:" + tableName
+	return cacheName + ":" + c.config.instance + ":s:" + tableName
 }
 
-func (c *Cache) TTL() time.Duration {
+func randTTL(ttl time.Duration) time.Duration {
 	randNum := rand.Float64()*0.2 + 0.9
-	return time.Duration(float64(c.config.TTL) * randNum)
+	return time.Duration(float64(ttl) * randNum)
 }

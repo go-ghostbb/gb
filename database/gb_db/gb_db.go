@@ -37,6 +37,7 @@ func NewDBByConfig(name string, config DatabaseConfig) (*DB, error) {
 		}
 		intlog.Printf(gbctx.New(), "%s | %s | database connection successful.", name, config.Type)
 		dbMap.Set(name, db)
+		db.DB = db.DB.Set("gb:database:name", name)
 		return db, nil
 	}
 

@@ -20,10 +20,6 @@ const (
 
 	CacheNone   cacheLevel = 0
 	CacheSearch cacheLevel = 1
-
-	exprEq    exprType = "eq"
-	exprIn    exprType = "in"
-	exprOther exprType = "other"
 )
 
 type Result struct {
