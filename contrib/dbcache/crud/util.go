@@ -13,6 +13,13 @@ import (
 	"strings"
 )
 
+var (
+	whiteListStruct = []string{
+		"gorm.Model",
+		"time.Time",
+	}
+)
+
 func (h *Handler) parseLevel(ctx context.Context) cacheLevel {
 	value := ctx.Value(CacheCtxKey)
 	if value == nil {
@@ -75,7 +82,7 @@ func structFormat(destVar *gbvar.Var) any {
 	// 遍歷所有字段
 	// 不緩存結構體和值是zero的字段
 	// 以下例外:
-	// 1.結構體為"gorm.Model"
+	// 1.結構體為"gorm.Model", "time.Time"
 	// 2.含有tag->dbcache:"true"
 	// 3.gorm tag中含有embedded
 	for i := 0; i < destRef.Type().NumField(); i++ {
@@ -89,7 +96,7 @@ func structFormat(destVar *gbvar.Var) any {
 		slices.Sort(gormTags)
 		_, embedded := slices.BinarySearch(gormTags, "embedded")
 
-		if fieldRef.Kind() == reflect.Struct && fieldRef.Type().String() != "gorm.Model" && dbcacheTag != "true" && !embedded {
+		if fieldRef.Kind() == reflect.Struct && !slices.Contains(whiteListStruct, fieldRef.Type().String()) && dbcacheTag != "true" && !embedded {
 			continue
 		}
 
