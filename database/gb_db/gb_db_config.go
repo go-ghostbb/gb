@@ -41,8 +41,10 @@ type DatabaseConfig struct {
 	ErrorStack        bool          `json:"errorStack"`        // ErrorStack specifies whether logging stack information when error.
 	ErrorLogEnabled   bool          `json:"errorLogEnabled"`   // ErrorLogEnabled enables error logging content to files.
 	ErrorLogPattern   string        `json:"errorLogPattern"`   // ErrorLogPattern specifies the error log file pattern like: error-{Ymd}.log
+	WarnLogEnabled    bool          `json:"warnLogEnabled"`    // WarnLogEnabled enables warn logging content to files.
+	WarnLogPattern    string        `json:"warnLogPattern"`    // WarnLogPattern specifies the warn log file pattern like: warn-{Ymd}.log
 	AccessLogEnabled  bool          `json:"accessLogEnabled"`  // AccessLogEnabled enables access logging content to files.
-	AccessLogPattern  string        `json:"accessLogPattern"`  // AccessLogPattern specifies the error log file pattern like: access-{Ymd}.log
+	AccessLogPattern  string        `json:"accessLogPattern"`  // AccessLogPattern specifies the access log file pattern like: access-{Ymd}.log
 
 	// ======================================================================================================
 	// Cluster.
@@ -64,6 +66,8 @@ func NewConfig() DatabaseConfig {
 		ErrorStack:        true,
 		ErrorLogEnabled:   true,
 		ErrorLogPattern:   "error-{Ymd}.log",
+		WarnLogEnabled:    true,
+		WarnLogPattern:    "warn-{Ymd}.log",
 		AccessLogEnabled:  false,
 		AccessLogPattern:  "access-{Ymd}.log",
 	}
@@ -100,4 +104,16 @@ func (d *DatabaseConfig) GormConfig() *gorm.Config {
 	}
 	config.Logger = d.newDBLogger()
 	return config
+}
+
+func (d *DatabaseConfig) IsErrorLogEnabled() bool {
+	return d.ErrorLogEnabled
+}
+
+func (d *DatabaseConfig) IsAccessLogEnabled() bool {
+	return d.AccessLogEnabled
+}
+
+func (d *DatabaseConfig) IsWarnLogEnabled() bool {
+	return d.WarnLogEnabled
 }

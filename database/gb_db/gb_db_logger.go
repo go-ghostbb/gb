@@ -74,11 +74,17 @@ func (d *dbLogger) Trace(ctx context.Context, begin time.Time, fc func() (string
 
 	switch {
 	case err != nil && (d.RecordNotFoundErr || !gberror.Is(err, gorm.ErrRecordNotFound)):
-		logger.Error(ctx, msg, map[string]interface{}{"error": err.Error()})
+		if d.IsErrorLogEnabled() {
+			logger.File(d.ErrorLogPattern).Error(ctx, msg, map[string]interface{}{"error": err.Error()})
+		}
 	case d.SlowThreshold != 0 && elapsed > d.SlowThreshold:
-		logger.Warning(ctx, msg)
+		if d.IsWarnLogEnabled() {
+			logger.File(d.WarnLogPattern).Warning(ctx, msg)
+		}
 	default:
-		logger.Info(ctx, msg)
+		if d.IsAccessLogEnabled() {
+			logger.Info(ctx, msg)
+		}
 	}
 
 	if d.Terminal {
