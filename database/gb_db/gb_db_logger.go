@@ -60,7 +60,7 @@ func (d *dbLogger) Trace(ctx context.Context, begin time.Time, fc func() (string
 		logger    = d.setLogger()
 		track     = d.pathTrack(ctx)
 		sql, rows = fc()
-		msg       = fmt.Sprintf(`%s 【%s】｜%10v｜%10s`,
+		msg       = fmt.Sprintf(`%s 【%s】｜%10v｜%10s｜`,
 			track,
 			d.instance,
 			elapsed,
@@ -69,21 +69,19 @@ func (d *dbLogger) Trace(ctx context.Context, begin time.Time, fc func() (string
 		elapsedColor = d.ElapsedColor(elapsed)
 		resetColor   = reset
 	)
-	sql = gbstr.Replace(sql, `/`, "", -1)
-	msg += "\n    " + sql + "\n"
 
 	switch {
 	case err != nil && (d.RecordNotFoundErr || !gberror.Is(err, gorm.ErrRecordNotFound)):
 		if d.IsErrorLogEnabled() {
-			logger.File(d.ErrorLogPattern).Error(ctx, msg, map[string]interface{}{"error": err.Error()})
+			logger.File(d.ErrorLogPattern).Stack(false).Error(ctx, msg, map[string]interface{}{"error": err.Error(), "sql": gbstr.Replace(sql, `/`, "", -1)})
 		}
 	case d.SlowThreshold != 0 && elapsed > d.SlowThreshold:
 		if d.IsWarnLogEnabled() {
-			logger.File(d.WarnLogPattern).Warning(ctx, msg)
+			logger.File(d.WarnLogPattern).Warning(ctx, msg, map[string]interface{}{"sql": gbstr.Replace(sql, `/`, "", -1)})
 		}
 	default:
 		if d.IsAccessLogEnabled() {
-			logger.Info(ctx, msg)
+			logger.Info(ctx, msg, map[string]interface{}{"sql": gbstr.Replace(sql, `/`, "", -1)})
 		}
 	}
 
