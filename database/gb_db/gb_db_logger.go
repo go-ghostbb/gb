@@ -88,7 +88,7 @@ func (d *dbLogger) Trace(ctx context.Context, begin time.Time, fc func() (string
 	}
 
 	if d.Terminal {
-		fmt.Printf("%s [ORM] %s ｜%s %15v %s｜%s %-8s %s｜%-10s｜ %s \n",
+		msg = fmt.Sprintf("%s [ORM] %s ｜%s %15v %s｜%s %-8s %s｜%-10s｜ %s",
 			time.Now().Format("2006/01/02 15:04:05"),
 			track,
 			elapsedColor, elapsed, resetColor,
@@ -96,6 +96,10 @@ func (d *dbLogger) Trace(ctx context.Context, begin time.Time, fc func() (string
 			d.instance,
 			sql,
 		)
+		if err != nil && (d.RecordNotFoundErr || !gberror.Is(err, gorm.ErrRecordNotFound)) {
+			msg += "\n    " + err.Error() + "\n"
+		}
+		fmt.Println(msg)
 	}
 }
 
