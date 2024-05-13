@@ -14,6 +14,7 @@ type DatabaseConfig struct {
 
 	Link          string `json:"lint"`
 	Host          string `json:"host"`          // Host of server, ip or domain like: 127.0.0.1, localhost
+	Instance      string `json:"instance"`      // instance, if connecting to an instance instead of a port
 	Port          string `json:"port"`          // Port, it's commonly 3306.
 	User          string `json:"user"`          // Authentication username.
 	Pass          string `json:"pass"`          // Authentication password.
