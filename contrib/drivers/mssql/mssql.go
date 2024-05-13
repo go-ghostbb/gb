@@ -18,20 +18,22 @@ type Driver struct{}
 
 func (d *Driver) New(config gbdb.DatabaseConfig) (db *gorm.DB, err error) {
 	var (
-		source string
+		source = config.Link
 	)
-	source = fmt.Sprintf(
-		"sqlserver://%s:%s@%s:%s?database=%s&encrypt=disable",
-		config.User, config.Pass, config.Host, config.Port, config.Name,
-	)
-	source = gbstr.Replace(source, "\\", `\`)
-	if config.Extra != "" {
-		var extraMap map[string]interface{}
-		if extraMap, err = gbstr.Parse(config.Extra); err != nil {
-			return nil, err
-		}
-		for k, v := range extraMap {
-			source += fmt.Sprintf(`&%s=%s`, k, v)
+	if source == "" {
+		source = fmt.Sprintf(
+			"sqlserver://%s:%s@%s:%s?database=%s&encrypt=disable",
+			config.User, config.Pass, config.Host, config.Port, config.Name,
+		)
+		source = gbstr.Replace(source, "\\", `\`)
+		if config.Extra != "" {
+			var extraMap map[string]interface{}
+			if extraMap, err = gbstr.Parse(config.Extra); err != nil {
+				return nil, err
+			}
+			for k, v := range extraMap {
+				source += fmt.Sprintf(`&%s=%s`, k, v)
+			}
 		}
 	}
 

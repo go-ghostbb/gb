@@ -12,6 +12,7 @@ import (
 type DatabaseConfig struct {
 	instance string
 
+	Link          string `json:"lint"`
 	Host          string `json:"host"`          // Host of server, ip or domain like: 127.0.0.1, localhost
 	Port          string `json:"port"`          // Port, it's commonly 3306.
 	User          string `json:"user"`          // Authentication username.
