@@ -24,6 +24,7 @@ func (d *Driver) New(config gbdb.DatabaseConfig) (db *gorm.DB, err error) {
 		"sqlserver://%s:%s@%s:%s?database=%s&encrypt=disable",
 		config.User, config.Pass, config.Host, config.Port, config.Name,
 	)
+	source = gbstr.Replace(source, "\\", `\`)
 	if config.Extra != "" {
 		var extraMap map[string]interface{}
 		if extraMap, err = gbstr.Parse(config.Extra); err != nil {
