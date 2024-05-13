@@ -3,7 +3,7 @@ module ghostbb.io/gb/contrib/registry/zookeeper
 go 1.22
 
 require (
-	ghostbb.io/gb v1.5.4
+	ghostbb.io/gb v1.5.5
 	github.com/go-zookeeper/zk v1.0.3
 	golang.org/x/sync v0.4.0
 )

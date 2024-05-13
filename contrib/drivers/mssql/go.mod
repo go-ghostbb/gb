@@ -5,7 +5,7 @@ go 1.22
 toolchain go1.22.0
 
 require (
-	ghostbb.io/gb v1.5.4
+	ghostbb.io/gb v1.5.5
 	gorm.io/driver/sqlserver v1.5.2
 	gorm.io/gorm v1.25.7
 )
