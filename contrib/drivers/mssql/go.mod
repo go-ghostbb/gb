@@ -5,9 +5,9 @@ go 1.22
 toolchain go1.22.0
 
 require (
-	ghostbb.io/gb v1.5.5
-	gorm.io/driver/sqlserver v1.5.2
-	gorm.io/gorm v1.25.7
+	ghostbb.io/gb v1.5.6
+	gorm.io/driver/sqlserver v1.5.3
+	gorm.io/gorm v1.25.10
 )
 
 require (
@@ -21,7 +21,7 @@ require (
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
-	github.com/microsoft/go-mssqldb v1.7.1 // indirect
+	github.com/microsoft/go-mssqldb v1.6.0 // indirect
 	go.opentelemetry.io/otel v1.23.1 // indirect
 	go.opentelemetry.io/otel/metric v1.23.1 // indirect
 	go.opentelemetry.io/otel/sdk v1.23.1 // indirect

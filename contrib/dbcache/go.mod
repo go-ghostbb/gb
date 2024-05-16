@@ -5,7 +5,7 @@ go 1.22
 toolchain go1.22.0
 
 require (
-	ghostbb.io/gb v1.5.5
+	ghostbb.io/gb v1.5.6
 	gorm.io/gorm v1.25.7
 )
 
